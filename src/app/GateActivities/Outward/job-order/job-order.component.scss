@@ -1,0 +1,88 @@
+:host {
+  display: block;
+}
+
+/* Page padding utility to replace inline style */
+.page-padding {
+  padding: 0 5%;
+}
+
+/* Enhance the top ribbon look, consistent across pages */
+.ribbon-pop {
+  background: linear-gradient(135deg, #f8f9fa, #eef3ff);
+  border: 1px solid #e7ebf5;
+  color: #0d6efd;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border-radius: 0.5rem;
+}
+
+/* Card subtle elevation */
+.card {
+  border: 1px solid #eef1f5;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* Fieldset and legend refinement */
+fieldset {
+  border: 1px solid #e8ecf4 !important;
+  border-radius: 0.75rem !important;
+}
+legend {
+  margin-bottom: 0.25rem;
+  color: #0b5ed7;
+}
+
+/* Inputs: unified look */
+.form-control.bg-light {
+  background-color: #f8fafc !important;
+}
+.form-control.shadow-sm {
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.06) !important;
+}
+
+/* Button group alignment */
+.button-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modern buttons if not globally present */
+.btn-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.submit-btn {
+  background: #198754; /* bootstrap success */
+  color: #fff;
+}
+.submit-btn:hover {
+  filter: brightness(0.95);
+}
+.reset-btn {
+  background: #f8f9fa;
+  color: #495057;
+  border-color: #e9ecef;
+}
+.reset-btn:hover {
+  background: #eef2f6;
+}
+
+/* Minor spacing harmonization */
+.row.p-1 {
+  padding: 0.5rem !important;
+}
+.row.mt-2 {
+  margin-top: 0.75rem !important;
+}
+.row.mt-3 {
+  margin-top: 1rem !important;
+}
