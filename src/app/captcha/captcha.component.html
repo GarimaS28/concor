@@ -1,0 +1,14 @@
+<div class="captcha-container">
+  <div class="input-container">
+    <span class="captcha-text" [ngStyle]="{'color': 'black'}">{{ captchaText }}</span>
+    <input class="text-styl" type="text" [(ngModel)]="userInput" placeholder="Enter CAPTCHA" />
+    <button (click)="generateCaptcha()" class="refresh-btn">🔄</button>
+  </div>
+  <div class="buttons">
+     <!-- <button (click)="validateCaptcha()">✔ Submit</button> -->
+  </div>
+  <p *ngIf="isValid === false" class="error">❌ Incorrect CAPTCHA. Try again.</p>
+  <p *ngIf="isValid === true" class="success">✅ Correct! Proceed.</p>
+  <p *ngIf="timeRemaining <= 0" class="error">❌ CAPTCHA Expired. Please refresh.</p>
+  
+</div>

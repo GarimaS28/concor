@@ -1,0 +1,239 @@
+<header id="header" class="header header-shadow">
+  <div class="container align-items-start ">
+    
+    <!-- Logo Area -->
+    <a routerLink="/" class="logo d-flex align-items-center header-logo-container">
+      <img src="assets/images/concorlogo.jpg" alt="CONCOR Logo" class="header-logo me-3 logo-box" />
+
+      <div class="company-title ms-2">
+        <h4 class="mb-0 fw-bold text-primary hindi-text">भारतीय कंटेनर निगम लिमिटेड</h4>
+        <h5 class="mb-0 fw-semibold text-dark eng-text">Container Corporation of India Ltd.</h5>
+        <p class="mb-0 govt-tag">
+          <span class="text-danger">भारत सरकार का उद्यम</span> | 
+          <span class="text-success">A Govt. of India Enterprise</span>
+        </p>
+      </div>
+    </a>
+ 
+    <!-- Navigation -->
+    <!-- <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a routerLink="home">Home</a></li>
+        <li><a routerLink="register">Register</a></li>
+        <li><a (click)="showUserOverlay = true" style="cursor:pointer;">Enquiry</a></li>
+        <li><a (click)="showLoginOverlay = true" style="cursor:pointer;">Login</a></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav> -->
+    <nav id="navmenu" class="navmenu">
+  <ul>
+    <li><a routerLink="home">Home</a></li>
+    <li><a routerLink="register">Register</a></li>
+    <li><a (click)="showUserOverlay = true" style="cursor:pointer;">Enquiry</a></li>
+    <li><a (click)="showLoginOverlay = true" style="cursor:pointer;">Login</a></li>
+  </ul>
+
+  
+
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+  </div>
+  <!-- Date & Time Display -->
+  <div class="date-time text-end small me-5 fw-semibold text-secondary">
+    {{ currentDateTime | date:'dd-MM-yyyy hh:mm:ss a' }}
+  </div>
+</header>
+
+
+
+<!-- Stylish Marquee -->
+
+
+<router-outlet></router-outlet>
+
+
+
+<footer id="footer" class="footer justify-content-center align-items-center p-2 position-relative">
+  <!-- Center -->
+  <p class="mb-0 ">Designed and Developed by <strong>CRIS</strong></p>
+
+  <!-- Right -->
+  <p class="mb-0 text-secondary small position-absolute end-0 me-3">
+    Version: {{ appVersion }}
+  </p>
+</footer>
+
+
+
+<!-- 🔹 Login Overlay -->
+<div class="login-overlay" *ngIf="showLoginOverlay" (click)="closeOverlay($event)">
+  
+  <!-- 🔹 Overlay Header -->
+  <div class="overlay-header">
+
+    <!-- Left: Logo + Company Info (inline) -->
+    <div class="company-info">
+  <img src="assets/images/concorlogo.jpg" alt="CONCOR Logo" class="header-logo me-3 logo-box" />
+  <div class="company-title ms-2 text-white">
+    <h6 class="mb-0 fw-bold hindi-text text-white">भारतीय कंटेनर निगम लिमिटेड</h6>
+    <h6 class="mb-0 fw-semibold eng-text text-white">Container Corporation of India Ltd.</h6>
+    <p class="mb-0 govt-tag">
+      <span>भारत सरकार का उद्यम</span> | 
+      <span>A Govt. of India Enterprise</span>
+    </p>
+  </div>
+</div>
+
+    <!-- Center: System Title (fixed at top middle) -->
+    <div class="system-title">
+      <h3 class="fw-bold text-light mb-1">Domestic Terminal Management System</h3>
+      <h5 class="text-warning fst-italic">eBooking</h5>
+    </div>
+
+    <!-- Right: Empty space -->
+    <div style="width:120px;"></div>
+  </div>
+
+  <!-- 🔹 Modal Body -->
+  <div class="login-modal shadow-lg" (click)="$event.stopPropagation()">
+    <app-login 
+      (closeLogin)="showLoginOverlay = false" 
+      (openForgot)="showForgetPwdOverlay = true; showLoginOverlay = false">
+    </app-login>
+    <span class="close-btn" (click)="showLoginOverlay = false">&times;</span>
+  </div>
+</div>
+
+
+
+<!-- User Overlay -->
+<!-- <div class="login-overlay" *ngIf="showUserOverlay" (click)="closeOverlay($event)">
+  <div class="login-modal" (click)="$event.stopPropagation()">
+    <app-user-stat  (closeUser)="showUserOverlay = false" (openLogin)="showLoginOverlay = true"></app-user-stat>
+    <span class="close-btn" (click)="showUserOverlay = false">&times;</span>
+  </div>
+</div> -->
+
+<!-- forget Password Overlay -->
+<!-- <div class="login-overlay" *ngIf="showForgetPwdOverlay" (click)="closeOverlay($event)">
+  <div class="login-modal" (click)="$event.stopPropagation()">
+    <app-forgetpassword  
+      (closeUser)="showForgetPwdOverlay = false" 
+      (openLogin)="showLoginOverlay = true; showForgetPwdOverlay = false">
+    </app-forgetpassword>
+    <span class="close-btn" (click)="showForgetPwdOverlay = false">&times;</span>
+  </div>
+</div> -->
+
+
+<!-- 🔹 User Overlay -->
+<div class="login-overlay" *ngIf="showUserOverlay" (click)="closeOverlay($event)">
+  <div class="overlay-header">
+    <!-- header same as before -->
+  </div>
+
+  <div class="login-modal shadow-lg" (click)="$event.stopPropagation()">
+
+    <!-- Show User Form if no data -->
+    <app-user-stat
+      *ngIf="!statusData"
+      (closeUser)="showUserOverlay = false"
+      (openLogin)="showLoginOverlay = true"
+      (openStatusModal)="handleStatusModal($event)">
+    </app-user-stat>
+
+    <!-- Show Status Block if data fetched -->
+    <div *ngIf="statusData" class="status-view text-center py-4 px-3">
+  
+  <!-- Card Wrapper -->
+  
+    
+    <!-- Header with Gradient -->
+    <div class="mb-3 rounded-top-3 text-white py-2 px-3" style="background: linear-gradient(90deg, #4a90e2, #50e3c2); font-weight: 600; font-size: 1.1rem;">
+      <i class="bi bi-info-circle-fill me-2"></i> Fetched Request Details
+    </div>
+
+    <!-- Status Body -->
+    <div class="status-body py-3">
+      <p class="mb-2">
+        <strong><i class="bi bi-card-list me-1"></i> Request ID:</strong>
+        <span class="fw-bold text-dark">{{ statusData?.rqstId }}</span>
+      </p>
+
+      <p class="mb-2">
+        <strong><i class="bi bi-person-fill me-1"></i> Customer:</strong>
+        <span class="fw-bold text-dark">{{ statusData?.fullName }}</span>
+      </p>
+
+      <p class="mb-3">
+        <strong><i class="bi bi-clipboard-check me-1"></i> Status:</strong>
+        <span [ngClass]="getStatusClass(statusData?.status)">
+          {{ getStatusLabel(statusData?.status) }}
+        </span>
+      </p>
+
+      <!-- Reapply Button -->
+      <div *ngIf="statusData?.status === 'CNCL'" class="mt-3">
+        <button class="btn btn-warning px-4 fw-semibold shadow-sm" (click)="callRedirectToReapply()">
+          <i class="bi bi-arrow-repeat me-2"></i> Reapply
+        </button>
+      </div>
+
+      <!-- Close Button -->
+      <div class="mt-3">
+        <button class="btn btn-secondary px-4 fw-semibold shadow-sm" (click)="closeStatus()">
+          <i class="bi bi-house-door me-2"></i> Close & Go Home
+        </button>
+      </div>
+    </div>
+  
+</div>
+
+
+    <span class="close-btn" (click)="showUserOverlay = false">&times;</span>
+  </div>
+</div>
+
+
+
+
+<!-- 🔹 Forget Password Overlay -->
+<div class="login-overlay" *ngIf="showForgetPwdOverlay" (click)="closeOverlay($event)">
+  
+  <!-- 🔹 Overlay Header -->
+  <div class="overlay-header">
+    <!-- Left: Logo + Company Info -->
+    <div class="company-info">
+  <img src="assets/images/concorlogo.jpg" alt="CONCOR Logo" class="header-logo me-3 logo-box" />
+  <div class="company-title ms-2 text-white">
+    <h6 class="mb-0 fw-bold hindi-text text-white">भारतीय कंटेनर निगम लिमिटेड</h6>
+    <h6 class="mb-0 fw-semibold eng-text text-white">Container Corporation of India Ltd.</h6>
+    <p class="mb-0 govt-tag">
+      <span>भारत सरकार का उद्यम</span> | 
+      <span>A Govt. of India Enterprise</span>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Center: System Title -->
+    <div class="system-title">
+      <h3 class="fw-bold text-light mb-1">Domestic Terminal Management System</h3>
+      <h5 class="text-warning fst-italic">eBooking</h5>
+    </div>
+
+    <!-- Right: Empty space -->
+    <div style="width:120px;"></div>
+  </div>
+
+  <!-- 🔹 Modal Body -->
+  <div class="login-modal shadow-lg" (click)="$event.stopPropagation()">
+    <app-forgetpassword  
+      (closeUser)="showForgetPwdOverlay = false" 
+      (openLogin)="showLoginOverlay = true; showForgetPwdOverlay = false">
+    </app-forgetpassword>
+    <span class="close-btn" (click)="showForgetPwdOverlay = false">&times;</span>
+  </div>
+</div>
+

@@ -1,0 +1,284 @@
+
+
+
+/* ===== SLIDER ===== */
+.slider {
+  height: 85vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+  background: #000; /* fallback for better contrast */
+}
+
+/* Slide backgrounds with subtle moving overlay */
+.slider .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(50px);
+  filter: brightness(0.85);
+}
+
+.slider .slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+  filter: brightness(1);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Animated overlay */
+.slider .slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 20%, transparent 80%);
+  animation: overlayMove 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes overlayMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Content container floating animation */
+.slider .content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 0 1rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
+  animation: floatUpDown 6s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Animated Gradient Text */
+.slider h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: 3px;
+  background: linear-gradient(270deg, #3b82f6, #2563eb, #9333ea, #3b82f6);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 8s ease infinite;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.slider h1 span {
+  color: #fff;
+  text-shadow: 0 0 20px #fff;
+}
+
+/* Paragraph styling */
+.slider p {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  margin: 1rem auto 2rem;
+  max-width: 480px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #d1d5db;
+  text-shadow:
+    0 0 5px rgba(0, 0, 0, 0.8),
+    0 0 15px rgba(59, 130, 246, 0.7);
+}
+
+/* Neon style glowing button */
+.btn-get-started {
+  padding: 16px 42px;
+  border-radius: 60px;
+  background: #2563eb;
+  color: #e0e7ff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow:
+    inset 0 0 8px #93c5fd,
+    0 0 20px #3b82f6,
+    0 0 40px #2563eb;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  user-select: none;
+  letter-spacing: 0.12em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-get-started::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -25%;
+  width: 150%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%) rotate(25deg);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+  filter: blur(8px);
+  z-index: 1;
+}
+
+.btn-get-started:hover::before {
+  transform: translateX(200%) rotate(25deg);
+}
+
+.btn-get-started:hover {
+  background: #3b82f6;
+  box-shadow:
+    inset 0 0 14px #93c5fd,
+    0 0 40px #3b82f6,
+    0 0 60px #2563eb;
+  transform: scale(1.1);
+  color: #f0f9ff;
+}
+
+/* Slider controls as arrows */
+.slider-controls {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+  z-index: 10;
+}
+
+.slider-controls button {
+  background: transparent;
+  border: 3px solid #2563eb;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.slider-controls button:hover {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  transform: scale(1.2);
+}
+
+/* Custom arrow shape */
+.slider-controls button.prev-slide::before,
+.slider-controls button.next-slide::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  transform: translate(-50%, -50%) rotate(135deg);
+  transition: border-color 0.3s ease;
+}
+
+.slider-controls button.next-slide::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.slider-controls button:hover::before {
+  border-color: #e0e7ff;
+}
+
+/* Active dot for keyboard users */
+.slider-controls button.active {
+  background: #3b82f6;
+  border-color: #2563eb;
+  box-shadow: 0 0 15px #3b82f6;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .slider h1 {
+    font-size: 2.8rem;
+  }
+  .slider p {
+    font-size: 1.05rem;
+    max-width: 320px;
+  }
+  .btn-get-started {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+  .slider-controls {
+    bottom: 25px;
+    gap: 16px;
+  }
+  .slider-controls button {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+  }
+  .slider-controls button.prev-slide::before,
+  .slider-controls button.next-slide::before {
+    width: 8px;
+    height: 8px;
+    border-width: 2px;
+  }
+}
+
+/* Marquee styling */
+.marquee-container {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  padding: 8px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee-scroll 15s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* Hover pause effect */
+.marquee-container:hover .marquee {
+  animation-play-state: paused;
+}
+
+
+

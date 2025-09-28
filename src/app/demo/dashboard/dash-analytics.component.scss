@@ -1,0 +1,9 @@
+.kpi-card {
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  transition: transform 0.2s ease-in-out;
+}
+
+.kpi-card:hover {
+  transform: translateY(-5px);
+}

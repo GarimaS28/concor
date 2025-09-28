@@ -1,0 +1,152 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div id="form1">
+    <div class="row" style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif;">
+        Seal Cutting
+      </div>
+      <div class="col-md-12">
+        <div class="card p-3">
+          <div class="row g-3 align-items-end p-1">
+            <!-- Station From -->
+            <div class="col-md-2">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill me-1"></i>Station From<span class="text-danger">*</span>
+              </label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="JBODSttnFrm" placeholder="Enter station">
+            </div>
+
+            <!-- Current Date -->
+            <div class="col-md-2">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map me-1"></i> Sealing Date/Time
+              </label>
+              <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="JBODeffDT">
+            </div>
+
+            <!-- De-Stuffing By -->
+            <div class="col-md-3">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 fs-6 fw-bold">
+                  <i class="bi bi-sliders2 me-1"></i>De-Stuffing By<span class="text-danger">*</span>
+                </legend>
+                <div class="d-flex justify-content-center">
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input me-2" type="radio"
+                           formControlName="JBODTrlrOwnr" value="C">
+                    <label class="form-check-label fw-semibold">
+                      <i class="bi bi-train-front text-success me-1"></i> Customer
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Container Owner -->
+            <div class="col-md-2">
+              <!-- <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 fs-6 fw-bold">
+                  <i class="bi bi-sliders2 me-1"></i> Container Owner<span class="text-danger">*</span>
+                </legend>
+                <div class="form-check form-switch d-flex align-items-center">
+                  <input class="form-check-input me-2" type="checkbox" formControlName="JBODCtnrOwnr">
+                  <label class="form-check-label fw-semibold">
+                    <i class="bi bi-arrow-repeat text-primary me-1"></i> Customer Owned
+                  </label>
+                </div>
+              </fieldset> -->
+            </div>
+
+            <!-- Customer Type -->
+            <div class="col-md-3">
+              <!-- <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 fs-6 fw-bold">
+                  <i class="bi bi-sliders2 me-1"></i> Customer Type<span class="text-danger">*</span>
+                </legend>
+                <div class="d-flex gap-4">
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input me-2" type="radio"
+                           formControlName="JBODCustType" value="T">
+                    <label class="form-check-label fw-semibold">
+                      <i class="bi bi-arrow-repeat text-primary me-1"></i> Transporter
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input me-2" type="radio"
+                           formControlName="JBODCustType" value="B">
+                    <label class="form-check-label fw-semibold">
+                      <i class="bi bi-train-front text-success me-1"></i> BA
+                    </label>
+                  </div>
+                </div>
+              </fieldset> -->
+            </div>
+          </div>
+
+          <!-- Container Details -->
+          <div class="row g-1 p-1">
+            <div class="col-md-12">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3">
+                <legend class="float-none w-auto px-3 fs-6 fw-bold">
+                  <i class="bi bi-box-seam me-1"></i> Container Details <span class="text-danger">*</span>
+                </legend>
+                <div class="table-responsive" style="max-height:150px; overflow-y:auto;">
+                  <table class="table table-sm table-hover align-middle table-bordered">
+                    <thead class="table-light text-center">
+                      <tr>
+                        <th>Select</th>
+                        <th>Container No.</th>
+                        <th>Container Type</th>
+                      </tr>
+                    </thead>
+                    <tbody formArrayName="containerDetails">
+                      <tr *ngFor="let container of containerDetails.controls; let i = index"
+                          [formGroupName]="i">
+                        <td class="text-center">
+                          <input type="checkbox" formControlName="isSelected">
+                        </td>
+                        <td>
+                          <input type="text" class="form-control form-control-sm shadow-sm"
+                                 formControlName="ContainerNo" placeholder="Container No.">
+                        </td>
+                        <td>
+                          <input type="text" class="form-control form-control-sm shadow-sm"
+                                 formControlName="ContainerType" placeholder="Type">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="row p-1">
+              
+              <!-- Middle column: content -->
+             
+
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2"></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                   
+                </div>
+                
+          
+            
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

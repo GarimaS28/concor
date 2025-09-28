@@ -1,0 +1,149 @@
+<div class="row align-items-center text-center">
+  <div class="col-md-12">
+    <div class="card-body">
+
+                <div class="text-center mb-3">
+                    <h4 class="login-title">
+                        <span *ngIf="!showOtpSection">Login</span>
+                        <span *ngIf="showOtpSection">OTP Verification</span>
+                    </h4>
+                </div>
+                
+
+                
+                <div class="d-flex justify-content-around mb-4">
+                    <button class="tab-header" [ngClass]="{'active': selectedLoginType === 'customer'}" (click)="onLoginTypeChange('customer')">Customer</button>
+                    <button class="tab-header" [ngClass]="{'active': selectedLoginType === 'user'}" (click)="onLoginTypeChange('user')">User</button>
+                </div>
+
+                <div *ngIf="!showOtpSection">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="feather icon-user"></i></span>
+                        <input type="text" [(ngModel)]="loginObj.username" class="form-control" placeholder="Username" />
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                        <input type="password" [(ngModel)]="loginObj.password" class="form-control" placeholder="Password" />
+                    </div>
+
+                    <div *ngIf="selectedLoginType === 'user'" class="mb-4">
+                    <label class="form-label d-flex align-items-center mb-2">
+                    <strong class="me-3">Select Role:</strong>
+                    <div class="d-flex justify-content-between">
+
+                        <div class="form-check me-3">
+                    <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="userType" 
+                    id="SuperUser" 
+                    [(ngModel)]="userType" 
+                    value="SuperUser">
+                    <label class="form-check-label" for="SuperUser">Super User</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                    <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="userType" 
+                    id="terminal" 
+                    [(ngModel)]="userType" 
+                    value="terminal">
+                    <label class="form-check-label" for="terminal">Terminal</label>
+                    </div>
+
+                    
+                    </div>
+                    </label>
+
+                    <!-- ✅ Now the input will appear BELOW both radios -->
+                    <div *ngIf="userType === 'terminal'" class="mt-2">
+                    <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="feather icon-map-pin"></i></span>
+                    <input 
+                    type="text" 
+                    [(ngModel)]="terminalValue" 
+                    class="form-control" 
+                    placeholder="Enter terminal value" />
+                    </div>
+                    </div>
+                    </div>
+
+
+                    
+                    <!-- <div *ngIf="selectedLoginType === 'customer'" class="mb-4">
+                        <label for="customerRole" class="form-label d-flex align-items-center">
+                            <strong class="me-3">Select Role:</strong>
+                            <select id="customerRole" class="form-select" [(ngModel)]="customerRole">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                        </label>
+                    </div> -->
+
+                    
+
+                    <div class="input-group mb-4">
+                        <app-captcha style="width: 100%;"></app-captcha>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-block btn-primary mb-4" (click)="onSubmit()">Submit</button>
+                    </div>
+                </div>
+
+                <div *ngIf="showOtpSection">
+                    
+                    <div class="back-button-container">
+                        <button class="back-button" (click)="onBack()">
+                            <i class="feather icon-arrow-left"></i>
+                        </button>
+                    </div>
+                    
+                    <p class="mb-2">Hello, <strong style="color: #007bff;">{{ loginObj.username }}</strong></p>
+                    <p class="mb-3">OTP sent to 9472755182</p>
+                    
+                    <div>
+                        <h5 class="mb-3">Please enter OTP</h5>
+                        <div class="d-flex justify-content-center otp-container mb-3">
+                            <input #otpInput type="text" maxlength="1" class="otp-box form-control text-center mx-1" [class.otp-correct]="otpCorrect" [class.otp-incorrect]="otpIncorrect" [(ngModel)]="otp[0]" (input)="onOtpChange(0, $event)" (keydown)="onKeyDown(0, $event)">
+                            <input #otpInput type="text" maxlength="1" class="otp-box form-control text-center mx-1" [class.otp-correct]="otpCorrect" [class.otp-incorrect]="otpIncorrect" [(ngModel)]="otp[1]" (input)="onOtpChange(1, $event)" (keydown)="onKeyDown(1, $event)">
+                            <input #otpInput type="text" maxlength="1" class="otp-box form-control text-center mx-1" [class.otp-correct]="otpCorrect" [class.otp-incorrect]="otpIncorrect" [(ngModel)]="otp[2]" (input)="onOtpChange(2, $event)" (keydown)="onKeyDown(2, $event)">
+                            <input #otpInput type="text" maxlength="1" class="otp-box form-control text-center mx-1" [class.otp-correct]="otpCorrect" [class.otp-incorrect]="otpIncorrect" [(ngModel)]="otp[3]" (input)="onOtpChange(3, $event)" (keydown)="onKeyDown(3, $event)">
+                            <input #otpInput type="text" maxlength="1" class="otp-box form-control text-center mx-1" [class.otp-correct]="otpCorrect" [class.otp-incorrect]="otpIncorrect" [(ngModel)]="otp[4]" (input)="onOtpChange(4, $event)" (keydown)="onKeyDown(4, $event)">
+                            <input #otpInput type="text" maxlength="1" class="otp-box form-control text-center mx-1" [class.otp-correct]="otpCorrect" [class.otp-incorrect]="otpIncorrect" [(ngModel)]="otp[5]" (input)="onOtpChange(5, $event)" (keydown)="onKeyDown(5, $event)">
+                            <i *ngIf="otpCorrect" class="bi bi-check-circle-fill text-success ms-2" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <p *ngIf="otpIncorrect" class="alert-message mb-3">
+                            Please enter a valid OTP.
+                        </p>
+                    </div>
+
+                    <!-- <div *ngIf="loginErrorMessage" class="alert alert-danger text-center mt-2">
+                    {{ loginErrorMessage }}
+                    </div> -->
+
+                    <div class="d-grid">
+                        <button class="btn btn-block btn-primary mb-4" (click)="onFinalLogin()">Login</button>
+                    </div>
+                </div>
+                
+                <!-- <div *ngIf="loginErrorMessage" class="login-error text-center mb-2">
+                <h3>{{ loginErrorMessage }}</h3>
+                </div> -->
+                <div *ngIf="selectedLoginType === 'customer'" class="mb-4">
+                <p class="mb-2 text-muted text-center">Forgot password ? <a (click)="switchToForgot()" style="cursor: pointer;" class="f-w-400">Reset</a></p>
+                <p class="mb-0 text-muted text-center">Don’t have an account ? <a [routerLink]="['/register']" style="cursor: pointer;" (click)="closeOverlay()" class="f-w-400">Register</a></p>
+                </div>
+            </div>
+  </div>
+</div>
+
+<input type="hidden" id="f_srnumb" />
+<input type="hidden" id="f_cname" />
+<input type="hidden" id="f_thumbp" />
+<input type="hidden" id="f_VldFrom" />
+<input type="hidden" id="f_VldUpto" />

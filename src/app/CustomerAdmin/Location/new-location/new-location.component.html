@@ -1,0 +1,659 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div id="form1">
+    <div class="row" style="padding: 0 1%">
+      <div
+        class="ribbon-pop p-3 text-center fs-5"
+        style="font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 600; font-size: 21px"
+      >
+        Add New Location/Address
+      </div>
+
+      <div class="col-md-12">
+        <div class="card p-3">
+          <div class="col-md-12">
+            <div class="d-flex">
+              <div class="form-check me-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="addOption"
+                  id="addAddress"
+                  value="address"
+                  (change)="selectedOption = 'address'"
+                />
+                <label class="form-check-label fw-semibold text-primary-emphasis" for="addAddress">Add Address</label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="addOption"
+                  id="addCode"
+                  value="code"
+                  (change)="selectedOption = 'code'"
+                />
+                <label class="form-check-label fw-semibold text-primary-emphasis" for="addCode">Add Code</label>
+              </div>
+            </div>
+
+            <!-- Sirf Add Address select hone par niche Customer Code input box dikhega -->
+            <div class="mt-3" *ngIf="selectedOption === 'address'">
+              <label for="customerCode" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                Customer Code
+                <span class="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                class="form-control border border-light rounded-3 shadow-sm bg-light"
+                id="customerCode"
+                name="customerCode"
+                placeholder="Enter Customer code"
+                formControlName="customerCode"
+                [readonly]="false"
+                style="width: 250px"
+              />
+            </div>
+
+            <div class="row g-4">
+              <div class="col-md-4">
+                <label for="NEWLocnSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Terminal
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="NEWLocnSttnFrm"
+                  id="NEWLocnSttnFrm"
+                  name="NEWLocnSttnFrm"
+                  placeholder="Enter station"
+                />
+              </div>
+
+              <div class="col-md-4">
+                <label for="NEWLocnCurrentDate" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-box-fill text-primary-emphasis me-1"></i>
+                  Date
+                </label>
+                <input
+                  type="date"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="NEWLocnCurrentDate"
+                  id="NEWLocnCurrentDate"
+                  name="NEWLocnCurrentDate"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="NEWLocnlistLocns" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  List of Locations
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="NEWLocnlistLocns"
+                  id="NEWLocnlistLocns"
+                  name="NEWLocnlistLocns"
+                >
+                  Dummy data for testing
+                  <option value="" disabled selected>Select a location</option>
+                  <option value="location1">XYZ Location 1</option>
+                  <option value="location2">XYZ Location 2</option>
+                  <option value="location3">XYZ Location 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="row g-4 mt-1">
+              <div class="col-md-3">
+                <label for="customerCode" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Customer Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="customerCode"
+                  id="customerCode"
+                  name="customerCode"
+                  placeholder="Enter Customer code"
+                />
+              </div>
+              <div class="col-md-2">
+                <label for="legalName" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Legal/Billing Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="legalName"
+                  id="legalName"
+                  name="legalName"
+                  placeholder="Enter legal/Billing name"
+                />
+              </div>
+
+              <div class="col-md-2">
+                <label for="tradeName" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Trade name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="tradeName"
+                  id="tradeName"
+                  name="tradeName"
+                  placeholder="Enter Trade name"
+                />
+              </div>
+              <div class="col-md-2">
+                <label for="custgroup" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Customer Group
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="custgroup"
+                  id="custgroup"
+                  name="custgroup"
+                  placeholder="Enter Customer Group name"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="bacode" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  BA Code
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="bacode"
+                  id="bacode"
+                  name="bacode"
+                  placeholder="Enter BA code"
+                />
+              </div>
+              <!-- <div class="col-md-3">
+                <label for="cheqFlg" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Cheque Flag
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="cheqFlg"
+                  id="cheqFlg"
+                  name="cheqFlg"
+                  placeholder="Enter cheqe Falge"
+                />
+              </div> -->
+            </div>
+            <div class="row g-4 mt-1">
+              <!-- <div class="col-md-2">
+                <label for="SrvctaxrgNo" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Service tax regn No
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="SrvctaxrgNo"
+                  id="SrvctaxrgNo"
+                  name="SrvctaxrgNo"
+                  placeholder="Enter legal/Billing name"
+                />
+              </div> -->
+              <div class="col-md-2">
+                <label for="pannumb" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  PAN Number
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="pannumb"
+                  id="pannumb"
+                  name="pannumb"
+                  placeholder="Enter PAN Number"
+                />
+              </div>
+              <div class="col-md-2">
+                <label for="adhrnmbr" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Aadhar Number
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="adhrnmbr"
+                  id="adhrnmbr"
+                  name="adhrnmbr"
+                  placeholder="Enter Adhar Number code"
+                />
+              </div>
+
+              <div class="col-md-2">
+                <label for="tanNumb" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  TAN number
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="tanNumb"
+                  id="tanNumb"
+                  name="tanNumb"
+                  placeholder="Enter number"
+                />
+              </div>
+              <!-- <div class="col-md-2">
+                <label for="custtype" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Customer Type
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="custtype"
+                  id="custtype"
+                  name="custtype"
+                  placeholder="Enter  Cutosmer type"
+                />
+              </div> -->
+
+              <!-- <div class="col-md-2">
+                <label for="custgsttdstype" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Customer GST TDS Type
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="custgsttdstype"
+                  id="custgsttdstype"
+                  name="custgsttdstype"
+                  placeholder="Enter Customer gst tds type"
+                />
+              </div> -->
+            </div>
+            <div class="row g-4 mt-1">
+              <!-- <div class="col-md-3">
+                <label for="gsttdsdesc" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  GST TDS desc
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="gsttdsdesc"
+                  id="gsttdsdesc"
+                  name="gsttdsdesc"
+                  placeholder="Enter GSt TDS code"
+                />
+              </div> -->
+              <!-- <div class="col-md-3">
+                <label for="excemtionflg" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  Excemption Flag(for tpt srvc tax)
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="excemtionflg"
+                  id="excemtionflg"
+                  name="excemtionflg"
+                  placeholder="Enter Excemption flag"
+                />
+              </div> -->
+              <!-- <div class="col-md-3">
+                <label for="gsttdsnumb" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>
+                  GST TDS Number
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control border border-light rounded-3 shadow-sm bg-light"
+                  formControlName="gsttdsnumb"
+                  id="gsttdsnumb"
+                  name="gsttdsnumb"
+                  placeholder="Enter GSt TDS number"
+                />
+              </div> -->
+            </div>
+            <div class="row g-3">
+              <div class="col-md-8">
+                <fieldset class="border rounded-3 shadow-sm bg-light px-3 py-2">
+                  <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i>
+                    Adress Details
+                    <span class="text-danger">*</span>
+                  </legend>
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="add1" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          Address1
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="add1"
+                          formControlName="add1"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="add2" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          Address2
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="add2"
+                          formControlName="add2"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="city" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-calendar2 me-1"></i>
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="city"
+                          formControlName="city"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="phn" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          Phone
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="phn"
+                          formControlName="phn"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="mob" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-calendar2 me-1"></i>
+                          Mobile
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="city"
+                          formControlName="city"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="fax" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-calendar2 me-1"></i>
+                          Fax
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="fax"
+                          formControlName="fax"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="state" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          State
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="state"
+                          formControlName="state"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="sizeflg" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          SEZ flag
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="sizeflg"
+                          formControlName="sizeflg"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="pincode" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          PinCode
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="pincode"
+                          formControlName="pincode"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="custid" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          Customer id
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="custid"
+                          formControlName="custid"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="servingterminal" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-truck-front me-1"></i>
+                          Serving terminal
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="servingterminal"
+                          formControlName="servingterminal"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="d-flex align-items-center mb-2">
+                        <label for="email" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                          <i class="bi bi-calendar2 me-1"></i>
+                          Email
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                          id="email"
+                          formControlName="email"
+                          style="width: 350px"
+                        />
+                      </div>
+                    </div>
+                    <div class="row g-3 mt-0">
+                      <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                          <label for="Destfrmterminal" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                            <i class="bi bi-truck-front me-1"></i>
+                            Distance from terminal
+                          </label>
+                          <input
+                            type="number"
+                            class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                            id="Destfrmterminal"
+                            formControlName="Destfrmterminal"
+                            style="width: 350px"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                          <label for="gstNumb" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 120px">
+                            <i class="bi bi-truck-front me-1"></i>
+                            GST Number
+                          </label>
+                          <input
+                            type="number"
+                            class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                            id="gstNumb"
+                            formControlName="gstNumb"
+                            style="width: 300px"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-md-3">
+                <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 mb-4">
+                  <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i>
+                    Contact person
+                    <span class="text-danger">*</span>
+                  </legend>
+
+                  <div class="d-flex align-items-center mb-2">
+                    <label for="cpname" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 80px">
+                      <i class="bi bi-person me-1"></i>
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                      id="cpname"
+                      formControlName="cpname"
+                      style="width: 150px"
+                    />
+                  </div>
+
+                  <div class="d-flex align-items-center mb-2">
+                    <label for="cpdesig" class="form-label mb-0 text-primary-emphasis fw-semibold me-2" style="width: 80px">
+                      <i class="bi bi-briefcase me-1"></i>
+                      Designation.
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                      id="cpdesig"
+                      formControlName="cpdesig"
+                      style="width: 150px"
+                    />
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="button-wrapper">
+              <button class="btn-modern submit-btn" type="submit">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                Submit
+              </button>
+              <button class="btn-modern reset-btn" type="button" (click)="onCancel()">
+                <i class="bi bi-x-circle-fill me-2"></i>
+                Cancel
+              </button>
+            </div>
+          </div>
+
+          <div class="row mt-3" *ngIf="selectedOption === 'address'">
+            <div class="col-12">
+              <table class="table table-bordered table-striped">
+                <thead class="table-primary">
+                  <tr>
+                    <th>DAVCNSGID</th>
+                    <th>DADCNSGDA</th>
+                    <th>DAVS</th>
+                    <th>DAVS</th>
+                    <th>DANCNTRRQRD</th>
+                    <th>DANCNTROUTSTD</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of dummyData">
+                    <td>{{ row.DAVCNSGID }}</td>
+                    <td>{{ row.DADCNSGDA }}</td>
+                    <td>{{ row.DAVS1 }}</td>
+                    <td>{{ row.DAVS2 }}</td>
+                    <td>{{ row.DANCNTRRQRD }}</td>
+                    <td>{{ row.DANCNTROUTSTD }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

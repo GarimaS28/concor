@@ -1,0 +1,26 @@
+
+.user-info-strip {
+  background: linear-gradient(90deg, #183668, #4682b4);
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-role {
+  font-size: 12px;
+  opacity: 0.85;
+}

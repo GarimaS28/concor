@@ -1,0 +1,902 @@
+
+
+<!-- Main content -->
+<div class="card formcard  w-100 shadow-sm rounded-3">
+  <div class="text-center mb-2" style="background-color: #0d6efd;">
+  <h2 class="" 
+      style="font-family:'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+             letter-spacing: 1px;color: #fff;height: 40px;padding: 5px 0px 0px 0px;">
+  Customer Registration
+  </h2>
+  
+</div>
+
+  <form [formGroup]="form" #formWrapper (ngSubmit)="onSubmit()" autocomplete="off" novalidate class="p-4">
+
+    
+
+    <!-- Business Section -->
+    <h5 class="section-title mb-1">
+      <i data-feather="briefcase" class="icon-blue me-2"></i> Business Information
+    </h5>
+    <div class="row g-3">
+
+      <!-- Terminal Code -->
+      <div class="col-md position-relative">
+        <label for="TmnlCode" class="form-label fw-semibold text-secondary">
+          <i data-feather="hash" class="icon-gray me-1"></i> Terminal Code <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="TmnlCode" formControlName="TmnlCode" name="TmnlCode"
+               class="form-control custom-input" placeholder="Enter Terminal Code"
+               (focus)="showStationToDropdown = true"
+               (input)="onAlphaOnly($event);onStationToInputChange($event)" (blur)="onInputChange('TmnlCode');validateStationToInput(); hideStationToDropdownWithDelay()" minlength="2" maxlength="4"
+               [ngClass]="formValidator.getValidationClass(form, 'TmnlCode')">
+
+        <ul *ngIf="showStationToDropdown && filteredStationToList.length"
+                      class="dropdown-menu show shadow-sm border mt-1 rounded-3"
+                      style="position: absolute; top: 100%; left: 0; width: 100%; z-index: 1000; max-height: 220px; overflow-y: auto; background-color: white;">
+
+                    <!-- Grid Header -->
+                    <li class="dropdown-header bg-success text-black px-3 py-2 rounded-top">
+                      <div class="d-grid" style="grid-template-columns: 50% 50%;">
+                        <div class="fw-bold text-start">Code</div>
+                        <div class="fw-bold text-start">Name</div>
+                      </div>
+                    </li>
+
+                    <!-- Grid Items -->
+                    <li *ngFor="let station of filteredStationToList"
+                        (mousedown)="selectStationToCode(station)" class="dropdown-item px-3 py-2"
+                        style="cursor: pointer; padding: 0.5rem 1rem; background: #fff; color: #0d1a26; border-bottom: 1px solid #f0f0f0;">
+                      
+                      <div class="d-grid" style="grid-template-columns: 50% 50% ;font-size: 0.75rem;">
+                        <div class="text-truncate text-start">{{ station.p_TrmnCode }}</div>
+                        <div class="text-truncate text-start">{{ station.p_TrmnName }}</div>
+                      </div>
+                    </li>
+                  </ul>
+        <small *ngIf="showNumericWarning2" class="text-danger small fst-italic">Only alphabets allowed.</small>
+      </div>
+
+      <!-- Business Type -->
+        <div class="col-md">
+        <label for="typeBsns" class="form-label fw-semibold text-secondary">
+        <i data-feather="layers" class="icon-gray me-1"></i> Business Type <span class="text-danger">*</span>
+        </label>
+        
+        <select id="typeBsns" formControlName="typeBsns" name="typeBsns"
+            class="form-select custom-select" 
+            (blur)="onInputChange('typeBsns')"
+            [ngClass]="formValidator.getValidationClass(form, 'typeBsns')">
+
+        <option value="" disabled selected>Select Business Type</option>
+
+        <!-- Loop over API data -->
+        <option *ngFor="let type of filteredBusnsTypeList" [value]="type.BUSS_TYPE">
+        {{ type.BUSS_TYPE }}
+        </option>
+
+        </select>
+        <i data-feather="chevron-down" class="select-arrow"></i>
+       
+        </div>
+
+        <div class="col-md">
+    <label for="userRole" class="form-label fw-semibold text-secondary">
+      <i data-feather="shield" class="icon-gray me-1"></i> Select Role 
+    </label>
+    <select id="userRole" formControlName="userRole"
+            class="form-select custom-select"
+            (blur)="onInputChange('userRole')"
+            [ngClass]="formValidator.getValidationClass(form, 'userRole')">
+      <option value="" disabled selected></option>
+      <option value="BA">BA</option>
+      <option value="Normal">Normal</option>
+      <option value="Corp">Corp User</option>
+    </select>
+  </div>
+
+
+      <!-- Party Name -->
+      <div class="col-md">
+        <label for="prtyname" class="form-label fw-semibold text-secondary">
+          <i data-feather="users" class="icon-gray me-1"></i> Party Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="prtyname" formControlName="prtyname" 
+               class="form-control custom-input" placeholder="Enter Party Name" [readonly]="form.get('prtyname')?.disabled"
+               (input)="onAlphaOnlysp($event)" (blur)="onInputChange('prtyname')"
+               [ngClass]="formValidator.getValidationClass(form, 'prtyname')">
+      </div>
+
+      <!-- Trade Name Name -->
+      <div class="col-md">
+        <label for="tradename" class="form-label fw-semibold text-secondary">
+          <i data-feather="users" class="icon-gray me-1"></i> Trade Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="tradename" formControlName="tradename"  [maxlength]="tradeNameMaxLength"
+               class="form-control custom-input" placeholder="Enter Party Name"
+               (input)="onAlphaOnlysp($event)" (blur)="onInputChange('tradename')"
+               [ngClass]="formValidator.getValidationClass(form, 'tradename')">
+      </div>
+
+       <div class="col-md">
+        <label for="Cmpnyname" class="form-label fw-semibold text-secondary">
+          <i data-feather="users" class="icon-gray me-1"></i> Company Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="Cmpnyname" formControlName="Cmpnyname" 
+               class="form-control custom-input" placeholder="Enter Party Name"
+               (input)="onAlphaOnlysp($event)" (blur)="onInputChange('Cmpnyname')"
+               [ngClass]="formValidator.getValidationClass(form, 'Cmpnyname')">
+      </div>
+
+    </div>
+
+    <!-- Personal & Contact Details -->
+    <h5 class="section-title mt-2 mb-2">
+      <i data-feather="user" class="icon-blue me-2"></i> Personal & Contact Details
+    </h5>
+    <div class="row g-3">
+
+      <!-- First Name -->
+      <div class="col-md-4">
+        <label for="rgstfname" class="form-label fw-semibold text-secondary">
+          <i data-feather="user" class="icon-gray me-1"></i> First Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="rgstfname" formControlName="rgstfname" 
+               class="form-control custom-input" placeholder="Enter First Name"
+               (input)="onAlphaOnly($event)" (blur)="onInputChange('rgstfname')" minlength="3" maxlength="20"
+               [ngClass]="formValidator.getValidationClass(form, 'rgstfname')">
+      </div>
+
+      <!-- Middle Name -->
+      <div class="col-md-4">
+        <label for="rgstmname" class="form-label fw-semibold text-secondary">
+          <i data-feather="user" class="icon-gray me-1"></i> Middle Name
+        </label>
+        <input type="text" id="rgstmname" formControlName="rgstmname" 
+               class="form-control custom-input" placeholder="Enter Middle Name (optional)"
+               (input)="onAlphaOnly($event)" (blur)="onInputChange('rgstmname')" maxlength="20"
+               [ngClass]="formValidator.getValidationClass(form, 'rgstmname')">
+
+
+               
+      </div>
+
+      <!-- Last Name -->
+      <div class="col-md-4">
+        <label for="rgstlname" class="form-label fw-semibold text-secondary">
+          <i data-feather="user" class="icon-gray me-1"></i> Last Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="rgstlname" formControlName="rgstlname" 
+               class="form-control custom-input" placeholder="Enter Last Name"
+               (input)="onAlphaOnly($event)" (blur)="onInputChange('rgstlname')" minlength="3" maxlength="20"
+               [ngClass]="formValidator.getValidationClass(form, 'rgstlname')">
+      </div>
+
+    </div>
+
+    <!-- Address -->
+    <div class="mt-1">
+      <label for="rgstadrs" class="form-label fw-semibold text-secondary">
+        <i data-feather="map-pin" class="icon-blue me-1"></i> Address <span class="text-danger">*</span>
+      </label>
+      <textarea id="rgstadrs" formControlName="rgstadrs" class="form-control custom-textarea" placeholder="Enter Address"
+                minlength="3" maxlength="150" (blur)="onInputChange('rgstadrs'); onAlphaNumericOnly($event)"
+                [ngClass]="formValidator.getValidationClass(form, 'rgstadrs')"></textarea>
+
+    </div>
+
+    <!-- City, State, Pincode -->
+    <div class="row  mt-1">
+
+      <div class="col-md-3">
+  <label for="rgstcountry" class="form-label fw-semibold text-secondary">
+    <i data-feather="globe" class="icon-gray me-1"></i> Country <span class="text-danger">*</span>
+  </label>
+  <select id="rgstcountry" formControlName="rgstcountry" 
+          class="form-select custom-select"
+          (blur)="onInputChange('rgstcountry')">
+    <option value="" disabled selected>Select Country</option>
+    <option value="India" >India</option>
+    <option value="Nepal">Nepal</option>
+    <option value="Bangladesh">Bangladesh</option>
+  </select>
+</div>
+
+<div class="col-md-3 position-relative">
+        <label for="rgststate" class="form-label fw-semibold text-secondary">
+          <i data-feather="flag" class="icon-gray me-1"></i> State <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="rgststate" formControlName="rgststate" name="rgststate"
+               class="form-control custom-input" placeholder="Enter State" [disabled]="isForeignCountry"
+               (focus)="showStateDropdown = true"
+               (input)="onAlphaOnlysp($event);onStateInputChange($event)" (blur)="onInputChange('rgststate');validateStateInput(); hideStateDropdownWithDelay()" minlength="3" maxlength="30"
+               [ngClass]="formValidator.getValidationClass(form, 'rgststate')">
+
+
+               <ul *ngIf="showStateDropdown && filteredStateList.length"
+                      class="dropdown-menu show shadow-sm border mt-1 rounded-3"
+                      style="position: absolute; top: 100%; left: 0; width: 100%; z-index: 1000; max-height: 220px; overflow-y: auto; background-color: white;">
+
+                    <!-- Grid Header -->
+                    <li class="dropdown-header bg-success text-black px-3 py-2 rounded-top">
+                      <div class="d-grid" style="grid-template-columns: 50% 50%;">
+                        <div class="fw-bold text-start">Code</div>
+                        <div class="fw-bold text-start">Name</div>
+                      </div>
+                    </li>
+
+                    <!-- Grid Items -->
+                    <li *ngFor="let state of filteredStateList"
+                        (mousedown)="selectStateCode(state)" class="dropdown-item px-3 py-2"
+                        style="cursor: pointer; padding: 0.5rem 1rem; background: #fff; color: #0d1a26; border-bottom: 1px solid #f0f0f0;">
+                      
+                      <div class="d-grid" style="grid-template-columns: 50% 50% ;font-size: 0.75rem;">
+                        <div class="text-truncate text-start">{{ state.p_StateCode }}</div>
+                        <div class="text-truncate text-start">{{ state.p_StateName }}</div>
+                      </div>
+                    </li>
+                  </ul>
+        <small *ngIf="showNumericWarning2" class="text-danger small fst-italic">Only alphabets allowed.</small>
+      </div>
+
+      
+
+      <div class="col-md-3">
+        <label for="rgstcity" class="form-label fw-semibold text-secondary">
+          <i data-feather="map" class="icon-gray me-1"></i> City <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="rgstcity" formControlName="rgstcity"
+               class="form-control custom-input" placeholder="Enter City"
+               (input)="onAlphaOnlysp($event)" minlength="3" maxlength="50"
+               [ngClass]="formValidator.getValidationClass(form, 'rgstcity')">
+      </div>
+
+      <div class="col-md-3">
+        <label for="rgstpcode" class="form-label fw-semibold text-secondary">
+          <i data-feather="hash" class="icon-gray me-1"></i> Pin Code <span class="text-danger">*</span>
+        </label>
+        <input type="text" id="rgstpcode" formControlName="rgstpcode" [disabled]="isForeignCountry"
+               class="form-control custom-input" placeholder="Enter Pin Code"
+               (input)="onNumericOnly($event)" minlength="6" maxlength="6"
+               [ngClass]="formValidator.getValidationClass(form, 'rgstpcode')">
+      </div>
+
+      
+
+      
+
+    </div>
+
+    <!-- Mobile & Email -->
+<div class="row mt-1">
+  <!-- Mobile -->
+  <div class="col-md-6">
+    <label for="rgstmobno" class="form-label fw-semibold text-secondary">
+      <i data-feather="phone" class="icon-gray me-1"></i> Mobile No <span class="text-danger">*</span>
+    </label>
+    <div class="row align-items-center">
+      <div class="col-md-2">
+        <span class="form-control flag-prefix">
+          <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India Flag" />
+          +91
+        </span>
+      </div>
+
+      <div class="col-md-6">
+        <input
+          type="text"
+          id="rgstmobno"
+          formControlName="rgstmobno"
+          class="form-control"
+          (input)="onNumericOnly($event)"
+          [readonly]="mobileVerified"
+          minlength="10"
+          maxlength="10"
+        />
+      </div>
+
+      <div class="col-md-4 d-flex gap-2">
+        <!-- Verify Button -->
+        <button *ngIf="!mobileVerified"
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                (click)="openOtpModal()" 
+                [disabled]="!mobileNumberValid">
+          Verify
+        </button>
+
+        <!-- Verified -->
+        <span *ngIf="mobileVerified" class="ms-2 text-success fw-semibold">
+          <i class="bi bi-check-circle-fill me-1"></i> Verified
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="col-md-6">
+    <label for="rgstemail" class="form-label fw-semibold text-secondary">
+      <i data-feather="mail" class="icon-gray me-1"></i> Email <span class="text-danger">*</span>
+    </label>
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <input type="email" id="rgstemail" formControlName="rgstemail"
+               class="form-control" placeholder="Enter Email"
+               minlength="5" maxlength="100"
+               [readonly]="emailVerified"
+               [ngClass]="formValidator.getValidationClass(form, 'rgstemail')">
+      </div>
+
+      <div class="col-md-6 d-flex gap-2">
+        <!-- Verify Button -->
+        <button *ngIf="!emailVerified"
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                (click)="openemailOtpModal()" 
+                [disabled]="!emailValid">
+          Verify
+        </button>
+
+        
+
+        <!-- Verified Tag -->
+        <span *ngIf="emailVerified" class="ms-2 text-success fw-semibold">
+          <i class="bi bi-check-circle-fill me-1"></i> Verified
+        </span>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+
+ 
+<div class="modal fade" tabindex="-1"
+     [ngClass]="{show: showOtpModal}" 
+     [style.display]="showOtpModal ? 'block' : 'none'" 
+     aria-modal="true" role="dialog">
+
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content shadow rounded-4 border-0">
+      
+      
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title">Enter Mobile OTP</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeOtpModal()"></button>
+      </div>
+
+      
+      <div class="modal-body pt-0">
+  <p class="mb-2 text-muted small">
+    OTP sent to <b>{{ enteredMobile }}</b>
+  </p>
+
+  <!-- OTP Input -->
+  <input type="text" maxlength="6"
+         placeholder="Enter 6-digit OTP"
+         formControlName="otpmobile"
+         class="form-control text-center fs-5 fw-bold"
+         style="letter-spacing: 0.4em;" 
+         (input)="onOtpInput($event)"/>
+
+  <!-- Status Messages -->
+  <div *ngIf="otpStatus === 'success'" class="text-success mt-3 d-flex align-items-center gap-2">
+    <i data-feather="check-circle" class="icon-verified"></i> OTP Verified!
+  </div>
+  <div *ngIf="otpStatus === 'error'" class="text-danger mt-3 d-flex align-items-center gap-2">
+    <i data-feather="x-circle" class="icon-error"></i> Invalid OTP, please try again.
+  </div>
+  <div *ngIf="otpStatus === 'expired'" class="text-warning mt-3 d-flex align-items-center gap-2">
+    <i data-feather="clock" class="icon-expired"></i> OTP Expired. Please resend.
+  </div>
+
+  <!-- Timer / Resend -->
+  <div class="mt-3 text-center">
+    <span *ngIf="countdown > 0" class="text-muted small">
+      Expires in {{ countdown }}s
+    </span>
+    <button *ngIf="countdown === 0" type="button"
+            class="btn btn-link p-0"
+            (click)="resendOtp()">
+      Resend OTP
+    </button>
+  </div>
+
+  <!-- Confirm Button -->
+  <div class="mt-4 text-center">
+    <button type="button"
+            class="btn btn-primary px-4"
+            [disabled]="otpStatus !== 'success'"
+            (click)="confirmOtp()">
+      Confirm
+    </button>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1"
+     [ngClass]="{show: showemailOtpModal}" 
+     [style.display]="showemailOtpModal ? 'block' : 'none'" 
+     aria-modal="true" role="dialog">
+
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content shadow rounded-4 border-0">
+
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title">Enter Email OTP</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeemailOtpModal()"></button>
+      </div>
+
+      <div class="modal-body pt-0">
+        <p class="mb-2 text-muted small">OTP sent to <b>{{ enteredemail }}</b></p>
+
+        <!-- OTP Input -->
+        <input type="text" maxlength="6"
+               placeholder="Enter 6-digit OTP"
+               formControlName="otpemaill"
+               (input)="validateemailOtp()"
+               class="form-control text-center fs-5 fw-bold"
+               style="letter-spacing: 0.4em;" />
+
+        <!-- Status -->
+        <div *ngIf="otpemailStatus === 'success'" class="text-success mt-3 d-flex align-items-center gap-2">
+          <i data-feather="check-circle" class="icon-verified"></i> OTP Verified!
+        </div>
+        <div *ngIf="otpemailStatus === 'error'" class="text-danger mt-3 d-flex align-items-center gap-2">
+          <i data-feather="x-circle" class="icon-error"></i> Invalid OTP, please try again.
+        </div>
+
+        <!-- Confirm Button -->
+        <div class="mt-4 text-center">
+          <button type="button" class="btn btn-primary px-4"
+                  [disabled]="otpemailStatus !== 'success'"
+                  (click)="confirmemailOtp()">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Upload Section -->
+    <h5 class="section-title mt-2">
+      <i data-feather="upload-cloud" class="icon-blue me-2"></i> Upload Documents
+    </h5>
+    <div class="upload-section row g-3 align-items-center">
+
+  <!-- Authorization Letter -->
+  <div class="col-md" [ngClass]="{ 'disabled-section': docFlags.AUTH === 'N' }"><span class="text-danger" *ngIf="docFlags.AUTH !== 'O'">*</span>
+    <label class="form-label fw-semibold text-secondary small mb-1">Authorization Letter No.</label>
+    <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+      <input
+        type="text"
+        formControlName="Authnumb"
+        placeholder="Enter Number"
+        (input)="onAlphaOnly($event)"
+        [ngClass]="formValidator.getValidationClass(form, 'Authnumb')"
+        class="form-control border-0 me-3"
+        style="box-shadow: none;"
+       
+        
+      />
+      
+      <label
+        class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+        title="Upload Authorization Letter PDF"
+        style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+      >
+        <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 0)" />
+        <i  class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+      </label>
+    </div>
+    <div *ngIf="uploadedFiles[0]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[0]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(0)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+    <span *ngIf="signedDocs.authletter" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+  </div>
+
+
+  <!-- Aadhaar -->
+  <div class="col-md" [ngClass]="{ 'disabled-section': docFlags.ADHR === 'N' }">
+  <label class="form-label fw-semibold text-secondary small mb-1">Aadhar No.</label>
+  <span class="text-danger" *ngIf="docFlags.ADHR !== 'O'">*</span>
+  <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+    
+    <!-- Aadhaar Input -->
+    <input
+      type="text"
+      formControlName="Aadharnumb"
+      placeholder="Enter Aadhaar"
+      minlength="12"
+      maxlength="12"
+      (input)="onNumericOnly($event)"
+      [readonly]="aadharVerified"
+      [ngClass]="formValidator.getValidationClass(form, 'Aadharnumb')"
+      class="form-control border-0 me-2"
+      style="box-shadow: none;"
+      
+    />
+
+    <!-- Verify Button (only if not verified) -->
+    <button *ngIf="!aadharVerified && aadharValid"
+            type="button"
+            class="btn btn-outline-primary btn-sm me-2"
+            (click)="openAadharOtpModal()">
+      <i class="bi bi-shield-check"></i>verify
+    </button>
+
+    <!-- Verified Tag -->
+    <span *ngIf="aadharVerified" class="text-success fw-semibold me-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Verified
+    </span>
+
+    <!-- Upload PDF Button -->
+    <label
+      class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+      title="Upload Aadhaar PDF"
+      style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+    >
+      <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 1)" />
+      <i class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+    </label>
+  </div>
+  
+    <div *ngIf="uploadedFiles[1]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[1]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(1)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+    <span *ngIf="signedDocs.aadhar" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+</div>
+
+<div class="modal fade" tabindex="-1"
+     [ngClass]="{show: showAadharOtpModal}" 
+     [style.display]="showAadharOtpModal ? 'block' : 'none'" 
+     aria-modal="true" role="dialog">
+
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content shadow rounded-4 border-0">
+
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title">Enter Aadhaar OTP</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeAadharOtpModal()"></button>
+      </div>
+
+      <div class="modal-body pt-0">
+        <p class="mb-2 text-muted small">OTP sent for Aadhaar <b>{{ enteredAadhar }}</b></p>
+
+        <!-- OTP Input -->
+        <input type="text" maxlength="6"
+               placeholder="Enter 6-digit OTP"
+               formControlName="aadharOtp"
+               (input)="validateAadharOtp()"
+               class="form-control text-center fs-5 fw-bold"
+               style="letter-spacing: 0.3em;" />
+
+        <!-- Status Messages -->
+        <div *ngIf="aadharOtpStatus === 'success'" class="text-success mt-3 d-flex align-items-center gap-2">
+          <i class="bi bi-check-circle-fill"></i> OTP Verified!
+        </div>
+        <div *ngIf="aadharOtpStatus === 'error'" class="text-danger mt-3 d-flex align-items-center gap-2">
+          <i class="bi bi-x-circle-fill"></i> Invalid OTP, please try again.
+        </div>
+
+        <!-- Confirm Button -->
+        <div class="mt-4 text-center">
+          <button type="button" class="btn btn-primary px-4"
+                  [disabled]="aadharOtpStatus !== 'success'"
+                  (click)="confirmAadharOtp()">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- PAN -->
+  <div class="col-md" [ngClass]="{ 'disabled-section': docFlags.PAN === 'N' }">
+    <label class="form-label fw-semibold text-secondary small mb-1">PAN No.</label><span class="text-danger" *ngIf="docFlags.PAN !== 'O'">*</span>
+    <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+      <input
+        type="text"
+        formControlName="Pannumb"
+        placeholder="Enter PAN"
+        minlength="10"
+        maxlength="10"
+        (input)="onPanInput($event)"
+        [ngClass]="formValidator.getValidationClass(form, 'Pannumb')"
+        class="form-control border-0 me-3"
+        style="box-shadow: none;"
+        
+      />
+      
+      <label
+        class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+        title="Upload PAN PDF"
+        style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+      >
+        <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 2)" />
+        <i  class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+      </label>
+    </div>
+    
+    <div *ngIf="uploadedFiles[2]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[2]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(2)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+    <span *ngIf="signedDocs.pancard" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+  </div>
+
+   <!-- TAN -->
+  <div class="col-md" [ngClass]="{ 'disabled-section': docFlags.TAN === 'N' }">
+    <label class="form-label fw-semibold text-secondary small mb-1">Tan No.</label><span class="text-danger" *ngIf="docFlags.TAN !== 'O'">*</span>
+    <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+      <input
+        type="text"
+        formControlName="Tannumb"
+        placeholder="Enter Tan no"
+        minlength="10"
+        maxlength="10"
+        (input)="onPanInput($event)"
+        [ngClass]="formValidator.getValidationClass(form, 'Tannumb')"
+        class="form-control border-0 me-3"
+        style="box-shadow: none;"
+        
+      />
+      
+      <label
+        class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+        title="Upload PAN PDF"
+        style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+      >
+        <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 3)" />
+        <i  class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+      </label>
+    </div>
+    
+    <div *ngIf="uploadedFiles[3]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[3]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(3)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+    <span *ngIf="signedDocs.tannumb" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+  </div>
+
+  <!-- GSTN -->
+  <div class="col-md" [ngClass]="{ 'disabled-section': docFlags.GSTN === 'N' }">
+    <label class="form-label fw-semibold text-secondary small mb-1">GSTN No.</label><span class="text-danger" *ngIf="docFlags.GSTN !== 'O'">*</span>
+    <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+      <input
+        type="text"
+        formControlName="Gstnumb"
+        placeholder="Enter GSTN"
+        minlength="15"
+        maxlength="15"
+        (input)="onGSTINInput($event)"
+        [ngClass]="formValidator.getValidationClass(form, 'Gstnumb')"
+        class="form-control border-0 me-3"
+        style="box-shadow: none;"
+       
+      />
+      
+      <label
+        class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+        title="Upload GSTN PDF"
+        style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+      >
+        <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 4)" />
+        <i  class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+      </label>
+    </div>
+    <div *ngIf="uploadedFiles[4]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[4]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(4)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+    <span *ngIf="signedDocs.gstn" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+  </div>
+
+   <!-- Register Certificate -->
+  <div class="col-md" [ngClass]="{ 'disabled-section': docFlags.REGC === 'N' }">
+  <label class="form-label fw-semibold text-secondary small mb-1">
+    Registration Certificate 
+  </label><span class="text-danger" *ngIf="docFlags.REGC !== 'O'">*</span>
+  <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+    <input
+      type="text"
+      formControlName="RgstCerf"
+     readonly
+      class="form-control border-0 me-3"
+      placeholder="Registration Certificate"
+      style="box-shadow: none;"
+      
+    />
+    
+    <label
+      class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+      title="Upload Registration Certificate PDF"
+      style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+    >
+      <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 5)" />
+      <i class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+    </label>
+  </div>
+  
+    <div *ngIf="uploadedFiles[5]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[5]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(5)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+    <span *ngIf="signedDocs.compregncert" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+</div>
+
+
+
+
+<!-- Partnership Deed -->
+  <div class="col-md" [ngClass]="{ 'disabled-section': docFlags.PTNR === 'N' }">
+    <label class="form-label fw-semibold text-secondary small mb-1">Partnership Deed</label><span class="text-danger" *ngIf="docFlags.PTNR !== 'O'">*</span>
+    <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+      <input
+        type="text"
+        formControlName="PtnrspDeed"
+        readonly
+        placeholder="Partnership Deed"
+        minlength="10"
+        maxlength="10"
+        [ngClass]="formValidator.getValidationClass(form, 'PtnrspDeed')"
+        class="form-control border-0 me-3"
+        style="box-shadow: none;"
+        
+      />
+      
+      <label
+        class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+        title="Upload PAN PDF"
+        style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+      >
+        <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 6)" />
+        <i  class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+      </label>
+    </div>
+    
+    <div *ngIf="uploadedFiles[6]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[6]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(6)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+    <span *ngIf="signedDocs.partnershipdeed" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+  </div>
+
+<!-- Others -->
+   <div class="col-md" >
+    <label class="form-label fw-semibold text-secondary small mb-1">Others.</label>
+    <div class="d-flex align-items-center upload-input-group border rounded p-1 shadow-sm bg-white">
+      <input
+        type="text"
+        formControlName="OtherDocs"
+        placeholder="Others"
+        minlength="10"
+        maxlength="10"
+        [ngClass]="formValidator.getValidationClass(form, 'OthersDocs')"
+        class="form-control border-0 me-3"
+        style="box-shadow: none;"
+      />
+      <label
+        class="upload-btn btn btn-outline-primary p-2 d-flex align-items-center justify-content-center"
+        title="Upload PAN PDF"
+        style="cursor: pointer; width: 45px; height: 25px; border-radius: 8px;"
+      >
+        <input type="file" accept="application/pdf" hidden (change)="handleFileUpload($event, 7)" />
+        <i  class="feather icon-upload-cloud" style="width: 24px; height: 15px;"></i>
+      </label>
+    </div>
+    
+    <div *ngIf="uploadedFiles[7]" class="mt-1 small d-flex align-items-center text-truncate">
+      <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+      <span class="text-muted me-2">{{ uploadedFiles[7]?.name }}</span>
+      <button type="button" class="btn btn-sm btn-link text-danger p-0" (click)="removeFile(7)">
+        <i class="bi bi-x-circle">Delete</i>
+      </button>
+    </div>
+
+    <span *ngIf="signedDocs.others" class="text-success small ms-2">
+      <i class="bi bi-check-circle-fill me-1"></i> Digitally Signed
+    </span>
+
+  </div>
+
+  <div class=" row mt-3 text-end">
+      <div class="col-md-10"></div>
+      <div class="col-md-2">
+        <button type="button"
+                class="btn btn-success btn-sm"
+                (click)="fetchToken()">
+          <i class="bi bi-shield-lock-fill me-1"></i> Sign Digitally
+        </button>
+        </div>
+    </div>
+
+    </div>
+
+    
+
+
+    <!-- Captcha -->
+    <div class="text-center mt-3">
+      <app-captcha></app-captcha>
+    </div>
+
+    <input type="hidden" id="f_srnumb">
+<input type="hidden" id="f_cname">
+<input type="hidden" id="f_thumbp">
+<input type="hidden" id="f_VldFrom">
+<input type="hidden" id="f_VldUpto">
+
+    <!-- Submit Buttons -->
+    <div class="text-center mt-2">
+      <div class="d-flex justify-content-center gap-3 mb-3">
+        <button type="submit" class="btn btn-primary px-5 fw-semibold">Submit</button>
+        <button type="reset" class="btn btn-outline-secondary px-4 fw-semibold">Reset</button>
+      </div>
+
+      <!-- <div>
+        <p class="mb-2 text-muted small">
+          Already Registered? <a [routerLink]="['/login']" class="fw-semibold text-decoration-none">Login</a>
+        </p>
+        <p class="mb-0 text-muted small">
+          Check Account Id <a [routerLink]="['/rgststat']" class="fw-semibold text-decoration-none">Status</a>
+        </p>
+      </div> -->
+    </div>
+
+  </form>
+</div>
+
+<!-- app.component.html -->
+<app-loader [isLoading]="isLoading"></app-loader>
+

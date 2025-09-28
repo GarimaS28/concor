@@ -1,0 +1,219 @@
+<div class="row " style="padding: 2% 2% 2% 2%;">
+
+  <!-- [ accordion-collapse ] start -->
+  <div class="col-sm-12">
+ 
+    <div class="card">
+      <div class="card-body">
+        <div ngbAccordion [closeOthers]="true">
+          <div ngbAccordionItem [collapsed]="false">
+              <h2 ngbAccordionHeader>
+                <button ngbAccordionButton>What are the core Bussiness and Services offered by CONCOR ?</button>
+              </h2>
+              <div ngbAccordionCollapse>
+                <div ngbAccordionBody>
+                  <ng-template>
+                    <p class="mb-0">
+                     CONCOR core bussiness is characterised by three distinctive activities, that of a carrier,<br> a terminal operator and a warehouse operator.
+                    </p><br>
+                    <p class="mb-0">
+                      the list of Services offered are mentioned below :-
+                     </p><br>
+                    <ol>
+                      <li> Efficient Rail transportation of containers.</li>
+                      <li> Massive warehousing capacity.</li>
+                      <li> Country wide network.</li>
+                      <li> Large fleet of containers.</li>
+                      <li> Relationship with top-end customers.</li>
+                      <li> Relationship with various  intermediaries in logistics.</li>
+                      <li> Intellectual.</li>
+                    </ol>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- [ accordion-collapse ] end -->
+
+
+    <!-- [ multiple-collapse ] start -->
+    <div class="col-sm-12 mb-3">
+      <h5 class="mb-3">Registration & Documents</h5>
+      <hr />
+      <a
+        class="btn btn-primary text-white me-2 mb-2"
+        (click)="isMultiCollapsed1 = !isMultiCollapsed1"
+        [attr.aria-expanded]="!isMultiCollapsed1"
+        aria-controls="multiCollapseExample1"
+      >
+        New User Registration
+      </a>
+      <button
+        class="btn btn-primary me-2 mb-2"
+        (click)="isMultiCollapsed2 = !isMultiCollapsed2"
+        [attr.aria-expanded]="!isMultiCollapsed2"
+        type="button"
+        aria-controls="multiCollapseExample2"
+      >
+        Documents Required
+      </button>
+      <!-- <button
+        class="btn btn-primary mb-2"
+        type="button"
+        (click)="isMultiCollapsed1 = !isMultiCollapsed1; isMultiCollapsed2 = !isMultiCollapsed2"
+        aria-controls="multiCollapseExample1 multiCollapseExample2"
+      >
+        Toggle both elements
+      </button> -->
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="multi-collapse mt-2" id="multiCollapseExample1" [ngbCollapse]="isMultiCollapsed1">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-0">
+                  The steps for the Registration of New User is Mentioned Below :-
+                </p><br>
+                <ol>
+                  <li> Click on the New User Tab which is available on the screen.</li>
+                  <li> Enter your mobile no. and email id along with other details.</li>
+                  <li> Select the terminals from terminal list.</li>
+                  <li> Upload supporting documents under tab (Single pdf with max. 1 mb siz.</li>
+                  <li> Click on submit Button.</li>
+                  <li> Enter OTP sent to your registered mobile.</li>
+                  <li> You will get Registration details saved successfully.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="multi-collapse mt-2" id="multiCollapseExample2" [ngbCollapse]="isMultiCollapsed2">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-0">
+                  The steps for the Registration of New User is Mentioned Below :-
+                </p><br>
+                <ol>
+                  <li> Click on the New User Tab which is available on the screen.</li>
+                  <li> Enter your mobile no. and email id along with other details.</li>
+                  <li> Select the terminals from terminal list.</li>
+                  <li> Upload supporting documents under tab (Single pdf with max. 1 mb siz.</li>
+                  <li> Click on submit Button.</li>
+                  <li> Enter OTP sent to your registered mobile.</li>
+                  <li> You will get Registration details saved successfully.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ multiple-collapse ] end -->
+    <!-- [ accordion-collapse ] start -->
+    <div class="col-sm-12">
+      <app-card cardTitle="Services" blockClass="pt-0">
+        <div ngbAccordion>
+          <div ngbAccordionItem [collapsed]="false">
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>What are the various services Provided by CONCOR ?</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                Answer ..... 
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div ngbAccordionItem [collapsed]="true">
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>What kind of Container CONCOR is having ?</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                Answer ..... 
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div ngbAccordionItem [collapsed]="true">
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>What are the various kind of customer serve by CONCOR ?</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                Answer ..... 
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div ngbAccordionItem [collapsed]="true">
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>Which kind of services under which container can be booked ?</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                Answer ..... 
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div ngbAccordionItem [collapsed]="true">
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>Location to which container can be booked ?</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                Answer ..... 
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <!-- <div ngbAccordionItem>
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>
+                <span>
+                  &#9733;
+                  <b>Fancy</b>
+                  title &#9733;
+                </span>
+              </button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                  
+                </ng-template>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div ngbAccordionItem [disabled]="true">
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>Disabled</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                  
+                </ng-template>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </app-card>
+  
+    </div>
+    <!-- [ accordion-collapse ] end -->
+  </div>
+  

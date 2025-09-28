@@ -1,0 +1,100 @@
+<div class="row" style="overflow: hidden;height: 100vh;overflow-y: auto;background: linear-gradient(0deg, rgba(212,228,244,1) 0%, rgba(255,255,255,1) 100%);">
+    <div class="col-sm-12">
+      <div class="row text-center mt-5" style="">
+        <div class="col-md-12">
+            <img class="img-fluid img-fluidd rounded " loading="lazy" src="assets/images/container-corporation.png" alt="Indraill" style="height: 100px;width: 300px;">
+        </div>
+        
+    </div>
+        <!-- <div class="row" >
+            <div class="col-md-4">
+                <img class="img-fluid rounded" loading="lazy" src="assets/images/indraill.png" alt="Indraill" style="height: 80px;width: 80px;">
+            </div>
+            <div class="col-md-4">
+                <img class="img-fluid rounded" loading="lazy" src="assets/images/concorllogo.png" alt="Concor" style="height: 80px;width: 80px;">
+            </div>
+            <div class="col-md-4">
+                <img class="img-fluid rounded" loading="lazy" src="assets/images/cris.png" alt="Cris" style="height: 80px;width: 80px;">
+            </div>
+        </div> -->
+      <!-- <h3 class="mt-5 text-center">Forget Password</h3>
+      <hr /> -->
+      <div class="row " >
+        <div class="col-md-6">
+          <img class="img-fluid rounded" loading="lazy" src="assets/images/otp-Photoroom.png" alt="About" 
+               style="height: 55%;margin-left: 45%;">
+        </div>
+        <div class="col-md-6 mx-auto text-center " style="margin-top: 10%;padding-right: 5%;" >
+          <div class="row">
+            <div class="col-md-12">
+              
+              <!-- Form 1 (Send OTP) -->
+              <form class="formstyle" id="form1" *ngIf="showForm1">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Enter Email" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Mobile no</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Enter Mobile No" />
+                  </div>
+                </div>
+                <div class="form-group row d-flex justify-content-center">
+                  <div class="col-md-4 mx-auto text-center">
+                    <button class="btn btn-primary" (click)="toggleForm1()" type="submit">Send OTP</button>
+                  </div>
+                </div>
+              </form>
+  
+              <!-- Form 2 (Verify OTP) - Hidden Initially -->
+              <form id="form2" *ngIf="showForm2">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Verify OTP</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Enter OTP" />
+                  </div>
+                </div>
+                <div class="form-group row d-flex justify-content-center">
+                  <div class="col-md-4 mx-auto text-center">
+                    <button class="btn btn-primary" (click)="toggleForm2()" type="submit">Verify OTP</button>
+                  </div>
+                </div>
+              </form>
+  
+              <!-- Form 3 (Change Password) - Hidden Initially -->
+              <form id="form3" *ngIf="showForm3">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control-plaintext" value="email@example.com" readonly />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Enter new Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" placeholder="New Password" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Confirm new Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" placeholder="Confirm Password" />
+                  </div>
+                </div>
+                <div class="form-group row d-flex justify-content-center">
+                  <div class="col-md-4 mx-auto text-end">
+                    <button class="btn btn-primary" type="submit">Change Password</button>
+                  </div>
+                </div>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

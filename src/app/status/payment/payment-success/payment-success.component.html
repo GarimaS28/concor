@@ -1,0 +1,51 @@
+<div class="overlay">
+  <div class="card-shadow">
+
+    <!-- Success Icon -->
+    <div class="icon-wrapper">
+      <div class="icon check-anim">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="icon-glow success-glow"></div>
+    </div>
+
+    <!-- Success Title -->
+    <h1 class="title success">Payment Successful</h1>
+    <p class="subtitle">Your transaction has been completed securely.</p>
+
+    <!-- Details -->
+    <div class="receipt-box">
+      <p><span class="label">CPDA CODE:</span> <span class="value">CP01</span></p>
+      <p><span class="label">TRANSACTION ID:</span> <span class="value">202212272210167582</span></p>
+      <p><span class="label">Merchant:</span> Container Corporation of India Ltd.</p>
+      <p><span class="label">Amount Paid:</span> <span class="value amount">₹50,000.00</span></p>
+      <p><span class="label">Status:</span> <span class="value success">Success</span></p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button (click)="showThankYou()" class="btn primary">
+        Pay Securely & Back to Home
+      </button>
+      <button (click)="downloadReceipt()" class="btn secondary">
+        <i class="fas fa-download"></i> Download Receipt
+      </button>
+    </div>
+
+    <!-- Secure Badge -->
+    <div class="secure-badge">
+      <i class="fas fa-lock"></i> 128-bit SSL Secured Payment
+    </div>
+
+    <!-- Thank You -->
+    <p *ngIf="showThankMsg" class="thank-message thank-anim">
+      Thank you 🙏 Visit <span class="highlight">CONCOR</span>
+    </p>
+
+    <!-- Footer -->
+    <div class="footer">
+      © 2013 State Bank of India. All Rights Reserved | 
+      <span class="highlight">SSL Secured</span>
+    </div>
+  </div>
+</div>

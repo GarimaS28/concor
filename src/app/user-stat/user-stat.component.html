@@ -1,0 +1,134 @@
+
+      <div class="row align-items-center text-center" *ngIf="showForm">
+        <div class="col-md-12">
+                  <div class="card-body">
+                      <h6 class="login-title text-center">
+  <i class="bi bi-person-circle me-2"></i>Registration Status
+</h6>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                          <i class="feather icon-mail"></i>
+                        </span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter Request Id"
+                          id="rqstid"
+                          name="rqstid"
+                          [(ngModel)]="enteredReqId"
+                          (input)="checkLength()"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                          maxlength="20"
+                        />
+                      </div>
+                      <div *ngIf="showLengthWarning" class="text-danger mb-2" style="font-size: 0.9rem;">
+                        Maximum 15 characters allowed.
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                          <i class="feather icon-credit-card"></i>
+                        </span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter PAN Card"
+                          id="pancard"
+                          name="pancard"
+                         
+                          (input)="checkLength()"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                          maxlength="20"
+                        />
+                      </div>
+                      <div *ngIf="showLengthWarning" class="text-danger mb-2" style="font-size: 0.9rem;">
+                        Maximum 15 characters allowed.
+                      </div>
+                      
+                      <div class="input-group mb-4">
+                          <app-captcha></app-captcha>
+                      </div>
+                      
+                      <div class="d-grid">
+                        <button class="btn btn-block btn-primary mb-4" (click)="fetchRequestStatus()">Submit</button>
+                      </div>
+                     
+                      <p class="mb-0 text-muted">
+  
+  already have an account ? <a (click)="switchToLogin()" style="cursor: pointer;" class="f-w-400">Login</a>
+</p>
+
+                     
+                  </div>
+              </div>
+      </div>
+
+
+<!-- Modal lives in parent -->
+<!-- <div
+  class="modal fade"
+  id="statusModal"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow border-0">
+      
+      <div class="modal-header bg-primary text-white rounded-top-4">
+        <h5 class="modal-title d-flex align-items-center">
+          <i class="bi bi-info-circle-fill me-2"></i> Request Status
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+
+      <div class="modal-body text-center py-4">
+  <p class="mb-2">
+    <strong><i class="bi bi-card-list me-1"></i> Request ID:</strong>
+    <span class="fw-bold text-dark">{{ responseData?.rqstId }}</span>
+  </p>
+
+  <p class="mb-2">
+    <strong><i class="bi bi-person-fill me-1"></i> Customer:</strong>
+    <span class="fw-bold text-dark">{{ responseData?.fullName }}</span>
+  </p>
+
+  <p class="mb-3">
+    <strong><i class="bi bi-clipboard-check me-1"></i> Status:</strong>
+    <span [ngClass]="statusClass">{{ statusLabel }}</span>
+  </p>
+
+  
+  <div *ngIf="responseData?.status === 'CNCL'" class="mt-3">
+    <button class="btn btn-warning px-4" (click)="redirectToReapply()">
+      <i class="bi bi-arrow-repeat me-2"></i> Reapply
+    </button>
+  </div>
+</div>
+
+
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          class="btn btn-secondary px-4"
+          data-bs-dismiss="modal"
+          (click)="redirectHome()"
+        >
+          <i class="bi bi-house-door me-2"></i>Close & Go Home
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+

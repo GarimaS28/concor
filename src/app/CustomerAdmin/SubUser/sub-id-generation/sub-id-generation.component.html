@@ -1,0 +1,196 @@
+
+<div class="otp-backdrop" *ngIf="showOtpPopup"></div>
+
+<div class="otp-popup frosted-card" *ngIf="showOtpPopup">
+  <h3 class="ribbon-pop">Enter OTP for {{ otpType === 'mobile' ? 'Mobile' : 'Email' }}</h3>
+  <form (submit)="verifyOTP(otpType)" class="otp-form">
+    <input  
+      type="text"  
+      [(ngModel)]="enteredOtp"  
+      placeholder="Enter OTP"
+      name="otp"
+      class="modern-input"
+      required
+    />
+    <div class="otp-popup-buttons">
+      <button type="submit" class="btn-modern">Verify</button>
+      <button type="button" class="btn-cancel" (click)="closeOtpPopup()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div id="form1">
+    <div class="row" style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center" style="font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 600;font-size:21px;">
+        Sub ID Generation
+      </div>
+
+      <div class="col-md-12">
+        <div class="card p-3">
+
+          <!-- ROW 1: First, Middle, Last Name -->
+          <div class="row g-3 align-items-end">
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold"> First Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="firstName"
+                     (keypress)="allowOnlyLetters($event)"
+                     (paste)="$event.preventDefault()"
+                     placeholder="Enter Firstname" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold"> Middle Name</label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="middleName"
+                     (keypress)="allowOnlyLetters($event)" placeholder="Enter Middlename"/>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold">Last Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="lastName"
+                     (keypress)="allowOnlyLetters($event)"
+                     placeholder="Enter Lastname" />
+            </div>
+          </div>
+
+          <!-- ROW 2: Address textarea -->
+          <div class="row g-3 align-items-centre mt-1">
+            <div class="col-md-12">
+              <label class="form-label text-primary-emphasis fw-semibold"> Address <span class="text-danger">*</span></label>
+              <textarea rows="1" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                        formControlName="address"
+                        (keypress)="allowAddressCharacters($event)" placeholder="Enter Address"></textarea>
+            </div>
+          </div>
+
+          <!-- ROW 3: Designation + Valid From + Valid To (same row) -->
+          <div class="row g-3 align-items-centre mt-1">
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold"> Designation <span class="text-danger">*</span></label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="designation"
+                     (keypress)="allowOnlyLetters($event)" placeholder="Enter Designation"/>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold"> Valid From <span class="text-danger">*</span></label>
+              <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="validFrom"  />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold"> Valid To <span class="text-danger">*</span></label>
+              <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="validTo" />
+            </div>
+          </div>
+
+          
+<div class="row g-3 align-items-end mt-1">
+  <!-- Mobile Number -->
+  <div class="col-md-6 otp-wrapper">
+    <label class="form-label text-primary-emphasis fw-semibold">
+ Mobile <span class="text-danger">*</span>
+    </label>
+    <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light"
+           placeholder="Enter Mobile no." formControlName="mobile"
+           (blur)="checkMobile()" />
+    <span *ngIf="mobileverified" class="verified"> Verified</span>
+  </div>
+
+  <!-- Email -->
+  <div class="col-md-6 otp-wrapper">
+    <label class="form-label text-primary-emphasis fw-semibold">
+       Email <span class="text-danger">*</span>
+    </label>
+    <input type="email" class="form-control border border-light rounded-3 shadow-sm bg-light"
+           placeholder="Enter Email Address" formControlName="email"
+           (blur)="checkEmail()" />
+    <span *ngIf="emailverified" class="verified"> Verified</span>
+  </div>
+</div>
+
+<!-- Mobile OTP Popup -->
+<div class="otp-backdrop" *ngIf="showMobileOtpPopup"></div>
+<div class="otp-popup frosted-card" *ngIf="showMobileOtpPopup">
+  <h3 class="ribbon-pop">Verify Mobile Number</h3>
+  <p><strong>Super User:</strong> {{ superUserName }}</p>
+  <p><strong>Sub User:</strong> {{ subUserName }}</p>
+
+  <div class="otp-inputs d-flex justify-content-center gap-2">
+    <input *ngFor="let digit of otpDigits; let i = index"
+           id="otp-{{i}}"
+           type="text"
+           maxlength="1"
+           [(ngModel)]="otpDigits[i]"
+           (input)="onOtpInput($event, i)" />
+  </div>
+
+  <div class="otp-buttons mt-3 d-flex justify-content-center gap-2">
+    <button class="btn-modern" (click)="verifyMobileOtp()">Verify OTP</button>
+    <button class="btn-cancel" (click)="closeOtpPopup()">Cancel</button>
+  </div>
+</div>
+
+<!-- Email OTP Popup -->
+<div class="otp-backdrop" *ngIf="showEmailOtpPopup"></div>
+<div class="otp-popup frosted-card" *ngIf="showEmailOtpPopup">
+  <h3 class="ribbon-pop">Verify Email</h3>
+  <p><strong>Super User:</strong> {{ superUserName }}</p>
+  <p><strong>Sub User:</strong> {{ subUserName }}</p>
+
+  <div class="otp-inputs d-flex justify-content-center gap-2">
+    <input *ngFor="let digit of emailOtpDigits; let i = index"
+           id="email-otp-{{i}}"
+           type="text"
+           maxlength="1"
+           [(ngModel)]="emailOtpDigits[i]"
+           (input)="onEmailOtpInput($event, i)" />
+  </div>
+
+  <div class="otp-buttons mt-3 d-flex justify-content-center gap-2">
+    <button class="btn-modern" (click)="verifyEmailOtp()">Verify OTP</button>
+    <button class="btn-cancel" (click)="showEmailOtpPopup=false">Cancel</button>
+  </div>
+</div>
+
+
+        
+<!-- Generate Sub ID Button -->
+<div class="row mt-4">
+  <div class="col-12 d-flex justify-content-center">
+    <button type="button" class="btn-modern generate-subid-btn" (click)="generateSubID()">
+      Generate Sub ID
+    </button>
+  </div>
+</div>
+
+
+<!-- Display Sub IDs -->
+<div class="row mt-2" *ngIf="subIds.length > 0">
+  <div class="col-12 d-flex flex-wrap gap-2">
+    <div class="sub-id-box" *ngFor="let id of subIds">{{ id }}</div>
+  </div>
+</div>
+
+
+<div class="row mt-3">
+            <div class="button-wrapper">
+              <button class="btn-modern submit-btn" type="submit">
+                <i class="bi bi-check-circle-fill me-2"></i> Submit
+              </button>
+              <button class="btn-modern reset-btn" type="button" >
+                <i class="bi bi-x-circle-fill me-2"></i> Reset
+              </button>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+

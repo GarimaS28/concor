@@ -1,0 +1,439 @@
+<form [formGroup]="form"  (ngSubmit)="onSubmit()">
+  <!--First grid -->
+
+  <div id="form1" >
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Gate Out Pass</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3">
+          
+          <div class="row g-3 align-items-end p-1">
+
+            <!-- Station From -->
+            <div class="col-md-3">
+              <label for="GIOPSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Station From<span class="text-danger"> *</span>
+              </label>
+              
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GIOPSttnFrm" id="GIOPSttnFrm" name="GIOPSttnFrm" placeholder="Enter station">
+            </div>
+          
+            <!-- Consignment ID -->
+            <div class="col-md-3">
+              <label for="GIOPDate" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Date
+              </label>
+              <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GIOPDate" id="GIOPDate" name="GIOPDate" >
+            </div>
+          
+            <!-- Current Date -->
+            <div class="col-md-6">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Purpose <span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GIOPcargo"
+                        name="GIOPReason"
+                        formControlName="GIOPReason"
+                        [value]="'cargo'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GIOPcargo">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Cargo
+                      </label>
+                    </div>
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GIOPrake"
+                        name="GIOPReason"
+                        formControlName="GIOPReason"
+                        [value]="'container'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GIOPrake">
+                        <i class="bi bi-train-front text-success me-1"></i> Container
+                      </label>
+                    </div>
+            
+                    <!-- Owned -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GIOPothers"
+                        name="GIOPReason"
+                        formControlName="GIOPReason"
+                        [value]="'others'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GIOPothers">
+                        <i class="bi bi-building text-warning me-1"></i> Others
+                      </label>
+                    </div>
+
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GIOPpftcargo"
+                        name="GIOPReason"
+                        formControlName="GIOPReason"
+                        [value]="'PFTCargo'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GIOPpftcargo">
+                        <i class="bi bi-building text-warning me-1"></i> Pick PFT Cargo
+                      </label>
+                    </div>
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            
+          
+            <!-- Required Date -->
+            
+            
+          
+          </div>
+          
+          
+          <div class="row g-3 align-items-end  p-1">
+
+            <!-- Toggle Section -->
+            <div class="col-md-4">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Gate Pass<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GOIPgatein"
+                        name="GOIPgatepass"
+                        formControlName="GOIPgatepass"
+                        [value]="'gatein'"
+                      />
+                      <label class="form-check-label  fw-semibold" for="GOIPgatein">
+                        <i class="bi bi-arrow-repeat me-1"></i> Gate In
+                      </label>
+                    </div>
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GOIPgateout"
+                        name="GOIPgatepass"
+                        formControlName="GOIPgatepass"
+                        [value]="'gateout'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GOIPgateout">
+                        <i class="bi bi-train-front text-success me-1"></i> Gate Out
+                      </label>
+                    </div>
+            
+                    <!-- Owned -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GOIPboth"
+                        name="GOIPgatepass"
+                        formControlName="GOIPgatepass"
+                        [value]="'both'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GOIPboth">
+                        <i class="bi bi-building text-warning me-1"></i> Both
+                      </label>
+                    </div>
+
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          
+            <!-- Input Fields Section -->
+            <div class="col-md position-relative">
+              <label for="GOIPCnsrCode" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Consigner Code<span class="text-danger"> *</span>
+                  </label>
+              <input
+                type="text"
+                class="form-control border border-light rounded-3 shadow-sm bg-light"
+                id="GOIPCnsrCode"
+                name="GOIPCnsrCode"
+                formControlName="GOIPCnsrCode"
+                [(ngModel)]="selectedCnsrCode"
+                (input)="filterConsignerList(selectedCnsrCode)"
+                (focus)="showConsignerDropdown = true"
+                (blur)="hideConsignerDropdownWithDelay()"
+                autocomplete="off"
+                placeholder="Consigner Code"
+              />
+
+              
+
+              <!-- Custom Dropdown -->
+              <ul
+                *ngIf="showConsignerDropdown && filteredConsignerList.length"
+                class="dropdown-menu show p-0 mt-1 w-100"
+                style="max-height: 200px; overflow-y: auto; z-index: 1050;overflow-x: auto;"
+              >
+                <li class="dropdown-header bg-light border-bottom fw-semibold px-3 py-2">
+                  <div class="d-flex justify-content-between">
+                    <span class="w-50 text-start">Code</span>
+                    <span class="w-50 text-center">Name</span>
+                  </div>
+                </li>
+                <li
+                  *ngFor="let item of filteredConsignerList"
+                  class="dropdown-item px-3 py-2"
+                  style="cursor: pointer;"
+                  (mousedown)="selectConsigner(item)"
+                  onmouseover="this.style.backgroundColor='#f0f4ff';"
+                  onmouseout="this.style.backgroundColor='';"
+                >
+                  <div class="d-flex justify-content-between">
+                    <span class="w-50 text-start">{{ item.p_CustCode }}</span>
+                    <span class="w-50 text-center">{{ item.p_CustName }}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          
+            <!-- Consigner Name -->
+            
+            <div class="col-md">
+              <label for="GOIPCnsrName" class="form-label text-primary-emphasis fw-semibold">
+              <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Consigner Name
+              </label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light"  id="GOIPCnsrName" formControlName="GOIPCnsrName" name="GOIPCnsrName" placeholder="Consigner Name"  >
+            </div>
+
+            <!-- Consignment ID -->
+          <div class="col-md">
+            <label for="GOIPCnsgId" class="form-label text-primary-emphasis fw-semibold">
+              <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Consigner ID<span class="text-danger"> *</span>
+            </label>
+            <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GOIPCnsgId" formControlName="GOIPCnsgId" name="GOIPCnsgId" placeholder="Consigner Id">
+          </div>
+
+          </div>
+
+          <div class="row g-3 align-items-end  p-1">
+
+            <!-- Toggle Section -->
+            <div class="col-md-4">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Vehicle Type<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GOIPvhcltypeTruck"
+                        name="GOIPvhcltype"
+                        formControlName="GOIPvhcltype"
+                        [value]="'T'" 
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GOIPvhcltypeTruck">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Truck
+                      </label>
+                    </div>
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="GOIPvhcltypeTrailer"
+                        name="GOIPvhcltype"
+                        formControlName="GOIPvhcltype"
+                        [value]="'P'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="GOIPvhcltypeTrailer">
+                        <i class="bi bi-train-front text-success me-1"></i> Trailer
+                      </label>
+                    </div>
+            
+
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            
+
+          <div class="col-md">
+            <label for="GOIPCtnrNumb" class="form-label text-primary-emphasis fw-semibold">
+              <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Container no.<span class="text-danger"> *</span>
+            </label>
+            
+            <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GOIPCtnrNumb" formControlName="GOIPCtnrNumb" name="GOIPCtnrNumb" placeholder="Container no.">
+          </div>
+          
+            <!-- Input Fields Section -->
+            <div class="col-md">
+              <label for="GOIPissuedOn" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Issued on
+              </label>
+              <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPissuedOn" id="GOIPissuedOn" name="GOIPissuedOn"  >
+           </div>
+          
+            <!-- Consigner Name -->
+            
+            <div class="col-md">
+              <label for="GOIPvalidUpto" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Valid upto
+              </label>
+              <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPvalidUpto" id="GOIPvalidUpto" name="GOIPvalidUpto" placeholder="ID" >
+            </div>
+
+            
+
+          </div>
+
+          
+          
+        
+          
+          
+            <div class="row p-1">
+              
+              <!-- Middle column: content -->
+              <div class="col-md-12">
+
+                <!-- Consigner Section (displayed when showConsigner is true) -->
+                <div class="row" >
+
+                  <div class="col-md-12">
+                    
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Driver Details <span class="text-danger"> *</span>
+                      </legend>
+                  
+                      
+                      
+                  
+                      <!-- Row 2: Address, City, State -->
+                      <div class="row g-2 mt-1">
+                        <!-- Address -->
+                        <div class="col-md-2">
+                          <label for="GOIPtrailernumb" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Trailer Number
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPtrailernumb" id="GOIPtrailernumb" name="GOIPtrailernumb" placeholder="Trailer no" [value]="" >
+                        </div>
+
+                        <div class="col-md-2">
+                          <label for="GOIPdrivername" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Driver Name
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPdrivername" id="GOIPdrivername" name="GOIPdrivername" placeholder="Driver" [value]="" >
+                        </div>
+                      
+                        <!-- City -->
+                        <div class="col-md-2">
+                          <label for="GOIPhelpername" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Helper Name
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPhelpername" id="GOIPhelpername" name="GOIPhelpername" placeholder="Helper" [value]="" >
+                        </div>
+                      
+                        <!-- State -->
+                        <div class="col-md-2">
+                          <label for="GOIPvhclwght" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Vehicle Weight
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPvhclwght" id="GOIPvhclwght" name="GOIPvhclwght" placeholder="Weight" [value]="" >
+                        </div>
+
+                        <div class="col-md-2">
+                          <label for="GOIPaddress" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Address
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPaddress" id="GOIPaddress" name="GOIPaddress" placeholder="Address" [value]="" >
+                        </div>
+
+
+                      
+                        <!-- Email -->
+                        
+                        <div class="col-md-2">
+                          <label for="GOIPremarks" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Remarks
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="GOIPremarks" id="GOIPremarks" name="GOIPremarks" placeholder="Remarks" [value]="" >
+                        </div>
+
+                      </div>
+                     
+                      
+                      </fieldset>
+                    
+                  </div>
+                  
+               
+                
+                
+
+                </div>
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2"></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                    
+                    
+                    
+
+                </div>
+                
+              </div>
+            
+            </div>
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>

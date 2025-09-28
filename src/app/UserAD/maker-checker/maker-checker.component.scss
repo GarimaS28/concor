@@ -1,0 +1,52 @@
+.card {
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.btn.active {
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+.modal-body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+h5 {
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.list-group-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Rounded avatar circle */
+
+
+/* Card hover effect */
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #764ba2, #667eea);
+  color: #fff;
+}

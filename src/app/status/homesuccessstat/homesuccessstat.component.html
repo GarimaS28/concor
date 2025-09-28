@@ -1,0 +1,26 @@
+<div class="success-overlay">
+  <div class="success-popup">
+    <div class="success-icon-wrapper">
+      <div class="success-icon-circle">
+        <i class="fa fa-check fa-2x text-white"></i>
+      </div>
+    </div>
+
+    <h2 class="success-title">Success!</h2>
+    <p class="success-subtitle">Your request has been submitted</p>
+
+    <!-- ✅ Display Request ID -->
+    <p class="mt-2 text-primary fw-bold" *ngIf="requestId">
+      Request ID: {{ requestId }}
+    </p>
+
+    <button class="success-btn" (click)="goHome()">
+      <i data-feather="arrow-left-circle" class="feather-icon me-1"></i> Go Back
+    </button>
+
+    <!-- Sparkle background -->
+    <div class="sparkle sparkle-1"></div>
+    <div class="sparkle sparkle-2"></div>
+    <div class="sparkle sparkle-3"></div>
+  </div>
+</div>

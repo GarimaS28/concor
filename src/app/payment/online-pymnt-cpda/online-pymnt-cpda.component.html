@@ -1,0 +1,110 @@
+<form [formGroup]="form"  (ngSubmit)="onSubmit()">
+  <!--First grid -->
+
+  <div id="form1" style="margin-left: 20%;margin-right: 20%;margin-top: 2%;">
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Online Payment in CPDA</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3">
+          
+          <div class="row g-3 align-items-end p-1">
+
+            <!-- Station From -->
+            <div class="col-md-3">
+              <label for="OPcpdaCode" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>CPDA Code<span class="text-danger"> *</span>
+              </label>
+              
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="OPcpdaCode" id="OPcpdaCode" name="OPcpdaCode" placeholder="Enter Code">
+            </div>
+
+            
+          
+            <!-- Consignment ID -->
+            <div class="col-md-3">
+              <label for="OPcpdaDate" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Date
+              </label>
+              <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="OPcpdaDate" id="OPcpdaDate" name="OPcpdaDate" >
+            </div>
+
+             <div class="col-md-3">
+              <label for="OPcpdaCustCode" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Customer Code<span class="text-danger"> *</span>
+              </label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="OPcpdaCustCode" id="OPcpdaCustCode" name="OPcpdaCustCode" placeholder="Customer Code">
+            </div>
+
+            <div class="col-md-3">
+              <label for="OPcpdaCreditLocn" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Credit Location<span class="text-danger"> *</span>
+              </label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="OPcpdaCreditLocn" id="OPcpdaCreditLocn" name="OPcpdaCreditLocn" placeholder="Credit Location">
+            </div>
+          
+            
+          
+          </div>
+
+          <div class="row g-3 align-items-end p-1">
+
+            <!-- Station From -->
+            <div class="col-md-6">
+              <label for="OPcpdaExstngBal" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Existing Balance
+              </label>
+              
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="OPcpdaExstngBal" id="OPcpdaExstngBal" name="OPcpdaExstngBal" placeholder="Balance">
+            </div>
+          
+            <!-- Consignment ID -->
+            <div class="col-md-6">
+              <label for="OPcpdaDAmount" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-box-fill text-primary-emphasis me-1"></i>Amount<span class="text-danger"> *</span>
+              </label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="OPcpdaDAmount" id="OPcpdaDAmount" name="OPcpdaDAmount" placeholder="Enter Amount">
+            </div>
+
+          </div>
+          
+           
+
+          
+            <div class="row p-1">
+              
+              <!-- Middle column: content -->
+              <div class="col-md-12">
+
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2"></i> Make Payment
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                    
+                    
+                    
+
+                </div>
+                
+              </div>
+            
+            </div>
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>

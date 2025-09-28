@@ -1,0 +1,33 @@
+ <!-- 🔹 Stylish Info Strip -->
+    <div class="info-strip shadow-lg px-4 py-2 d-flex justify-content-between align-items-center rounded-3 text-white"
+     style="background: linear-gradient(90deg, #659adf 0%, #659adf 100%);">
+     
+  <!-- User Info -->
+  <div class="d-flex align-items-center gap-2">
+    <i class="bi bi-person-circle fs-5 text-light"></i>
+    <span>👤 Logged in as: <strong>{{ "ABCDE1234F"}}</strong></span>
+  </div>
+
+  <!-- Role Info -->
+  <div class="d-flex align-items-center gap-2">
+    <i class="bi bi-shield-lock fs-5 text-warning"></i>
+    <span>LoginType: <strong>{{ "Customer/Super" }}</strong></span>
+  </div>
+
+  <div class="d-flex align-items-center gap-2">
+    <i class="bi bi-shield-lock fs-5 text-warning"></i>
+    <span>Terminal: <strong>{{ "TICD" }}</strong></span>
+    <a style="font-size:smaller;">(Change Profile)</a>
+  </div>
+
+  <div class="d-flex align-items-center gap-2">
+    <i class="bi bi-shield-lock fs-5 text-warning"></i>
+    <span>Role: <strong>All</strong></span>
+  </div>
+
+  <!-- Date & Time -->
+  <div class="d-flex align-items-center gap-2">
+    <i class="bi bi-calendar-event fs-5 text-light"></i>
+    <span class="fw-semibold">{{ dateTime }}</span>
+  </div>
+</div>

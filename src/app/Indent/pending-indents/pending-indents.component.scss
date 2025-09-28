@@ -1,0 +1,198 @@
+/* pending-requests.component.scss */
+.card-left-border {
+  border-left: 6px solid #ffc107; /* Yellow for Pending */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+.modal-content {
+  border-radius: 1rem;
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(to right, #fceabb, #f8b500) !important;
+}
+
+.pending-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding-left: 0; // Remove any padding between card and pseudo-border
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.005);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  // ::before for gradient border
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(to bottom, #edc7b7, #87c5ff); // Cool Blue 🌊
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+}
+
+hr {
+  border-top: 1px solid #ddd;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+button.active {
+  font-weight: bold;
+  box-shadow: 0 0 0 0.15rem rgba(0,123,255,.25);
+}
+
+.search-box {
+  border-radius: 6px; /* halka curve */
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* Focus effect */
+.search-box:focus {
+  border-color: #6f42c1; /* purple accent */
+  box-shadow: 0 0 6px rgba(111, 66, 193, 0.35);
+  outline: none;
+}
+
+/* Placeholder styling */
+.search-box::placeholder {
+  color: #888;
+}
+
+.date-input {
+  position: relative;
+  display: inline-block;
+}
+
+.date-input input {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+.date-input .placeholder-text {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+}
+
+.date-input input:not(:placeholder-shown) + .placeholder-text,
+.date-input input:focus + .placeholder-text {
+  display: none;
+}
+
+.search-box-1 {
+  background-color: #f5f5f5; /* light grey background */
+  color: #333;               /* dark grey text, not too bold */
+  border: 1px solid #ccc;    /* subtle border */
+  border-radius: 4px;        /* slightly rounded corners */
+  padding: 4px 12px;         /* small padding, compact size */
+  font-size: 0.875rem;       /* slightly smaller text */
+  font-weight: 400;          /* normal weight, not bold */
+  cursor: pointer;           /* pointer on hover */
+  transition: background-color 0.2s ease, color 0.2s ease; /* smooth hover */
+}
+
+.search-box-1:hover {
+  background-color: #e6e6e6; /* slightly darker on hover */
+  color: #111;               /* slightly darker text on hover */
+}
+
+.search-mode-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Hide default radio */
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+/* Styled pill button */
+.radio-btn {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  font-size: 0.875rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+/* Hover effect */
+.radio-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Checked state */
+.custom-radio input[type="radio"]:checked + .radio-btn {
+  background-color: #0d6efd; /* Bootstrap primary color */
+  color: #fff;
+  border-color: #0d6efd;
+  box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
+  transform: scale(1.05);
+}
+
+/* Unified radio label */
+.radio-label {
+  font-size: 0.875rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding: 2px 0;
+  transition: color 0.2s;
+
+  input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0d6efd; /* Bootstrap primary color */
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:checked {
+      transform: scale(1.2);
+    }
+  }
+
+  &:hover {
+    color: #0d6efd;
+  }
+}

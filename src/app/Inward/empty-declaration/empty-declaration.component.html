@@ -1,0 +1,169 @@
+<form  [formGroup]="form"  (ngSubmit)="onSubmit()">
+  <!--First grid -->
+
+  <div id="form1" >
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif ;">Empty Declaration</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3">
+          
+         <div class="row g-3 align-items-stretch p-1">
+
+  <!-- Left side: two stacked groups in one col-md-8 container -->
+  <div class="col-md-8">
+    <!-- First Row -->
+    <div class="row g-3">
+      <!-- Station From -->
+      <div class="col-md-6">
+        <label for="EMDCLsttnfrm" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Station From<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="EMDCLsttnfrm" name="EMDCLsttnfrm" formControlName="EMDCLsttnfrm" placeholder="Enter station">
+      </div>
+
+      <!-- Current Date -->
+      <div class="col-md-6">
+        <label for="EMDCLdate" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Date
+        </label>
+        <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light" id="EMDCLdate" name="EMDCLdate" formControlName="EMDCLdate" >
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row g-2 mt-1">
+      <!-- Gate Pass number -->
+      <div class="col-md-3">
+        <label for="EMDCLctnrno" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Container number<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="EMDCLctnrno" name="EMDCLctnrno" formControlName="EMDCLctnrno" placeholder="Enter Gate-pass Number">
+      </div>
+
+      <!-- Vehicle number -->
+      <div class="col-md-3">
+        <label for="EMDCLcnsgId" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Consignment ID<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="EMDCLcnsgId" name="EMDCLcnsgId" formControlName="EMDCLcnsgId" placeholder="Enter Vehicle number">
+      </div>
+
+       <!-- Vehicle number -->
+      <div class="col-md-3">
+        <label for="EMDCLctnrSFcode" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Container S/F Code<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="EMDCLctnrSFcode" name="EMDCLctnrSFcode" formControlName="EMDCLctnrSFcode" placeholder="Enter Vehicle number">
+      </div>
+
+      <!-- Issue time -->
+      <div class="col-md-3">
+        <label for="EMDCLemDclDttm" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Empty Dec Date/Time
+        </label>
+        <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" id="EMDCLemDclDttm" name="EMDCLemDclDttm" formControlName="EMDCLemDclDttm" >
+      </div>
+
+      
+    </div>
+  </div>
+
+ <!-- Replace Transported by block with this -->
+<div class="col-md-4 d-flex">
+  <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 align-self-stretch">
+    <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+       Upload Images <span class="text-danger">*</span>
+    </legend>
+
+    <!-- File Upload -->
+    <div class="text-center mb-3">
+      <!-- Hide native input -->
+      <input 
+        type="file" 
+        accept="image/*" 
+        multiple 
+        (change)="onFileSelect($event)" 
+        [disabled]="previewImages.length >= 3"
+        #fileInput
+        hidden
+      />
+
+      <!-- Styled button -->
+      <button 
+        type="button" 
+        class="btn btn-outline-primary rounded-pill px-4 py-2 shadow-sm fw-semibold"
+        (click)="fileInput.click()"
+        [disabled]="previewImages.length >= 3"
+      >
+         Choose Images
+      </button>
+
+      <div class="mt-1">
+        <small class="text-muted">You can upload up to 3 images</small>
+      </div>
+    </div>
+
+    <!-- Preview Images -->
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+      <div *ngFor="let img of previewImages; let i = index" class="position-relative">
+        <img 
+          [src]="img" 
+          alt="Preview" 
+          class="rounded shadow-sm border"
+          style="width: 90px; height: 90px; object-fit: cover;"
+        />
+        <!-- Remove Button -->
+        <button 
+          type="button"
+          class="btn-close position-absolute top-0 end-0 bg-white rounded-circle shadow-sm p-1"
+          style="transform: translate(30%, -30%);"
+          (click)="removeImage(i)">
+        </button>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+                
+        </div>
+
+
+
+          
+            <div class="row p-1">
+              
+              <!-- Middle column: content -->
+             
+
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2"></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                   
+                </div>
+                
+          
+            
+            </div>
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>

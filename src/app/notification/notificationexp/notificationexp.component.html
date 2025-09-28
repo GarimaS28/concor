@@ -1,0 +1,72 @@
+
+  <div class=""> 
+    <h2 class="page-title">📢 Notification of ConCor user</h2>
+
+  <!-- Inner Card (page inside ribbon) -->
+  <div class="">
+    <!-- Header Actions -->
+    <div class="notification-header">
+      <button class="btn green"
+              (click)="toggleReadUnread()"
+              [disabled]="!hasSelected()">
+        ✔ {{ actionButtonLabel }}
+      </button>
+      <button class="btn red"
+              (click)="deleteSelected()"
+              [disabled]="!hasSelected()">
+        🗑 Delete
+      </button>
+    </div>
+
+    <!-- Notification List -->
+    <div class="notifications">
+      <div *ngFor="let notification of paginatedNotifications"
+           class="notification-card"
+           [ngClass]="{'read': notification.read, 'expanded': expandedId === notification.id}">
+
+        <!-- ✅ Checkbox -->
+        <div class="checkbox">
+          <input type="checkbox" [(ngModel)]="notification.selected" />
+        </div>
+
+        <!-- Avatar -->
+        <img class="avatar" [src]="notification.avatar" alt="avatar" />
+
+        <!-- Content -->
+        <div class="notification-body" (click)="toggleExpand(notification.id)">
+          <div class="title-row">
+            <span class="ribbon" [ngClass]="notification.type">{{ notification.type | titlecase }}</span>
+            <strong>{{ notification.sender }}</strong>
+            <span class="time">{{ notification.time }}</span>
+          </div>
+
+          <!-- Short message -->
+          <p *ngIf="expandedId !== notification.id" class="short-msg">
+            {{ notification.message | slice:0:60 }}...
+          </p>
+
+          <!-- Expanded message -->
+          <div *ngIf="expandedId === notification.id" class="expanded-content">
+            <p class="full-msg">{{ notification.message }}</p>
+
+            <!-- Images -->
+            <div class="images" *ngIf="notification.images?.length">
+              <div *ngFor="let img of notification.images" class="image-card">
+                <img [src]="img.url" alt="image" />
+                <p class="img-title">{{ img.title }}</p>
+                <span class="img-size">{{ img.size }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination Centered -->
+    <div class="pagination">
+      <button class="btn gray" (click)="prevPage()" [disabled]="currentPage === 0">⬅ Prev</button>
+      <span>Page {{currentPage+1}} of {{totalPages}}</span>
+      <button class="btn gray" (click)="nextPage()" [disabled]="currentPage >= totalPages-1">Next ➡</button>
+    </div>
+  </div>
+</div>

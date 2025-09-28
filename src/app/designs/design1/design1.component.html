@@ -1,0 +1,330 @@
+<div class="card">
+  <!-- Light Ribbon at the Top -->
+  <div
+    style="
+      background-color: #e0f0ff;
+      color: #003366;
+      padding: 12px 20px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border-bottom: 1px solid #b3d9ff;
+      margin-bottom: 20px;
+    "
+  >
+    Indent Cancellation Form
+  </div>
+
+  <form [formGroup]="cancellationForm">
+    <div
+      style="
+        background-color: whitesmoke;
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      "
+    >
+      <div>
+        <label>Station From:</label><br />
+        <input
+          type="text"
+          formControlName="stationFrom"
+          (input)="onStationFromInput($event)"
+          maxlength="15"
+          [ngClass]="{ error: isFieldInvalid('stationFrom') }"
+        />
+        <div
+          *ngIf="
+            cancellationForm.get('stationFrom')?.invalid &&
+            cancellationForm.get('stationFrom')?.touched
+          "
+          style="color: red; font-size: 0.85rem"
+        >
+          Field is required
+        </div>
+      </div>
+
+      <div>
+        <label>Consignment ID:</label><br />
+        <input
+          type="text"
+          formControlName="consignmentId"
+          (input)="onConsignmentIdChange()"
+        />
+        <div
+          *ngIf="
+            cancellationForm.get('consignmentId')?.invalid &&
+            cancellationForm.get('consignmentId')?.touched
+          "
+          style="color: red; font-size: 0.85rem"
+        >
+          Field is required
+        </div>
+      </div>
+
+      <div>
+        <label>Date:</label><br />
+        <input type="date" formControlName="date" />
+        <div
+          *ngIf="
+            cancellationForm.get('date')?.invalid &&
+            cancellationForm.get('date')?.touched
+          "
+          style="color: red; font-size: 0.85rem"
+        >
+          Field is required
+        </div>
+      </div>
+
+      <div>
+        <label>Service Mode:</label><br />
+        <input type="text" formControlName="serviceMode" />
+        <div
+          *ngIf="
+            cancellationForm.get('serviceMode')?.invalid &&
+            cancellationForm.get('serviceMode')?.touched
+          "
+          style="color: red; font-size: 0.85rem"
+        >
+          Field is required
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 16px; margin-bottom: 16px">
+      <div>
+        <label>Consigner Code:</label><br />
+        <input type="text" formControlName="consignerCode" readonly />
+      </div>
+
+      <div>
+        <label>Consigner ID:</label><br />
+        <input type="text" formControlName="consignerId" readonly />
+      </div>
+
+      <div>
+        <label>Consignee Code:</label><br />
+        <input type="text" formControlName="consigneeCode" readonly />
+      </div>
+
+      <div>
+        <label>Consignee ID:</label><br />
+        <input type="text" formControlName="consigneeId" readonly />
+      </div>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+        margin-bottom: 16px;
+      "
+    >
+      <div style="border: 1px solid #ccc; padding: 12px; border-radius: 8px">
+        <label><strong>Paid By:</strong></label
+        ><br />
+        <label>
+          <input type="radio" formControlName="paidBy" value="consigner" />
+          Consigner </label
+        ><br />
+        <label>
+          <input type="radio" formControlName="paidBy" value="consignee" />
+          Consignee
+        </label>
+        <div
+          *ngIf="
+            cancellationForm.get('paidBy')?.invalid &&
+            cancellationForm.get('paidBy')?.touched
+          "
+          style="color: red; font-size: 0.85rem"
+        >
+          Field is required
+        </div>
+      </div>
+
+      <div style="margin-top: 8px">
+        <label><strong>Payment Mode:</strong></label
+        ><br />
+        <label>
+          <input type="radio" formControlName="paymentMode" value="pda" />
+          PDA
+        </label>
+        <label style="margin-left: 12px">
+          <input type="radio" formControlName="paymentMode" value="ca" />
+          CA
+        </label>
+        <div
+          *ngIf="
+            cancellationForm.get('paymentMode')?.invalid &&
+            cancellationForm.get('paymentMode')?.touched
+          "
+          style="color: red; font-size: 0.85rem"
+        >
+          Field is required
+        </div>
+      </div>
+
+      <div>
+        <label>Registration Amount:</label><br />
+        <input
+          type="number"
+          formControlName="registrationAmount"
+          placeholder="₹ Amount"
+        />
+        <div
+          *ngIf="
+            cancellationForm.get('registrationAmount')?.invalid &&
+            cancellationForm.get('registrationAmount')?.touched
+          "
+          style="color: red; font-size: 0.85rem"
+        >
+          Field is required
+        </div>
+      </div>
+    </div>
+
+    <h3>Cancellation</h3>
+    <table
+      border="1"
+      cellpadding="8"
+      cellspacing="0"
+      style="width: 100%; margin-bottom: 16px"
+    >
+      <thead>
+        <tr>
+          <th>Container Number</th>
+          <th>Size</th>
+          <th>Type</th>
+          <th>Owner Type</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="cancellationRows">
+        <tr
+          *ngFor="let row of cancellationRows.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <td>
+            <input
+              type="number"
+              formControlName="containerNumber"
+              (keydown)="
+                $event.key === 'e' || $event.key === '+' || $event.key === '-'
+                  ? $event.preventDefault()
+                  : null
+              "
+            />
+            <div
+              *ngIf="
+                row.get('containerNumber')?.invalid &&
+                row.get('containerNumber')?.touched
+              "
+              style="color: red; font-size: 0.85rem"
+            >
+              Field is required
+            </div>
+          </td>
+          <td>
+            <input type="text" formControlName="size" />
+            <div
+              *ngIf="row.get('size')?.invalid && row.get('size')?.touched"
+              style="color: red; font-size: 0.85rem"
+            >
+              Field is required
+            </div>
+          </td>
+          <td>
+            <input type="text" formControlName="type" />
+            <div
+              *ngIf="row.get('type')?.invalid && row.get('type')?.touched"
+              style="color: red; font-size: 0.85rem"
+            >
+              Field is required
+            </div>
+          </td>
+          <td>
+            <label>
+              <input type="radio" formControlName="ownerType" value="concor" />
+              Concor
+            </label>
+            <label style="margin-left: 10px">
+              <input
+                type="radio"
+                formControlName="ownerType"
+                value="customer"
+              />
+              Customer
+            </label>
+            <div
+              *ngIf="
+                row.get('ownerType')?.invalid && row.get('ownerType')?.touched
+              "
+              style="color: red; font-size: 0.85rem"
+            >
+              Field is required
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="button" (click)="addCancellationRow()">+ Add Row</button>
+
+    <div style="margin-top: 20px; margin-bottom: 12px">
+      <label><strong>Owner:</strong></label
+      ><br />
+      <label>
+        <input type="radio" formControlName="ownerChoice" value="concor" />
+        Concor
+      </label>
+      <label style="margin-left: 12px">
+        <input type="radio" formControlName="ownerChoice" value="customer" />
+        Customer
+      </label>
+      <div
+        *ngIf="
+          cancellationForm.get('ownerChoice')?.invalid &&
+          cancellationForm.get('ownerChoice')?.touched
+        "
+        style="color: red; font-size: 0.85rem"
+      >
+        Field is required
+      </div>
+    </div>
+
+    <div>
+      <label><strong>Remarks (Max 70 words):</strong></label
+      ><br />
+      <textarea
+        rows="3"
+        cols="80"
+        formControlName="remarks"
+        (input)="checkWordLimit()"
+        placeholder="Write your remarks here..."
+      ></textarea>
+      <div *ngIf="wordLimitExceeded" style="color: red">
+        ❌ Maximum 70 words allowed!
+      </div>
+      <div
+        *ngIf="
+          cancellationForm.get('remarks')?.invalid &&
+          cancellationForm.get('remarks')?.touched
+        "
+        style="color: red; font-size: 0.85rem"
+      >
+        Field is required
+      </div>
+    </div>
+
+    <div
+      class="buttons"
+      style="display: flex; justify-content: space-between; margin-top: 20px"
+    >
+      <!-- Left-side Save Button -->
+
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <button type="button" (click)="onReset()">Reset</button>
+    </div>
+  </form>
+</div>

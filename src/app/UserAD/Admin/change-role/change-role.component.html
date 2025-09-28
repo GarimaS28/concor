@@ -1,0 +1,331 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div id="form1">
+    <div class="row" style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center"
+           style="font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 600;font-size:21px;">
+        Assign Role
+      </div>
+
+      <div class="col-md-12">
+        <div class="card p-3">
+
+          <!-- ROW 1: Terminal Name, User ID, Retrieve -->
+          <div class="row g-3 align-items-end">
+            <!-- Terminal Name (disabled) -->
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                Terminal Name <span class="text-danger">*</span>
+              </label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="terminalName"
+                     placeholder="Terminal Name"
+                     readonly />
+            </div>
+
+            <!-- User ID -->
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                User ID <span class="text-danger">*</span>
+              </label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="userId"
+                     placeholder="Enter User ID" />
+            </div>
+
+            <!-- Retrieve Button -->
+            <div class="col-md-4 d-flex align-items-end gap-2">
+  <!-- Retrieve Button -->
+  <button type="button" class="btn btn-primary w-50 shadow-sm" (click)="onRetrieve()">
+    <i class="bi bi-search me-2"></i> Retrieve
+  </button>
+
+  <!-- Delete Button -->
+  <button type="button" class="btn btn-danger w-50 shadow-sm" (click)="onDelete()">
+    <i class="bi bi-trash me-2"></i> Delete
+  </button>
+</div>
+
+          </div>
+
+          <!-- ROW 2: Radio Buttons -->
+          <div class="row g-3 align-items-center mt-1">
+            <div class="col-md-6 d-flex align-items-center gap-4">
+              <label class="form-label text-primary-emphasis fw-semibold me-3">
+                Select Type <span class="text-danger">*</span>
+              </label>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       formControlName="type" id="area" value="Area">
+                <label class="form-check-label" for="area">Area</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       formControlName="type" id="co" value="CO">
+                <label class="form-check-label" for="co">CO</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       formControlName="type" id="terminal" value="Terminal">
+                <label class="form-check-label" for="terminal">Terminal</label>
+              </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-center gap-4">
+              <div class="col-md-6" *ngIf="form.get('type')?.value === 'Area'">
+              <label class="form-label fw-semibold">Area Name</label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm"
+                     formControlName="areaName"
+                     placeholder="Enter Area Name" />
+            </div>
+
+            <div class="col-md-6" *ngIf="form.get('type')?.value === 'Terminal'">
+              <label class="form-label fw-semibold">Terminal Code</label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm"
+                     formControlName="terminalCode"
+                     placeholder="Enter Terminal Code" />
+            </div>
+
+            </div>
+          </div>
+
+          <!-- Conditional Inputs -->
+          
+
+            <div class="row g-3 align-items-end mt-1">
+            <!-- Terminal Name (disabled) -->
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                User Name <span class="text-danger">*</span>
+              </label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="terminalName"
+                     placeholder="Terminal Name"
+                     readonly />
+            </div>
+
+            <!-- User ID -->
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                Designation <span class="text-danger">*</span>
+              </label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="userId"
+                     placeholder="Enter User ID" />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                Employee ID <span class="text-danger">*</span>
+              </label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="userId"
+                     placeholder="Enter User ID" />
+            </div>
+
+            
+          </div>
+            
+          
+            <div class="row g-3 align-items-end mt-1">
+            <!-- Terminal Name (disabled) -->
+            <div class="col-md-3">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                From Date <span class="text-danger">*</span>
+              </label>
+              <input type="date"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="terminalName"
+                     placeholder="Terminal Name"
+                     readonly />
+            </div>
+
+            <!-- User ID -->
+            <div class="col-md-3">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                To Date <span class="text-danger">*</span>
+              </label>
+              <input type="date"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="userId"
+                     placeholder="Enter User ID" />
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                 Updated By <span class="text-danger">*</span>
+              </label>
+              <input type="text"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="userId"
+                     placeholder="Enter User ID" />
+            </div>
+
+             <div class="col-md-3">
+              <label class="form-label text-primary-emphasis fw-semibold">
+                 Creation Date <span class="text-danger">*</span>
+              </label>
+              <input type="Date"
+                     class="form-control border border-light rounded-3 shadow-sm bg-light"
+                     formControlName="userId"
+                     placeholder="Enter User ID" />
+            </div>
+
+            
+          </div>
+
+           <div class="row g-3 align-items-end mt-1">
+            <!-- Terminal Name (disabled) -->
+            <div class="col-md">
+  <label class="form-label text-primary-emphasis fw-semibold">
+    Select Roles <span class="text-danger">*</span>
+  </label>
+
+  <div class="dropdown w-100">
+    <button class="form-control text-start border border-light rounded-3 shadow-sm bg-light"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+      <!-- Show selected values or placeholder -->
+      {{ selectedRoles.length ? selectedRoles.join(', ') : 'Select Roles' }}
+    </button>
+
+    <ul class="dropdown-menu w-100 p-2 shadow-sm">
+      <li *ngFor="let role of rolesList" class="form-check">
+        <input class="form-check-input"
+               type="checkbox"
+               [id]="role"
+               [value]="role"
+               (change)="toggleRole($event)">
+        <label class="form-check-label ms-1" [for]="role">
+          {{ role }}
+        </label>
+      </li>
+    </ul>
+  </div>
+          </div>
+
+
+            
+            
+  <!-- Mobile Number -->
+  <div class="col-md">
+    <label class="form-label text-primary-emphasis fw-semibold">
+      Mobile Number <span class="text-danger">*</span>
+    </label>
+    <div class="input-group">
+      <input type="text"
+             class="form-control border border-light rounded-3 shadow-sm bg-light"
+             formControlName="mobileNumber"
+             placeholder="Enter Mobile Number" />
+      <button class="btn btn-outline-primary" type="button" (click)="openOtpModal('mobile')">
+        Send OTP
+      </button>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="col-md">
+    <label class="form-label text-primary-emphasis fw-semibold">
+      Email <span class="text-danger">*</span>
+    </label>
+    <div class="input-group">
+      <input type="email"
+             class="form-control border border-light rounded-3 shadow-sm bg-light"
+             formControlName="email"
+             placeholder="Enter Email" />
+      <button class="btn btn-outline-primary" type="button" (click)="openOtpModal('email')">
+        Send OTP
+      </button>
+    </div>
+  </div>
+
+
+<!-- OTP Modal -->
+<!-- <div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title" id="otpModalLabel">Enter OTP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control mb-2" [(ngModel)]="otpValue" placeholder="Enter OTP" />
+        <button class="btn btn-success w-100" (click)="verifyOtp()">Verify OTP</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4 shadow-lg rounded-4 border-0">
+      
+      <!-- Modal Header -->
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold text-primary fs-5" id="otpModalLabel">
+          {{ currentField === 'mobile' ? 'Enter Mobile OTP' : 'Enter Email OTP' }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body pt-3">
+        <p class="text-secondary small mb-3">
+          Please enter the OTP sent to your 
+          {{ currentField === 'mobile' ? 'mobile number' : 'email address' }}.
+        </p>
+
+        <input type="text" 
+               class="form-control form-control-lg rounded-3 shadow-sm mb-3 text-center fs-5"
+               [(ngModel)]="otpValue" 
+               placeholder="Enter OTP" />
+
+        <button class="btn btn-primary w-100 shadow-sm fw-semibold"
+                (click)="verifyOtp()">
+          Verify OTP
+        </button>
+      </div>
+
+      <!-- Optional footer / resend -->
+      <div class="modal-footer border-0 pt-2 justify-content-center">
+        <small class="text-muted">Didn't receive OTP? <a href="#" (click)="resendOtp()">Resend</a></small>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+            
+          </div>
+            
+          
+
+          <!-- Submit / Reset -->
+          <div class="row mt-3">
+            <div class="button-wrapper">
+              <button class="btn-modern submit-btn" type="submit">
+                <i class="bi bi-check-circle-fill me-2"></i> Submit
+              </button>
+              <button class="btn-modern reset-btn" type="button" (click)="form.reset()">
+                <i class="bi bi-x-circle-fill me-2"></i> Reset
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

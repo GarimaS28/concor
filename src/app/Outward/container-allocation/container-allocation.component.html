@@ -1,0 +1,270 @@
+<form [formGroup]="form" autocomplete="off">
+   <div id="form1" >
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif ;">Container Allocation</div>
+    <div class="col-md-12">
+  
+     <div class="card p-3"> 
+        <div class="row g-2 mb-3"> 
+            <!-- <div class="col-md-6 h-100"> -->
+          <fieldset class="border rounded-4 shadow-sm bg-light p-2 h-100 d-flex flex-column"> <legend class="float-none w-auto px-2 text-primary-emphasis fs-6 fw-bold mb-1"> <label class="fw-semibold" style="color:#464444;">
+                <i class="bi bi-person-badge-fill me-1"></i>Consigner Details<span class="text-danger"> *</span>
+              </label>
+            </legend>
+            <div class="row g-2 flex-grow-1">
+                 <div class="col-md">
+                <label for="cnsgId" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;"> <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Consigner ID<span class="text-danger"> *</span>
+                </label>
+                <div class="d-flex gap-1"> <input
+                    type="text"
+                    id="cnsgId"
+                    formControlName="cnsgId"
+                    class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" placeholder="Enter Consigner ID"
+                    [ngClass]="getValidationClass('cnsgId')"
+                    maxlength="8"
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm" (click)="retrieveData()"
+                    [disabled]="!form.get('cnsgId')?.value || form.get('cnsgId')?.invalid">
+                    Retrieve
+                  </button>
+                </div>
+                <div *ngIf="form.get('cnsgId')?.hasError('required') && form.get('cnsgId')?.touched" class="text-danger" style="font-size: 0.7rem;"> ID is required.
+                </div>
+              </div>
+              <div class="col-md me-2">
+                <label for="CNSGDATE" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;">
+                  <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Consigner Date
+                </label>
+                <input type="date" id="CNSGDATE" [ngModel]="consigneeDetails().cnsgDate" [ngModelOptions]="{standalone: true}"
+                       class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" readonly />
+              </div>
+              <div class="col-md">
+                <label for="STTNFROM_Display" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;">
+                  <i class="bi bi-truck-front text-primary-emphasis me-1"></i>Station From
+                </label>
+                <input type="text" id="STTNFROM_Display"  class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" placeholder="Station From" [ngModel]="consigneeDetails().sttnFrom" [ngModelOptions]="{standalone: true}"
+                       class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" readonly />
+              </div>
+              <div class="col-md">
+                <label for="STTNTO_Display" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;">
+                  <i class="bi bi-truck-front text-primary-emphasis me-1"></i>Station To
+                </label>
+                <input type="text" id="STTNTO_Display"  class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" placeholder="Station To" [ngModel]="consigneeDetails().sttnTo" [ngModelOptions]="{standalone: true}"
+                       class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" readonly />
+              </div>
+              </div>
+
+             <div class="row g-2 flex-grow-1 pt-2">
+              
+              <div class="col-md">
+                <label for="CMDTCODE_Display" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;">
+                  <i class="bi bi-pin-map text-primary-emphasis me-1"></i>Commodity Code
+                </label>
+                <input type="text" id="CMDTCODE_Display"  class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" placeholder="Commodity Code" [ngModel]="consigneeDetails().cmdtCode" [ngModelOptions]="{standalone: true}"
+                       class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" readonly />
+              </div>
+               <div class="col-md">
+                <label for="SRVCMODE_Display" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;">
+                  <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Service Mode
+                </label>
+                <input type="text" id="SRVCMODE_Display"  class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" placeholder="Service Mode" [ngModel]="consigneeDetails().srvcMode" [ngModelOptions]="{standalone: true}"
+                       class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" readonly />
+              </div>
+              <div class="col-md">
+                <label for="CNSR_Display" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;">
+                  <i class="bi bi-person-badge text-primary-emphasis me-1"></i>Consigner
+                </label>
+                <input type="text" id="CNSR_Display"  class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" placeholder="Consigner" [ngModel]="consigneeDetails().cnsr" [ngModelOptions]="{standalone: true}"
+                       class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" readonly />
+              </div>
+              <div class="col-md">
+                <label for="CNSE_Display" class="form-label text-primary-emphasis fw-semibold mb-0" style="font-size: 0.8rem;">
+                  <i class="bi bi-person-badge text-primary-emphasis me-1"></i>Consignee
+                </label>
+                <input type="text" id="CNSE_Display"  class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" placeholder="Consignee" [ngModel]="consigneeDetails().cnse" [ngModelOptions]="{standalone: true}"
+                       class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light py-1" readonly />
+              </div>
+              </div>
+               
+             
+              
+            
+          </fieldset>
+        <!-- </div> -->
+
+        <div class="col-md-12 h-100">
+          <fieldset class="border rounded-4 shadow-sm bg-light p-2 h-100 d-flex flex-column">
+            <legend class="float-none w-auto px-2 text-primary-emphasis fs-6 fw-bold mb-1">
+              <label class="fw-semibold" style="color:#464444;">
+                <i class="bi bi-box-seam me-1"></i>Container Detail Grid
+              </label>
+            </legend>
+            <div class="table-responsive flex-grow-1" style="max-height: 15vh; overflow-y: auto;"> 
+              <table class="table table-sm table-hover align-middle table-bordered mb-0">
+                <thead class="table-light text-center sticky-top bg-white" style="z-index: 10;">
+                  <tr>
+                    <th class="py-1" style="font-size: 0.8rem;">Container type</th>
+                    <th class="py-1" style="font-size: 0.8rem;">Requested</th>
+                    <th class="py-1" style="font-size: 0.8rem;">Alloted</th>
+                    <th class="py-1" style="font-size: 0.8rem;">Owned By</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let row of containerGridData()">
+                    <td style="font-size: 0.7rem;">{{ row.cntrType }}</td>
+                    <td style="font-size: 0.7rem;">{{ row.cntrReq }}</td>
+                    <td style="font-size: 0.7rem;">{{ row.cntrAlloted }}</td>
+                    <td style="font-size: 0.7rem;">{{ row.ownedBy }}</td>
+                  </tr>
+                  <tr *ngIf="containerGridData().length === 0">
+                    <td colspan="4" class="text-center text-muted" style="font-size: 0.7rem;">No container data available.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      
+      <div class="row g-2 mb-3">
+        <div class="col-12">
+          <fieldset class="border rounded-4 shadow-sm bg-light p-2 h-100 d-flex flex-column">
+            <legend class="float-none w-auto px-2 text-primary-emphasis fs-6 fw-bold mb-1">
+              <label class="fw-semibold" style="color:#464444;">
+                <i class="bi bi-building-fill me-1"></i>CONCOR OWNED
+              </label>
+            </legend>
+            <div class="table-responsive"
+                 [ngClass]="{'fixed-height-table': concorOwnedData().length > 0, 'no-data-table': concorOwnedData().length === 0}" style="max-height: 18vh; overflow-y: auto;">
+              <table class="table table-sm table-hover align-middle table-bordered mb-0 smaller-font">
+                <thead class="table-light text-center sticky-top bg-white" style="z-index: 10;">
+                  <tr>
+                    <th class="py-1" style="font-size: 0.7rem;">Number</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Type</th>
+                    <th class="py-1" style="font-size: 0.7rem;">S/F Code</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Stack Location</th>
+                    <th class="py-1" style="font-size: 0.7rem;">DS0/ISO</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Shipping Line Code</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Allotment Date/Time</th>
+                    <th class="py-1" style="font-size: 0.7rem;">No. Of Seals</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Tatkal Y/N</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Tatkal Charges</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Src TNPT By</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Container Owner</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Fare Weight</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Gross Weight</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let container of concorOwnedData()">
+                    <td style="font-size: 0.7rem;">{{ container.number }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.type }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.sfCode }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.stackLocn }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.ds0Iso }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.shippingLineCode }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.allotmentDateTime }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.noOfSeals }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.tatkalYN }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.tatkalCharges }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.srcTnptBy }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.containerOwner }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.fareWght }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.grossWght }}</td>
+                  </tr>
+                  <tr *ngIf="concorOwnedData().length === 0">
+                    <td colspan="14" class="text-center text-muted" style="font-size: 0.7rem;">No CONCOR owned data available.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="d-flex justify-content-end pt-2">
+              <button type="button" class="btn btn-success btn-sm" (click)="openModifyForm()">
+                <i class="bi bi-pencil-square me-2"></i>Modify
+              </button>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      
+      <div class="row g-2 mb-3">
+        <div class="col-12">
+          <fieldset class="border rounded-4 shadow-sm bg-light p-2 h-100 d-flex flex-column">
+            <legend class="float-none w-auto px-2 text-primary-emphasis fs-6 fw-bold mb-1">
+              <label class="fw-semibold" style="color:#464444;">
+                <i class="bi bi-people-fill me-1"></i>CUSTOMER OWNED
+              </label>
+            </legend>
+            
+            <div class="table-responsive"
+                 [ngClass]="{'fixed-height-table': customerOwnedData().length > 0, 'no-data-table': customerOwnedData().length === 0}" style="max-height: 18vh; overflow-y: auto;">
+              <table class="table table-sm table-hover align-middle table-bordered mb-0 smaller-font">
+                <thead class="table-light text-center sticky-top bg-white" style="z-index: 10;">
+                  <tr>
+                    <th class="py-1" style="font-size: 0.7rem;">Number</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Type</th>
+                    <th class="py-1" style="font-size: 0.7rem;">S/F Code</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Stack Location</th>
+                    <th class="py-1" style="font-size: 0.7rem;">DS0/ISO</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Shipping Line Code</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Allotment Date/Time</th>
+                    <th class="py-1" style="font-size: 0.7rem;">No. Of Seals</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Tatkal Y/N</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Tatkal Charges</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Src TNPT By</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Container Owner</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Fare Weight</th>
+                    <th class="py-1" style="font-size: 0.7rem;">Gross Weight</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let container of customerOwnedData()">
+                    <td style="font-size: 0.7rem;">{{ container.number }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.type }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.sfCode }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.stackLocn }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.ds0Iso }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.shippingLineCode }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.allotmentDateTime }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.noOfSeals }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.tatkalYN }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.tatkalCharges }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.srcTnptBy }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.containerOwner }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.fareWght }}</td>
+                    <td style="font-size: 0.7rem;">{{ container.grossWght }}</td>
+                  </tr>
+                  <tr *ngIf="customerOwnedData().length === 0">
+                    <td colspan="14" class="text-center text-muted" style="font-size: 0.7rem;">No CUSTOMER owned data available.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="d-flex justify-content-end pt-2">
+              <button type="button" class="btn btn-primary btn-sm" (click)="openAllotmentForm()">
+                <i class="bi bi-clipboard-check-fill me-2"></i>Allotment
+              </button>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+                <div class="button-wrapper">
+                  <button class="btn-modern submit-btn" type="submit">
+                    <i class="bi bi-check-circle-fill me-2"></i> Submit
+                  </button>
+                  <button class="btn-modern reset-btn">
+                    <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                  </button>
+                </div>
+              </div>
+    </div>
+  
+  </div>
+  </div>
+   </div>
+</form>

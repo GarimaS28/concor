@@ -1,0 +1,593 @@
+<form  [formGroup]="form"  (ngSubmit)="onSubmit()" autocomplete="off">
+  <!--First grid -->
+
+  <div id="form1" > 
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+ 
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif;">Indent Cancellation</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3" >
+
+              <div class="row g-3 align-items-end ">
+
+                <!-- Station From -->
+                <div class="col-md-3 position-relative">
+
+        <label for="ALOTsttnfrm" class="rainbow-label ">
+        <i class="bi bi-pin-map-fill text-primary me-1"></i>Station From <span class="text-danger">*</span>
+        </label>
+        <input type="text"
+              class="form-control border border-light input-xs shadow-sm rounded-3 px-3 py-2"
+              id="ALOTsttnfrm"
+              formControlName="ALOTsttnfrm"
+              name="ALOTsttnfrm"
+              placeholder="Enter station code"
+              [(ngModel)]="selectedStationCode"
+              maxlength="4"
+              (focus)="showStationDropdown = true"
+              (input)="onStationFromInputChange($event)"
+              (blur)="validateStationFromInput();hideStationDropdownWithDelay();onInputBlur('ALOTsttnfrm')"
+              (keydown)="onHelpKeyDown($event, 'ALOTsttnfrm', filteredStationList, selectStationCode)"
+              [ngClass]="formValidator.getValidationClass(form, 'ALOTsttnfrm')">
+
+        <!-- Station Code Dropdown -->
+        <ul *ngIf="showStationDropdown && filteredStationList.length"
+        class="dropdown-menu show shadow-sm border mt-1 rounded-3 "
+        style="position: absolute; top: 100%; left: 0; width: 100%; z-index: 1000; max-height: 220px; overflow-y: auto; transition: all 0.3s ease-in-out;background-color: white;">
+
+        <!-- Grid Header -->
+        <li class="dropdown-header bg-success px-3 py-2 text-black rounded-top" >
+        <div class="d-grid" style="grid-template-columns: 50% 50%;">
+          <div class="rainbow-label  text-start">Code</div>
+          <div class="rainbow-label  text-start">Name</div>
+        </div>
+        </li>
+
+
+        <!-- Grid Items -->
+        <li *ngFor="let station of filteredStationList; let i = index"
+        (mousedown)="selectStationCode(station)"
+        class="dropdown-item px-3 py-2"
+        [class.highlighted]="i === (highlightedIndices['ALOTsttnfrm'] ?? -1)"
+        style="cursor: pointer; border-bottom: 1px solid #eaeaea;">
+
+        <div class="d-grid align-items-center"
+            style="grid-template-columns: 50% 50%; font-size: 0.75rem;">
+        <div class="text-truncate text-start">{{ station.p_TrmnCode }}</div>
+        <div class="text-truncate text-start fw-medium">{{ station.p_TrmnName }}</div>
+        </div>
+        </li>
+
+        </ul>
+
+
+
+        </div>
+
+
+
+                
+              
+                <!-- Consignment ID -->
+                <div class="col-md-3 position-relative">
+                      <label for="ALOTsttnto" class="form-label rainbow-label ">
+                        <i class="bi bi-pin-map-fill text-primary me-1"></i>Consignment ID<span class="text-danger">*</span>
+                      </label>
+
+                      <input type="text"
+            class="form-control border border-light input-xs shadow-sm rounded-3 px-3 py-2"
+            id="ALOTsttnto"
+            name="ALOTsttnto"
+            formControlName="ALOTsttnto"
+            placeholder="Enter station code"
+            [ngClass]="formValidator.getValidationClass(form, 'ALOTsttnto')">
+
+
+                      <!-- Station To Dropdown -->
+                      
+
+                        <div
+        *ngIf="form.errors?.sameStation && form.get('ALOTsttnto')?.touched"
+        class="text-danger small"
+        style="position: absolute; top: 100%; left: 0; z-index: 10; white-space: nowrap;"
+        >
+        🚫 Station From and To cannot be the same.
+        </div>
+                    </div>
+              
+                <!-- Current Date -->
+                <div class="col-md-3">
+                  <label for="ALOTcurrDt" class="form-label rainbow-label "><i class="bi bi-pin-map-fill text-primary me-1"></i>Date <span class="text-danger">*</span> </label>
+                  <input type="date" [min]="todayFormatted" class="form-control border border-light input-xs rounded-3 shadow-sm " formControlName="ALOTcurrDt" id="ALOTcurrDt" [value]="" name="ALOTcurrDt" [ngClass]="formValidator.getValidationClass(form, 'ALOTcurrDt')" (blur)="onInputChange('ALOTcurrDt')" (input)="onInputChange('ALOTcurrDt')">
+                </div>
+              
+                <!-- Service Mode -->
+                <div class="col-md-3">
+                  <label for="ALOTsrvcMd" class="form-label rainbow-label "><i class="bi bi-pin-map-fill text-primary me-1"></i>Service <span class="text-danger">*</span></label>
+
+                <select 
+        class="form-select custom-select border border-light rounded-3 shadow-sm input-xs" 
+        formControlName="ALOTsrvcMd" 
+        id="ALOTsrvcMd" 
+        name="ALOTsrvcMd"
+        [ngClass]="formValidator.getValidationClass(form, 'ALOTsrvcMd')" 
+        (blur)="onInputChange('ALOTsrvcMd')" 
+        (change)="onInputChange('ALOTsrvcMd')">
+
+        <option value="" disabled selected class="select-placeholder">Select service mode</option>
+        <option value="TT"> T T</option>
+        <option value="TC"> T C</option>
+        <option value="TD"> T D</option>
+        <option value="CC"> C C</option>
+        <option value="CT"> C T</option>
+        <option value="CD"> C D</option>
+        <option value="DD"> D D</option>
+        <option value="DT"> D T</option>
+        <option value="DC"> D C</option>
+        </select>
+
+              </div>
+
+              
+
+                
+              
+              </div>
+   
+                <div class="row g-3 align-items-end mt-1">
+                      <div class="col-md-3 position-relative">
+                          
+                          <label for="ALOTcnsrCode" class="form-label rainbow-label " style="color: #383a3a;"><i class="bi bi-pin-map-fill text-primary me-1"></i>Consigner Code <span class="text-danger">*</span></label>
+                          <input
+                            type="text"
+                            class="form-control border border-light input-xs   rounded-3 shadow-sm "
+                            id="ALOTcnsrCode"
+                            formControlName="ALOTcnsrCode"
+                            name="ALOTcnsrCode"
+                            
+                            [(ngModel)]="selectedCnsrCode"
+                            (input)="filterConsignerList(selectedCnsrCode)"
+                            (focus)="showConsignerDropdown = true"
+                            (blur)="hideConsignerDropdownWithDelay()"
+                            (blur)="onInputChange('ALOTcnsrCode')" (input)="onInputChange('ALOTcnsrCode')"
+                            placeholder="Enter Code"
+                            [ngClass]="formValidator.getValidationClass(form, 'ALOTcnsrCode')"
+                            maxlength="4"
+                            minlength="3"
+                          />
+
+                          
+
+                          <!-- Custom Dropdown -->
+                          <ul
+                            *ngIf="showConsignerDropdown && filteredConsignerList.length"
+                             class="dropdown-menu show shadow-sm border mt-1 rounded-3"
+                             style="position: absolute; top: 100%; left: 0; width: 100%; z-index: 1000; max-height: 220px; overflow-y: auto;">
+                          
+                           <li class="dropdown-header bg-success text-black small px-3 py-2 rounded-top">
+                              <div class="d-flex justify-content-between small fw-bold">
+                                <span class="w-50 text-start">Code</span>
+                                <span class="w-50 text-center">Name</span>
+                              </div>
+                            </li>
+                            <li
+                              *ngFor="let item of filteredConsignerList"
+                              class="dropdown-item small px-3 py-2"
+                              style="cursor: pointer;"
+                              (mousedown)="selectConsigner(item)"
+                              
+                            >
+                              <div class="d-flex justify-content-between">
+                                <span class="w-50 text-start">{{ item.p_CustCode }}</span>
+                                <span class="w-50 text-center">{{ item.p_CustName }}</span>
+                              </div>
+                            </li>
+                          </ul>
+
+                        </div>
+                      
+                      <div class="col-md-3 position-relative">
+                      <label for="ALOTcnsrId" class="form-label rainbow-label " style="color: #383a3a;">
+                      <i class="bi bi-pin-map-fill text-primary me-1"></i>
+                      Consigner ID <span class="text-danger">*</span>
+                      </label>
+
+                      <input
+                      type="text"
+                      class="form-control border border-light input-xs rounded-3 shadow-sm"
+                      id="ALOTcnsrId"
+                      name="ALOTcnsrId"
+                      formControlName="ALOTcnsrId"
+                      placeholder="ID"
+                      readonly
+                      [(ngModel)]="selectedConsignerId"
+                      (input)="filterConsignerIdFromEvent($event)" 
+                      (focus)="showConsignerIDDropdown = true"
+                      (blur)="hideConsignerIDDropdownWithDelay()"
+                      (focusin)="clearConsignerIDDropdownTimeout()"
+                      [ngClass]="formValidator.getValidationClass(form, 'ALOTcnsrId')"
+                      />
+                      <!-- Custom Styled Dropdown -->
+                      <ul *ngIf="showConsignerIDDropdown && filteredConsignerIdList.length"
+                      class="dropdown-menu show shadow-sm border mt-1 rounded-3 w-100"
+                      style="position: absolute; z-index: 1000; max-height: 220px; overflow-y: auto;">
+
+                      <!-- Header -->
+                      <li class="dropdown-header px-3 py-2 bg-success text-black d-flex justify-content-between rainbow-label  small rounded-top">
+                      <span> Cust ID</span>
+                      </li>
+
+                      <!-- Filtered Options -->
+                      <li
+                      *ngFor="let item of filteredConsignerIdList"
+                      class="dropdown-item small px-3 py-2"
+                      style="cursor: pointer;"
+                      (mousedown)="selectConsignerID(item)"
+
+                      >
+                      <div class="d-flex justify-content-between" style="font-size: 0.75rem;">
+                      <span class="w-50 text-start">{{ item.p_CustID }}</span>
+                      </div>
+                      </li>
+                      </ul>
+                      </div>
+
+                        <div class="col-md-3 position-relative">
+                          
+                          <label for="ALOTcnseCode" class="form-label rainbow-label " style="color: #383a3a;"><i class="bi bi-pin-map-fill text-primary me-1"></i>Consignee Code <span class="text-danger">*</span></label>
+                          <input
+                            type="text"
+                            class="form-control border border-light input-xs  rounded-3 shadow-sm "
+                            id="ALOTcnseCode"
+                            formControlName="ALOTcnseCode"
+                            name="ALOTcnseCode"
+                            readonly
+                            [(ngModel)]="selectedCgneCode"
+                            (input)="filterConsigneeList(selectedCgneCode)"
+                            (focus)="showConsigneeDropdown = true"
+                            (blur)="hideConsigneeDropdownWithDelay()"
+                            [ngClass]="formValidator.getValidationClass(form, 'ALOTcnseCode')" (blur)="onInputChange('ALOTcnseCode')" (input)="onInputChange('ALOTcnseCode')"
+                            placeholder="Enter Code"
+                          />
+
+                          
+
+                          <!-- Custom Dropdown -->
+                          <ul
+                            *ngIf="showConsigneeDropdown && filteredConsigneeList.length"
+                             class="dropdown-menu show shadow-sm border mt-1 rounded-3"
+                             style="position: absolute; top: 100%; left: 0; width: 100%; z-index: 1000; max-height: 220px; overflow-y: auto;">
+                          
+                           <li class="dropdown-header bg-success text-black small px-3 py-2 rounded-top">
+                              <div class="d-flex justify-content-between small fw-bold">
+                                <span class="w-50 text-start">Code</span>
+                                <span class="w-50 text-center">Name</span>
+                              </div>
+                            </li>
+                            <li
+                              *ngFor="let item of filteredConsigneeList"
+                              class="dropdown-item small px-3 py-2"
+                              style="cursor: pointer;"
+                              (mousedown)="selectConsignee(item)"
+                              
+                            >
+                              <div class="d-flex justify-content-between"  style="font-size: 0.75rem;">
+                                <span class="w-50 text-start">{{ item.p_CustCode }}</span>
+                                <span class="w-50 text-center">{{ item.p_CustName }}</span>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      
+                        <div class="col-md-3 position-relative">
+                        <label for="ALOTcnsId" class="form-label rainbow-label " style="color: #383a3a;">
+                          <i class="bi bi-pin-map-fill text-primary me-1"></i>
+                          Consignee ID <span class="text-danger">*</span>
+                        </label>
+
+                        <input
+                          type="text"
+                          class="form-control border border-light input-xs rounded-3 shadow-sm"
+                          id="ALOTcnseId"
+                          name="ALOTcnseId"
+                          readonly
+                          formControlName="ALOTcnseId"
+                          placeholder="ID"
+                          [(ngModel)]="selectedConsigneeId"
+                          (input)="filterConsigneeIdFromEvent($event)"
+                          (focus)="showConsigneeIDDropdown = true"
+                          (blur)="hideConsigneeIDDropdownWithDelay()"
+                          (focusin)="clearConsigneeIDDropdownTimeout()"
+                          [ngClass]="formValidator.getValidationClass(form, 'ALOTcnseId')"
+                        />
+                        <!-- Custom Styled Dropdown -->
+                        <ul *ngIf="showConsigneeIDDropdown && filteredConsigneeIdList.length"
+                            class="dropdown-menu show shadow-sm border mt-1 rounded-3 w-100"
+                            style="position: absolute; z-index: 1000; max-height: 220px; overflow-y: auto;">
+                          
+                          <!-- Header -->
+                          <li class="dropdown-header px-3 py-2 bg-success text-black d-flex justify-content-between rainbow-label  small rounded-top">
+                            <span> Cust ID</span>
+                          </li>
+
+                          <!-- Filtered Options -->
+                         
+
+                          <li *ngFor="let item of filteredConsigneeIdList"
+                            class="dropdown-item small px-3 py-2"
+                            style="cursor: pointer;"
+                            (mousedown)="selectConsigneeID(item)">
+                            <div class="d-flex justify-content-between"  style="font-size: 0.75rem;">
+                              <span class="w-50 text-start">{{ item.p_CustID }}</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+              
+                    </div>
+
+                <div class="row mt-1">
+       
+      
+                  <div class="">
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-1 pb-3">
+                      <legend class="float-none w-auto px-3 fs-6 ">
+                        <label for="ALOTPaidby" class=" rainbow-label "><i class="bi bi-sliders2 me-1"></i> Payment Details <span class="text-danger">*</span> </label>
+                      </legend>
+                      
+                
+                    <div class="row g-3">
+                    
+
+                       <div class="col-md-4">
+  <label for="ALOTPaidby" class="form-label rainbow-label ">
+    <i class="bi bi-pin-map-fill text-primary me-1"></i>
+    Paid By <span class="text-danger">*</span>
+  </label>
+
+  <div class="d-flex align-items-center gap-4 p-2">
+    <!-- CNSE Option -->
+    <label class="custom-radio">
+      <input type="radio" formControlName="ALOTPaidby" name="ALOTPaidby" id="ALOTpbCNSE" value="P">
+      <span class="radio-btn"></span>
+      <span class="label-text">Consignee</span>
+    </label>
+
+    <!-- CNSR Option -->
+    <label class="custom-radio">
+      <input type="radio" formControlName="ALOTPaidby" name="ALOTPaidby" id="ALOTpbCNSR" value="C">
+      <span class="radio-btn"></span>
+      <span class="label-text">Consigner</span>
+    </label>
+  </div>
+</div>
+
+                
+                      <!-- Allot Type Section -->
+                      <div class="col-md-4">
+  <label for="ALOTtype" class="form-label rainbow-label ">
+    <i class="bi bi-pin-map-fill text-primary me-1"></i>
+    Payment Mode <span class="text-danger">*</span>
+  </label>
+
+  <div class="d-flex align-items-center gap-4 p-2">
+    <!-- CA Option -->
+    <label class="custom-radio">
+      <input type="radio" formControlName="ALOTtype" name="ALOTtype" id="ALOTtypeCA" value="N"
+             (click)="onConsignerOrConsigneeRadioClick()" [disabled]="!isRadioEnabled">
+      <span class="radio-btn"></span>
+      <span class="label-text">CA</span>
+    </label>
+
+    <!-- PDA Option -->
+    <label class="custom-radio">
+      <input type="radio" formControlName="ALOTtype" name="ALOTtype" id="ALOTtypePDA" value="P"
+             (click)="onConsignerOrConsigneeRadioClick()" [disabled]="!isRadioEnabled">
+      <span class="radio-btn"></span>
+      <span class="label-text">PDA</span>
+    </label>
+  </div>
+</div>
+
+                      
+                      
+                
+                      <!-- Amount & Receipt Section -->
+                      <div class="col-md-4">
+                         
+                        <label for="ALOTamount" class="form-label rainbow-label "><i class="bi bi-pin-map-fill text-primary me-1"></i>Registration Amount </label>
+                        <input type="text" class="form-control border border-light input-xs rounded-3 shadow-sm bg-light" formControlName="ALOTamount" id="ALOTamount" name="ALOTamount" placeholder="0"  readonly >
+
+                      </div>
+                
+                    </div>
+                    </fieldset>
+                  </div>
+                
+    
+              </div>
+
+              <div class="row mt-1">
+                <div class="col-12">
+                  
+                                <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                                  <legend class="float-none w-auto px-3  fs-6">
+                                    <label for="ALOTPaidby" class=" rainbow-label "><i class="bi bi-sliders2 me-1"></i> Cancellation <span class="text-danger">*</span> </label> 
+                                  </legend>
+                                  
+                                  <!-- Table with scrollable content -->
+                                <div class="table-responsive">
+              <div #scrollContainer class="table-responsive" style="max-height: 120px; overflow-y: auto;">
+                <table class="table table-sm table-hover align-middle table-bordered mb-0">
+                  <thead class="table-light text-center sticky-top bg-white" style="z-index: 10;">
+                    <tr>
+                      <th>S.no</th>
+                      <th>Container No.</th>
+                      <th>Size</th>
+                      <th>Type</th>
+                      <th >Owner</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="ALOTcontainerArray">
+                    <tr *ngFor="let container of containerArray.controls; let i = index" [formGroupName]="i">
+                      <td class="text-center small text-muted">{{ i + 1 }}</td>
+                      <td>
+                        <input formControlName="ALOTctnrNo" type="text" class="form-control form-control-sm" placeholder="No." (blur)="checkContainerRowCompletion(i)" />
+                      </td>
+                      <td>
+                        <input formControlName="ALOTctnrSize" type="text" class="form-control form-control-sm" placeholder="Size" />
+                      </td>
+                      <td>
+                        <input
+                          formControlName="ALOTctnrType"
+                          type="text"
+                          
+                          class="form-control form-control-sm"
+                          placeholder="Type"
+                          #typeInput
+                          (focus)="showHelp(i, typeInput)"
+                          (blur)="onContainerChange()"
+                          (input)="filterContainerType(i)"
+                          (click)="filterContainerType(i)"
+                        />
+                      </td>
+                      <td >
+                        <select formControlName="ALOTctnrOwnd" class="form-select form-select-sm">
+                          <option value="" disabled selected>Select Ownership</option>
+                          <option value="CUST">CUST</option>
+                          <option value="CONC">CONC</option>
+                        </select>
+                      </td>
+                      <td class="text-center">
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-outline-danger btn-sm" type="button" (click)="removeRow(i)" [disabled]="containerArray.length === 1">
+                            <i class="bi bi-trash3">-</i>
+                          </button>
+                          <button *ngIf="i === containerArray.length - 1" class="btn btn-outline-success btn-sm" type="button" [disabled]="!containerArray.at(i).valid" (click)="addRow()">
+                            <i class="bi bi-plus-circle">+</i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div *ngIf="form.get('ALOTcontainerArray')?.errors?.duplicateContainerOwnership" class="text-danger small mt-2">
+              🚫 Duplicate container types with the same ownership are not allowed.
+            </div>
+
+            <!-- Help Dropdown OUTSIDE table -->
+            <!-- Floating Dropdown -->
+            <ul
+              *ngIf="helpDropdownIndex !== null && filteredContainerTypes.length"
+              class="dropdown-menu show shadow-sm border rounded-3"
+              [ngStyle]="{
+                position: 'fixed',
+                top: helpDropdownTop + 'px',
+                left: helpDropdownLeft + 'px',
+                zIndex: 9999,
+                maxHeight: '150px',
+                overflowY: 'auto',
+                width: '240px',
+                backgroundColor: 'white'
+              }"
+            >
+              <li class="dropdown-header px-3 py-2 bg-success text-black d-flex justify-content-between rainbow-label  small rounded-top">
+                <span>Type</span>
+                <span>Size</span>
+              </li>
+              <li
+                *ngFor="let item of filteredContainerTypes"
+                class="dropdown-item small d-flex justify-content-between align-items-center"
+                (click)="selectContainerType(item, helpDropdownIndex!)"
+              >
+                <b>{{ item.p_CntrType }}</b>
+                <span class="text-muted">{{ item.p_CntrSize }}</span>
+              </li>
+            </ul>
+
+
+                                </fieldset>
+                              
+                </div>
+              </div>
+
+              <div class="row mt-1">
+       
+      
+                  <div class="">
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-1 pb-3">
+                      <legend class="float-none w-auto px-3 fs-6 ">
+                        <label for="ALOTPaidby" class=" rainbow-label "><i class="bi bi-sliders2 me-1"></i> Owner <span class="text-danger">*</span> </label>
+                      </legend>
+                      
+                
+                    <div class="row g-3">
+                    
+                      <div class="col-md-3">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-1 pb-2">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Container Owner <span class="text-danger"> *</span>
+                </legend>
+          
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+          
+                    <!-- Rebooking -->
+                    <div class="form-check form-switch d-flex align-items-center">
+                      <input class="form-check-input me-2" type="checkbox" id="JBODCtnrOwnr" formControlName="JBODCtnrOwnr" name="JBODCtnrOwnr">
+                      <label class="form-check-label text-dark fw-semibold" for="JBODCtnrOwnr">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> customer Owned
+                      </label>
+                    </div>
+          
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+                      <!-- Amount & Receipt Section -->
+                      <div class="col-md-9">
+                         
+                        <label for="ALOTamount" class="form-label rainbow-label "><i class="bi bi-pin-map-fill text-primary me-1"></i>Remarks (Max 70 Wrods)</label>
+                        <input type="textarea" class="form-control border border-light input-xs rounded-3 shadow-sm bg-light" formControlName="ALOTamount" id="ALOTamount" name="ALOTamount" placeholder="Write Your Remarks here..."  readonly >
+
+                      </div>
+                
+                    </div>
+                    </fieldset>
+                  </div>
+                
+    
+              </div>
+
+              <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2" ></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                </div>
+            
+            
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>
+

@@ -1,0 +1,67 @@
+<div class="m-header" style=" background: linear-gradient(90deg, #4682b4, #4682b4);" >
+  <!-- <a href="javascript:" class="mobile-menu" id="mobile-collapse" title="Click to Menu Collapse" (click)="navCollapse()"><span></span></a> -->
+  <a href="javascript:" class="header-mobile-collapse" id="mobile-collapse1" (click)="navCollapseMob()">
+    <i class="feather icon-menu"></i>
+  </a>
+  <a [routerLink]="['/dashboard/analytics']" class="b-brand">
+    <div style="background-color: white; padding: 5px; border-radius: 1px; height:57px;width: 65px;">
+          <img src="assets/images/concorllogo.png" alt="CONCOR Logo" style="height: 48px;width: 55px;" />
+      </div>
+ 
+      <div style="line-height: 1.2; margin-left: 5px; color: white; font-family: 'Segoe UI', sans-serif;">
+    <div style="font-size: 12px; font-weight: 400; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+        भारतीय कंटेनर निगम लिमिटेड
+    </div>
+    <div style="font-size: 9px; font-weight: 400; letter-spacing: 0.3px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+        Container Corporation of India Ltd.
+    </div>
+    <div style="font-size: 10px; font-weight: 500; opacity: 0.9; text-shadow: 0 1px 2px rgba(0,0,0,0.25);">
+        भारत सरकार का उद्यम
+    </div>
+    <div style="font-size: 10px; font-weight: 500; opacity: 0.9; text-shadow: 0 1px 2px rgba(0,0,0,0.25);">
+        A Govt. of India Enterprise
+    </div>
+</div>
+
+
+
+  </a>
+  <a class="mob-toggler" [ngClass]="{ on: this.menuClass }" href="javascript:" (click)="toggleMobOption()">
+    <i class="feather icon-more-vertical"></i>
+  </a>
+  
+</div>
+
+<div class="collapse navbar-collapse " [style.display]="this.collapseStyle" style="background: linear-gradient(90deg, #4682b4, #183668);">
+  
+  <app-nav-left class="me-auto" />
+  <span class="project-title">
+      e-Booking Systems
+    </span>
+  <app-nav-right class="ms-auto" />
+  
+
+
+
+</div>
+
+<ng-template #mainHeader sty>
+  <div class="m-header">
+    <!-- <a href="javascript:" class="mobile-menu" id="mobile-collapse" title="Click to Menu Collapse" (click)="navCollapse()"><span></span></a> -->
+    <a href="javascript:" class="header-mobile-collapse" id="mobile-collapse1" (click)="this.NavCollapsedMob.emit()">
+      <i class="feather icon-menu"></i>
+    </a>
+    <a [routerLink]="['/dashboard/analytics']" class="b-brand">
+      <img id="main-logo" src="assets/images/logo.png" alt="logo-img" class="logo" />
+      <img src="assets/images/logo-icon.png" alt="logo-icon-img" class="logo-thumb" />
+    </a>
+    <a class="mob-toggler" [ngClass]="{ on: this.menuClass }" href="javascript:" (click)="toggleMobOption()">
+      <i class="feather icon-more-vertical"></i>
+    </a>
+  </div>
+  <div class="collapse navbar-collapse" [style.display]="this.collapseStyle">
+    <app-nav-left class="me-auto" />
+    <app-nav-right class="ms-auto" />
+    
+  </div>
+</ng-template>

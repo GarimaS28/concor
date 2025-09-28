@@ -1,0 +1,20 @@
+.scrollable-list {
+  max-height: calc(2.5rem * 5); /* 2.5rem ≈ 40px per item */
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  //background: linear-gradient(90deg,rgba(237, 199, 183, 1) 0%, rgba(135, 197, 255, 1) 100%, rgba(135, 197, 255, 1) 62%);
+}
+
+.scrollable-list li {
+  padding: 0.4rem 0.75rem;
+  font-size: 1rem;
+  color: rgb(26, 14, 14);
+  //font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  line-height: 2.5rem;
+  cursor: pointer;
+ //background: linear-gradient(90deg,rgba(237, 225, 223, 1) 23%, rgba(209, 217, 224, 1) 100%);
+}
+
+
+
+

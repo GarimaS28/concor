@@ -1,0 +1,93 @@
+.captcha-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+  
+    .input-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 250px;
+  
+      .captcha-text {
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        color: #555;
+        pointer-events: none; // Prevents interfering with input
+        margin-right: 10px;
+      }
+      .text-styl{
+        margin-left: 5px;
+      }
+  
+      input {
+        width: 100%;
+        height: 35px;
+        padding-left: 70px; // Space for CAPTCHA text on the left
+        padding-right: 40px; // Space for refresh button on the right
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+  
+        &:focus {
+          border-color: #007bff;
+        }
+      }
+  
+      .refresh-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        color: #007bff;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: #0056b3;
+        }
+      }
+    }
+  
+    .buttons {
+      display: flex;
+      gap: 10px;
+  
+      button {
+        padding: 8px 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+  
+        &:first-child {
+          background: #28a745;
+          color: white;
+  
+          &:hover {
+            background: #218838;
+          }
+        }
+      }
+    }
+  
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+  }
+  

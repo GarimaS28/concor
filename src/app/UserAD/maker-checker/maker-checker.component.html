@@ -1,0 +1,301 @@
+<!-- Filter Buttons -->
+<!-- Filter Buttons -->
+<!-- <div class="d-flex justify-content-start gap-3 mb-3 px-3 align-items-center">
+  <button class="btn btn-primary btn-sm"
+          [class.active]="selectedFilter === 'all'"
+          (click)="filterRequests('all')">All</button>
+
+  <button class="btn btn-success btn-sm"
+          [class.active]="selectedFilter === 'APRV'"
+          (click)="filterRequests('APRV')">Approved</button>
+
+  <button class="btn btn-warning btn-sm"
+          [class.active]="selectedFilter === 'FRWD'"
+          (click)="filterRequests('FRWD')">Forward</button>
+
+  <button class="btn btn-secondary btn-sm"
+          [class.active]="selectedFilter === 'PEND'"
+          (click)="filterRequests('PEND')">Pending</button>
+
+  <button class="btn btn-danger btn-sm"
+          [class.active]="selectedFilter === 'CNCL'"
+          (click)="filterRequests('REJ')">Cancelled</button>
+</div> -->
+<!-- <div class="d-flex justify-content-start gap-3 mb-3 px-3 align-items-center">
+  
+  <button class="btn btn-primary btn-sm"
+          [class.active]="selectedFilter === 'all'"
+          (click)="filterRequests('all')">All</button>
+
+  <button class="btn btn-success btn-sm"
+          [class.active]="selectedFilter === 'APRV'"
+          (click)="filterRequests('APRV')">Approved</button>
+
+  <button class="btn btn-warning btn-sm"
+          [class.active]="selectedFilter === 'FRWD'"
+          (click)="filterRequests('FRWD')">Forward</button>
+
+  <button class="btn btn-secondary btn-sm"
+          [class.active]="selectedFilter === 'PEND'"
+          (click)="filterRequests('PEND')">Pending</button>
+
+  <button class="btn btn-danger btn-sm"
+          [class.active]="selectedFilter === 'CNCL'"
+          (click)="filterRequests('REJ')">Cancelled</button>
+
+  
+  <div class="dropdown">
+    <button class="btn btn-outline-dark btn-sm dropdown-toggle"
+            type="button"
+            id="dateFilterDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+      Date Filter
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dateFilterDropdown">
+      <li><button class="dropdown-item" type="button" (click)="filterByDate('7')">Last 7 Days</button></li>
+      <li><button class="dropdown-item" type="button" (click)="filterByDate('15')">Last 15 Days</button></li>
+      <li><button class="dropdown-item" type="button" (click)="filterByDate('30')">Last 30 Days</button></li>
+    </ul>
+  </div>
+</div> -->
+
+<div class="d-flex justify-content-start gap-3 mb-3 px-3 align-items-center">
+  <!-- Existing Status Filter Buttons -->
+  <button class="btn btn-primary btn-sm"
+          [class.active]="selectedFilter === 'all'"
+          (click)="filterRequests('all')">All</button>
+
+  <button class="btn btn-success btn-sm"
+          [class.active]="selectedFilter === 'APRV'"
+          (click)="filterRequests('APRV')">Approved</button>
+
+  <button class="btn btn-warning btn-sm"
+          [class.active]="selectedFilter === 'FRWD'"
+          (click)="filterRequests('FRWD')">Forward</button>
+
+  <button class="btn btn-secondary btn-sm"
+          [class.active]="selectedFilter === 'PEND'"
+          (click)="filterRequests('PEND')">Pending</button>
+
+  <button class="btn btn-danger btn-sm"
+          [class.active]="selectedFilter === 'CNCL'"
+          (click)="filterRequests('REJ')">Cancelled</button>
+
+  <!-- 🔽 From-To Date Filter -->
+  <div class="d-flex gap-2 align-items-center">
+    <input type="date" class="form-control form-control-sm" [(ngModel)]="fromDate" placeholder="From">
+    <input type="date" class="form-control form-control-sm" [(ngModel)]="toDate" placeholder="To">
+    <button class="btn btn-dark btn-sm" (click)="filterByDateRange()">Filter</button>
+  </div>
+</div>
+
+
+
+
+<!-- Cards Section -->
+<!-- Cards Section -->
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3 px-3">
+   <div class="col" *ngFor="let req of filteredRequests">
+    <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+      <div class="card-body text-center">
+        
+
+        <!-- Title -->
+        <h6 class="fw-bold mb-1">{{ req.davCustFName }}</h6>
+
+        <!-- PAN & Request ID -->
+        <p class="text-muted small mb-1"><strong>PAN:</strong> {{ req.davPanNumb }}</p>
+        <p class="text-muted small mb-2"><strong>ID:</strong> {{ req.davRqstId }}</p>
+
+        <!-- Status Badge -->
+        <span class="badge rounded-pill px-3 py-2"
+              [ngClass]="{
+                'bg-success': req.davStatus === 'APRV',
+                'bg-warning text-dark': req.davStatus === 'FRWD',
+                'bg-danger': req.davStatus === 'CNCL',
+                'bg-secondary': req.davStatus === 'PEND'
+              }">
+          {{ req.davStatus }}
+        </span>
+      </div>
+
+      <div class="card-footer bg-transparent border-0 text-center">
+        <button class="btn btn-sm btn-gradient px-3" (click)="openModal(req)">
+          View
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="requestDetailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Customer Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <!-- <div class="modal-body" *ngIf="selectedRequest">
+        <pre>{{ selectedRequest | json }}</pre>
+        
+      </div> -->
+
+      <div class="modal-body" *ngIf="selectedRequest">
+  <div class="container">
+    <!-- Request Info -->
+    <div class="row mb-3">
+      <div class="col-6">
+        <p><strong>Request ID:</strong> {{ selectedRequest.davRqstId }}</p>
+        <p><strong>Request Date:</strong> {{ selectedRequest.dadRqstDate }}</p>
+        <p><strong>Business Type:</strong> {{ selectedRequest.davBusinessType }}</p>
+        <p><strong>Party Name:</strong> {{ selectedRequest.davPartyName }}</p>
+      </div>
+      <div class="col-6">
+        <p><strong>Customer Name:</strong> {{ selectedRequest.davCustFName }} {{ selectedRequest.davCustLName }}</p>
+        <p><strong>Mobile:</strong> {{ selectedRequest.davMobile }}</p>
+        <p><strong>Email:</strong> {{ selectedRequest.davEmail }}</p>
+        <p><strong>Status:</strong> {{ selectedRequest.davStatus || 'N/A' }}</p>
+      </div>
+    </div>
+
+    <!-- Address Info -->
+    <div class="row mb-3">
+      <div class="col-12">
+        <p><strong>Address:</strong> {{ selectedRequest.davAddress }}, 
+          {{ selectedRequest.davCity }}, {{ selectedRequest.davState }} - {{ selectedRequest.davPincode }}
+        </p>
+      </div>
+    </div>
+
+
+    <h5 class="mt-3 mb-2">📂 Documents</h5>
+
+<!-- <div *ngIf="selectedRequest.documents;">
+  <div class="list-group">
+    <div *ngIf="selectedRequest.documents?.dabAuthLetter" class="list-group-item d-flex justify-content-between align-items-center">
+      Auth Letter
+      <button class="btn btn-sm btn-outline-primary" (click)="viewDocument(selectedRequest.documents.dabAuthLetter, 'application/pdf')">View</button>
+    </div>
+    <div *ngIf="selectedRequest.documents?.dabCompRegnCert" class="list-group-item d-flex justify-content-between align-items-center">
+      Company Registration
+      <button class="btn btn-sm btn-outline-primary" (click)="viewDocument(selectedRequest.documents.dabCompRegnCert, 'application/pdf')">View</button>
+    </div>
+    <div *ngIf="selectedRequest.documents?.dabPanCard" class="list-group-item d-flex justify-content-between align-items-center">
+      PAN Card
+      <button class="btn btn-sm btn-outline-primary" (click)="viewDocument(selectedRequest.documents.dabPanCard, 'application/pdf')">View</button>
+    </div>
+    <div *ngIf="selectedRequest.documents?.dabAadhar" class="list-group-item d-flex justify-content-between align-items-center">
+      Aadhar Card
+      <button class="btn btn-sm btn-outline-primary" (click)="viewDocument(selectedRequest.documents.dabAadhar, 'application/pdf')">View</button>
+    </div>
+    <div *ngIf="selectedRequest.documents?.dabGstn" class="list-group-item d-flex justify-content-between align-items-center">
+      GST Certificate
+      <button class="btn btn-sm btn-outline-primary" (click)="viewDocument(selectedRequest.documents.dabGstn, 'application/pdf')">View</button>
+    </div>
+  </div>
+</div> -->
+
+<div *ngIf="selectedRequest.documents">
+  <div class="list-group">
+    <ng-container *ngFor="let doc of [
+      {name: 'Auth Letter', key: 'dabAuthLetter'},
+      {name: 'Company Registration', key: 'dabCompRegnCert'},
+      {name: 'PAN Card', key: 'dabPanCard'},
+      {name: 'Aadhar Card', key: 'dabAadhar'},
+      {name: 'GST Certificate', key: 'dabGstn'}
+    ]">
+      <div class="list-group-item d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center" *ngIf="selectedRequest.documents[doc.key]">
+          {{ doc.name }}
+          <div class="btn-group">
+            <button class="btn btn-sm" (click)="viewDocument(selectedRequest.documents[doc.key], 'application/pdf')" title="View">
+              👁
+            </button>
+            <button class="btn btn-sm" (click)="setDocumentStatus(doc.key, 'Accepted')" title="Approve">
+              ✅
+            </button>
+            <button class="btn btn-sm" (click)="setDocumentStatus(doc.key, 'Rejected')" title="Reject">
+              ❌
+            </button>
+          </div>
+        </div>
+        <!-- Status display -->
+        <div *ngIf="documentStatus[doc.key]" class="mt-1">
+          Status: <strong>{{ documentStatus[doc.key] }}</strong>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+<div class="row mb-2 mt-2">
+  <div class="col-12">
+    <label for="remarks" class="form-label"><strong>Remarks:</strong></label>
+    <textarea id="remarks" class="form-control" rows="3" 
+              placeholder="Enter your remarks here"
+              ></textarea>
+  </div>
+</div>
+
+<!-- ✅ Action buttons based on flag -->
+  <div class="d-flex justify-content-end gap-2 mt-4">
+  <!-- Case 1: makerCheckerFlag = B -->
+  <ng-container *ngIf="makerCheckerFlag === 'B'">
+    <!-- If status = FORWARD → Approve + Reject -->
+   
+      <button class="btn btn-success"
+              (click)="approveRequest(selectedRequest.davRqstId)">
+        ✅ Approve
+      </button>
+      <button class="btn btn-danger"
+              (click)="rejectRequest(selectedRequest.davRqstId)">
+        ❌ Reject
+      </button>
+    
+
+  </ng-container>
+
+  <!-- Case 2: makerCheckerFlag = C → Approve + Reject -->
+  <ng-container *ngIf="makerCheckerFlag === 'C'">
+    <button class="btn btn-success"
+            (click)="approveRequest(selectedRequest.davRqstId)">
+      ✅ Approve
+    </button>
+    <button class="btn btn-danger"
+            (click)="rejectRequest(selectedRequest.davRqstId)">
+      ❌ Reject
+    </button>
+  </ng-container>
+
+  <!-- Case 3: makerCheckerFlag = M → Forward + Reject -->
+  <ng-container *ngIf="makerCheckerFlag === 'M'">
+    <button class="btn btn-warning"
+            (click)="forwardRequest(selectedRequest.davRqstId)">
+      📤 Forward
+    </button>
+    <button class="btn btn-danger"
+            (click)="rejectRequest(selectedRequest.davRqstId)">
+      ❌ Reject
+    </button>
+  </ng-container>
+</div>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+

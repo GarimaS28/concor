@@ -1,0 +1,154 @@
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card shadow-lg border-0 text-center p-3" style="border-radius: 1rem">
+      <div class="card-body">
+        <h5 class="card-title text-primary">
+          <i class="bi bi-journal-check me-2"></i>
+          No. of E-Bookings
+        </h5>
+        <h2 class="fw-bold text-success">{{ noOfRegn }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="row g-3">
+      <!-- Active Customers Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 text-center p-3 kpi-card">
+          <div class="card-body">
+            <h6 class="card-title text-success">
+              <i class="bi bi-person-check-fill me-2"></i>
+              Active Customers
+            </h6>
+            <h2 class="fw-bold text-dark">{{ activeCust }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Customers Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 text-center p-3 kpi-card">
+          <div class="card-body">
+            <h6 class="card-title text-primary">
+              <i class="bi bi-people-fill me-2"></i>
+              Total Customers
+            </h6>
+            <h2 class="fw-bold text-dark">{{ totalCust }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="row g-3">
+      <!-- Maker -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 text-center p-3 kpi-card">
+          <div class="card-body">
+            <h6 class="card-title text-primary">
+              <i class="bi bi-pencil-square me-2"></i>
+              Maker Requests
+            </h6>
+            <h2 class="fw-bold text-dark">{{ makerCount }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checker -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 text-center p-3 kpi-card">
+          <div class="card-body">
+            <h6 class="card-title text-success">
+              <i class="bi bi-check2-square me-2"></i>
+              Checker Requests
+            </h6>
+            <h2 class="fw-bold text-dark">{{ checkerCount }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-4">
+    <div class="p-3 bg-white rounded-3 shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-primary">Task Performance</h6>
+      </div>
+      <div *ngIf="pieChartOptions" class="p-2 bg-light rounded-2">
+        <apx-chart
+          [series]="pieChartOptions.series"
+          [chart]="pieChartOptions.chart"
+          [labels]="pieChartOptions.labels"
+          [dataLabels]="pieChartOptions.dataLabels"
+          [title]="pieChartOptions.title"
+          [legend]="pieChartOptions.legend"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="p-3 bg-white rounded-3 shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-primary">Container Inventory</h6>
+      </div>
+      <div *ngIf="donutChartOptions" class="p-2 bg-light rounded-2">
+        <apx-chart
+          [series]="donutChartOptions.series"
+          [chart]="donutChartOptions.chart"
+          [labels]="donutChartOptions.labels"
+          [dataLabels]="donutChartOptions.dataLabels"
+          [title]="donutChartOptions.title"
+          [legend]="donutChartOptions.legend"
+          [responsive]="donutChartOptions.responsive"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="p-3 bg-white rounded-3 shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-primary">Last 4 Weeks Collection</h6>
+      </div>
+      <div *ngIf="barChartOptions" class="p-2 bg-light rounded-2">
+        <apx-chart
+          [series]="barChartOptions.series"
+          [chart]="barChartOptions.chart"
+          [xaxis]="barChartOptions.xaxis"
+          [colors]="barChartOptions.colors"
+          [dataLabels]="barChartOptions.dataLabels"
+          [title]="barChartOptions.title"
+          [plotOptions]="barChartOptions.plotOptions"
+          [legend]="barChartOptions.legend"
+          [responsive]="barChartOptions.responsive"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bar Chart Row -->
+<div class="row mb-3">
+  <div class="col-md-12">
+    <div class="p-3 bg-white rounded-3 shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-primary">Customer Activities</h6>
+      </div>
+      <div *ngIf="activitiesChartOptions" class="p-2 bg-light rounded-2">
+        <apx-chart
+          [series]="activitiesChartOptions.series"
+          [chart]="activitiesChartOptions.chart"
+          [xaxis]="activitiesChartOptions.xaxis"
+          [plotOptions]="activitiesChartOptions.plotOptions"
+          [colors]="activitiesChartOptions.colors"
+          [dataLabels]="activitiesChartOptions.dataLabels"
+          [title]="activitiesChartOptions.title"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+</div>

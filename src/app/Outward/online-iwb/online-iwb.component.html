@@ -1,0 +1,482 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div id="form1">
+        <div class="row" style="padding: 0% 5% 0% 5%;">
+            <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif;">Online IWB</div>
+            <div class="col-md-12">
+                <div class="card p-3">
+                    <div class="row g-3 align-items-center p-1">
+                        <div class="col-md-2 d-flex align-items-center">
+                            <label for="FwdNtSttn" class="form-label text-primary-emphasis fw-semibold me-2">Station</label>
+                            <input type="text" class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light"
+                                id="FwdNtSttn" formControlName="FwdNtSttn" placeholder="Enter station">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center">
+                            <label for="FwdNtDate" class="form-label text-primary-emphasis fw-semibold me-2">Date</label>
+                            <input type="date" class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light"
+                                id="FwdNtDate" formControlName="FwdNtDate">
+                        </div>
+                        <div class="col-md-3 d-flex align-items-center">
+                            <label for="FwdNtConsignmentId" class="form-label text-primary-emphasis fw-semibold me-2">Consignment
+                                ID</label>
+                            <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                                id="FwdNtConsignmentId" formControlName="FwdNtConsignmentId" placeholder="Enter Consignment ID">
+                        </div>
+                        <div class="col-md-3 d-flex align-items-center">
+                            <label for="FwdNtContainerNumber" class="form-label text-primary-emphasis fw-semibold me-2">Container
+                                Number</label>
+                            <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                                id="FwdNtContainerNumber" formControlName="FwdNtContainerNumber" placeholder="Enter Container Number">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center">
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="checkbox" role="switch" id="consigneeGstn"
+                                    formControlName="consigneeGstnApplicable">
+                                <label class="form-check-label text-primary-emphasis fw-semibold" for="consigneeGstn">Consignee GSTN
+                                    Applicable</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center p-1">
+                        <div class="col-md-2 d-flex align-items-center">
+                            <label for="FwdNtStationTo" class="form-label text-primary-emphasis fw-semibold me-2">Station To</label>
+                            <input type="text" class="form-control form-control-sm border border-light rounded-3 shadow-sm bg-light"
+                                id="FwdNtStationTo" formControlName="FwdNtStationTo" placeholder="Enter Station To">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center">
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="checkbox" role="switch" id="RefBa" formControlName="RefBa">
+                                <label class="form-check-label text-primary-emphasis fw-semibold" for="RefBa">REF.BA</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center">
+                            <label for="FwdNtPmntType" class="form-label text-primary-emphasis fw-semibold me-2">Payment Type</label>
+                            <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                                id="FwdNtPmntType" formControlName="FwdNtPmntType">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center">
+                            <label for="FwdNtSrvcMode" class="form-label text-primary-emphasis fw-semibold me-2">Service Mode</label>
+                            <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                                id="FwdNtSrvcMode" formControlName="FwdNtSrvcMode">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center">
+                            <label for="RakeType" class="form-label text-primary-emphasis fw-semibold me-2">Rake Type</label>
+                            <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light"
+                                id="RakeType" formControlName="RakeType" placeholder="Enter Rake Type">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-stretch p-1">
+                        <div class="col-md-6">
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> IWB
+                                </legend>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label for="StnNo" class="form-label text-primary-emphasis fw-semibold">Stn No.</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="StnNo" formControlName="StnNo" placeholder="Enter Station No.">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="IWBNo" class="form-label text-primary-emphasis fw-semibold">IWB No.</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="IWBNo" formControlName="IWBNo" placeholder="Enter IWB No.">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="IWBDate" class="form-label text-primary-emphasis fw-semibold">Date</label>
+                                        <input type="date" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="IWBDate" formControlName="IWBDate">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 mt-3">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-truck-flatbed text-primary-emphasis me-1"></i> By Rail/Road
+                                </legend>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="transportMode" id="transportRail" value="Rail" formControlName="TransportMode">
+                                            <label class="form-check-label fw-semibold" for="transportRail">
+                                                Rail
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="transportMode" id="transportRoad" value="Road" formControlName="TransportMode">
+                                            <label class="form-check-label fw-semibold" for="transportRoad">
+                                                Road
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 mt-3">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-currency-dollar text-primary-emphasis me-1"></i> Rates
+                                </legend>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="SpclRate" formControlName="SpclRate">
+                                            <label class="form-check-label fw-semibold" for="SpclRate">
+                                                Spcl Rate
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ISO" formControlName="ISO">
+                                            <label class="form-check-label fw-semibold" for="ISO">
+                                                ISO
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="CustRate" formControlName="CustRate">
+                                            <label class="form-check-label fw-semibold" for="CustRate">
+                                                Cust Rate
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-geo-alt text-primary-emphasis me-1"></i> Distance
+                                </legend>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label for="Distance" class="form-label text-primary-emphasis fw-semibold">Distance</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="Distance" formControlName="Distance" placeholder="Enter Distance">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="PickupPoint" class="form-label text-primary-emphasis fw-semibold">Pickup Point</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="PickupPoint" formControlName="PickupPoint" placeholder="Enter Pickup Point">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="State" class="form-label text-primary-emphasis fw-semibold">State</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="State" formControlName="State" placeholder="Enter State">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-12">
+                                        <label for="Address" class="form-label text-primary-emphasis fw-semibold">Address</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="Address" formControlName="Address" placeholder="Enter Address">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-4">
+                                        <label for="CnseDist" class="form-label text-primary-emphasis fw-semibold">Cnse Dist</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="CnseDist" formControlName="CnseDist" placeholder="Enter Cns Dist">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="DlvrPoint" class="form-label text-primary-emphasis fw-semibold">Dlvr Point</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="DlvrPoint" formControlName="DlvrPoint" placeholder="Enter Dlvr Point">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="State2" class="form-label text-primary-emphasis fw-semibold">State</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="State2" formControlName="State2" placeholder="Enter State">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-12">
+                                        <label for="Address2" class="form-label text-primary-emphasis fw-semibold">Address</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-white" id="Address2" formControlName="Address2" placeholder="Enter Address">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3 align-items-stretch p-1" formGroupName="details">
+                        <div class="col-md-12 h-100">
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Details<span class="text-danger"> *</span>
+                                </legend>
+                                <div class="row g-3">
+                                    <div class="col-md-2">
+                                        <label for="FwdNtCnsrCode" class="form-label text-primary-emphasis fw-semibold">Cnsr Code</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="FwdNtCnsrCode" formControlName="FwdNtCnsrCode" placeholder="Consignor Code">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="FwdNtCnsrName" class="form-label text-primary-emphasis fw-semibold">Cnsr Name</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="FwdNtCnsrName" formControlName="FwdNtCnsrName" placeholder="Consignor Name">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="FwdNtstfngCtnrs" class="form-label text-primary-emphasis fw-semibold">Cnsr State</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="FwdNtstfngCtnrs" formControlName="FwdNtstfngCtnrs" placeholder="Consignor State">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="FwdNtCnsID" class="form-label text-primary-emphasis fw-semibold">Cnsr Id</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="FwdNtCnsID" formControlName="FwdNtCnsID" placeholder="CRIS Id">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="FwdNtCRISGSTN" class="form-label text-primary-emphasis fw-semibold">Cnsr GSTN</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="FwdNtCRISGSTN" formControlName="FwdNtCRISGSTN" placeholder="CRIS GSTN">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-2">
+                                        <label for="CnseCode" class="form-label text-primary-emphasis fw-semibold">Cnse Code</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="CnseCode" formControlName="CnseCode" placeholder="Consignee Code">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="CnseName" class="form-label text-primary-emphasis fw-semibold">Cnse Name</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="CnseName" formControlName="CnseName" placeholder="Consignee Name">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="CnseState" class="form-label text-primary-emphasis fw-semibold">Cnse State</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="CnseState" formControlName="CnseState" placeholder="Consignee State">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="CnseId" class="form-label text-primary-emphasis fw-semibold">Cnse Id</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="CnseId" formControlName="CnseId" placeholder="Consignee Id">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="StationFrom" class="form-label text-primary-emphasis fw-semibold">Station From</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="StationFrom" formControlName="StationFrom" placeholder="Station From">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="ViaSttn" class="form-label text-primary-emphasis fw-semibold">Via Sttn</label>
+                                        <input type="text" class="form-control form-control-sm bg-white" id="ViaSttn" formControlName="ViaSttn" placeholder="Via Sttn">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-end p-1">
+                        <div class="col-md-12 h-100 d-flex flex-column">
+                            <div class="h-100 d-flex flex-column justify-content-between gap-2">
+                                <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-1 pb-3 w-100">
+    <legend class="float-none w-auto px-3 text-black fs-6 fw-bold">
+        <i class="bi bi-box-seam text-black me-1"></i> Container Details <span class="text-danger"> *</span>
+    </legend>
+    <div #scrollContainer class="table-responsive" style="max-height: 150px; overflow-y: auto;">
+        <table class="table table-sm table-hover align-middle table-bordered mb-0">
+            <thead class="table-light text-center">
+                <tr>
+                    <th scope="col" style="font-weight: bold; color: black;" rowspan="2"></th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="4">Container</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Cmdt</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">No. Of</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Weight</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Seal</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Sttn.</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Pymnt</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Srvc</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Trns</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="3">Cnsr</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="5">Cnse</th>
+                    <th scope="col" style="font-weight: bold; color: black;" colspan="1">Corp</th>
+                </tr>
+                <tr>
+                    <th style="color: black;">Number</th>
+                    <th style="color: black;">Type</th>
+                    <th style="color: black;">Size</th>
+                    <th style="color: black;">L/E</th>
+                    <th style="color: black;">Code</th>
+                    <th style="color: black;">Artcl</th>
+                    <th style="color: black;"> </th>
+                    <th style="color: black;">Numbers</th>
+                    <th style="color: black;">To</th>
+                    <th style="color: black;">Type</th>
+                    <th style="color: black;">Mode</th>
+                    <th style="color: black;">By</th>
+                    <th style="color: black;">Id</th>
+                    <th style="color: black;">State</th>
+                    <th style="color: black;">Gstn</th>
+                    <th style="color: black;">Code</th>
+                    <th style="color: black;">Name</th>
+                    <th style="color: black;">Id</th>
+                    <th style="color: black;">State</th>
+                    <th style="color: black;">Gstn</th>
+                    <th style="color: black;">Cust Code</th>
+                </tr>
+            </thead>
+            <tbody formArrayName="containerDetails">
+                <tr *ngFor="let container of containerDetails.controls; let i = index" [formGroupName]="i" [id]="'row-' + i">
+                    <td scope="row" class="text-center text-muted">
+                        <input type="checkbox" [formControlName]="'isSelected'" (change)="toggleRowBorder(i)">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="ContainerNo" placeholder="Container No.">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="ContainerType" placeholder="Type">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="ContainerSize" placeholder="Size">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="LE" placeholder="L/E">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CommodityCode" placeholder="Code">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="NoOfArticles" placeholder="No. of Artcl">
+                    </td>
+                    <td>
+                        <input type="number" step="0.01" class="form-control form-control-sm bg-white" formControlName="Weight" placeholder="Weight">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="SealNumbers" placeholder="Seal Numbers">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="StationTo" placeholder="Sttn. To">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="PaymentType" placeholder="Pymnt Type">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="ServiceMode" placeholder="Srvc Mode">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="TransportedBy" placeholder="Trns By">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnsrId" placeholder="Cnsr Id">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnsrState" placeholder="Cnsr State">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnsrGstn" placeholder="Cnsr Gstn">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnseCode" placeholder="Cnse Code">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnseName" placeholder="Cnse Name">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnseId" placeholder="Cnse Id">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnseState" placeholder="Cnse State">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CnseGstn" placeholder="Cnse Gstn">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm bg-white" formControlName="CorpCustCode" placeholder="Corp Cust Code">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+                                <div class="row g-3 align-items-end p-1">
+                                    <div class="col-md-2">
+                                        <label for="TotalWaiver" class="form-label text-primary-emphasis fw-semibold">Total Waiver</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light" formControlName="TotalWaiver" readonly>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="TotalCess" class="form-label text-primary-emphasis fw-semibold">Total Cess</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light" formControlName="TotalCess" readonly>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="GrandTotal" class="form-label text-primary-emphasis fw-semibold">Grand Total</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light" formControlName="GrandTotal" readonly>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="Payable" class="form-label text-primary-emphasis fw-semibold">Payable</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light" formControlName="Payable" readonly>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="GroupId" class="form-label text-primary-emphasis fw-semibold">Group ID</label>
+                                        <input type="text" class="form-control form-control-sm border-light rounded-3 shadow-sm bg-light" id="GroupId" formControlName="GroupId">
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-end">
+                                        <button type="button" class="btn btn-primary btn-sm w-100" (click)="openBreakupModal()">
+                                            <i class="bi bi-list-columns me-1"></i> Breakup
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3 p-1">
+                        <div class="col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="SaidToContain" formControlName="SaidToContain">
+                                <label class="form-check-label fw-semibold" for="SaidToContain">
+                                    Said To Contain
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="ContRate" formControlName="ContRate">
+                                <label class="form-check-label fw-semibold" for="ContRate">
+                                    Cont. Rate
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-md-12">
+                            <div class="row mt-3">
+                                <div class="button-wrapper">
+                                    <button class="btn-modern submit-btn" type="submit">
+                                        <i class="bi bi-check-circle-fill me-2"></i> Submit
+                                    </button>
+                                    <button class="btn-modern reset-btn">
+                                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="breakupModal" tabindex="-1" aria-labelledby="breakupModalLabel" aria-hidden="true"
+    [ngClass]="{'show d-block': isBreakupModalOpen}" [style.display]="isBreakupModalOpen ? 'block' : 'none'">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="breakupModalLabel">Breakup Details</h5>
+                <button type="button" class="btn-close" (click)="closeBreakupModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive" style="max-height: 400px; overflow: auto;">
+                    <table class="table table-sm table-bordered">
+                        <thead style="position: sticky; top: 0; z-index: 1;">
+                            <tr>
+                                <th rowspan="2" class="text-nowrap" style="color: black; position: sticky; left: 0; background-color: #f8f9fa;">Charges</th>
+                                <ng-container *ngFor="let container of breakupData.containerNumbers">
+                                    <th colspan="2" class="text-center" style="color: black;">{{ container }}</th>
+                                </ng-container>
+                            </tr>
+                            <tr>
+                                <ng-container *ngFor="let container of breakupData.containerNumbers">
+                                    <th class="text-center" style="color: black;">Amt</th>
+                                    <th class="text-center" style="color: black;">GST</th>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let charge of breakupData.charges">
+                                <td class="text-nowrap" style="position: sticky; left: 0; background-color: #f8f9fa;">{{ charge.name }}</td>
+                                <ng-container *ngFor="let container of breakupData.containerNumbers">
+                                    <td class="text-end">{{ charge.data[container]?.amount || '-' }}</td>
+                                    <td class="text-end">{{ charge.data[container]?.gst || '-' }}</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeBreakupModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

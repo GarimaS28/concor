@@ -1,0 +1,624 @@
+<form  [formGroup]="form"  (ngSubmit)="onSubmit()">
+  <!--First grid -->
+
+  <div id="form1" >
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif ;">Gate In Pass</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3">
+          
+         <div class="row g-3 align-items-stretch p-1">
+
+  <!-- Left side: two stacked groups in one col-md-8 container -->
+  <div class="col-md-8">
+    <!-- First Row -->
+    <div class="row g-3">
+      <!-- Station From -->
+      <div class="col-md-6">
+        <label for="GTInSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Station<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSttnFrm" name="GTInSttnFrm" formControlName="GTInSttnFrm" placeholder="Enter station">
+      </div>
+
+      <!-- Current Date -->
+      <div class="col-md-6">
+        <label for="GTInCurrDate" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Date
+        </label>
+        <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInCurrDate" name="GTInCurrDate" formControlName="GTInCurrDate" >
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row g-2 mt-1">
+      <!-- Gate Pass number -->
+      <div class="col-md-3">
+        <label for="GTInPassNumb" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Gate Pass number<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInPassNumb" name="GTInPassNumb" formControlName="GTInPassNumb" placeholder="Enter Gate-pass Number">
+      </div>
+
+      <!-- Vehicle number -->
+      <div class="col-md-3">
+        <label for="GTInVhclNo" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Vehicle number<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInVhclNo" name="GTInVhclNo" formControlName="GTInVhclNo" placeholder="Enter Vehicle number">
+      </div>
+
+      <!-- Issue time -->
+      <div class="col-md-3">
+        <label for="GTInIssueTm" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Issue time
+        </label>
+        <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInIssueTm" name="GTInIssueTm" formControlName="GTInIssueTm" >
+      </div>
+
+      <!-- Valid upto -->
+      <div class="col-md-3">
+        <label for="GTInVldUpTo" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Valid upto
+        </label>
+        <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInVldUpTo" name="GTInVldUpTo" formControlName="GTInVldUpTo" >
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side: Transported by -->
+                <div class="col-md-4 d-flex">
+  <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-1 pb-1 w-100 align-self-stretch">
+    <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+      <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Transported by<span class="text-danger"> *</span>
+    </legend>
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="d-flex flex-row gap-5">
+        <!-- Truck -->
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input me-2"
+            type="radio"
+            id="GTInTpbyCncr"
+            name="GTInTrpdby"
+            [value]="'Concor'"
+            formControlName="GTInTrpdby"
+          />
+          <label class="form-check-label text-dark fw-semibold" for="allotRebooking">
+            <i class="bi bi-arrow-repeat text-primary me-1"></i> Concor
+          </label>
+        </div>
+
+        <!-- Trailer -->
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input me-2"
+            type="radio"
+            id="GTInTpbyCust"
+            name="GTInTrpdby"
+            [value]="'Customer'"
+            formControlName="GTInTrpdby"
+          />
+          <label class="form-check-label text-dark fw-semibold" for="AllotRake">
+            <i class="bi bi-train-front text-success me-1"></i> Customer
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+                
+        </div>
+
+
+
+        <div class="row g-3 align-items-end  p-1">
+
+            <!-- Toggle Section -->
+            <div class="col-md-2">
+              <label for="GTInDrvrName" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Driver Name<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTInDrvrName"
+                         name="GTInDrvrName"
+                         formControlName="GTInDrvrName"
+                         placeholder="Enter Driver Name">
+                
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTInHlprName" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Helper Name<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTInHlprName"
+                         name="GTInHlprName"
+                         formControlName="GTInHlprName"
+                         placeholder="Enter Helper Name">
+            </div>
+          
+            <!-- Input Fields Section -->
+            <div class="col-md-2">
+              <label for="GTInAddrs" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Address<span class="text-danger"> *</span>
+                  </label>
+                  <input type="datetime"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTInAddrs"
+                         name="GTInAddrs"
+                         formControlName="GTInAddrs"
+                         placeholder="Enter Address">
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTInDtTime" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> GateIn Date/Time
+                  </label>
+                  <input type="datetime-local"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTInDtTime"
+                         name="GTInDtTime"
+                         formControlName="GTInDtTime"
+                         >
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTInAuth" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Authority<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTInAuth"
+                         name="GTInAuth"
+                         formControlName="GTInAuth"
+                         placeholder="Enter Authority By">
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTInRmrks" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Remarks<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTInRmrks"
+                         name="GTInRmrks"
+                         formControlName="GTInRmrks"
+                         placeholder="Enter Remarks">
+            </div>
+          </div>
+
+          
+            <div class="row p-1">
+              
+              <!-- Middle column: content -->
+              <div class="col-md-12">
+
+                <!-- Consigner Section (displayed when showConsigner is true) -->
+                <div class="row" >
+
+                  <div class="col-md-6">
+                    
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> First Container<span class="text-danger"> *</span> 
+                      </legend>
+                  
+                      
+                      
+                  
+                      <!-- Row 2: Address, City, State -->
+                      <div class="row g-2 ">
+                        <!-- Address -->
+                        <div class="col-md-6">
+                            <div class="row g-2 ">
+
+                                <div class="col-md-12">
+                                <label for="GTInFCtnrno" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Container no:
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInFCtnrno" name="GTInFCtnrno" formControlName="GTInFCtnrno" placeholder="Enter Container no."  >
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-row gap-4">
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInFCtnrL"
+                                        name="GTInFCtnrLE"
+                                        formControlName="GTInFCtnrLE"
+                                        [value]="'L'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInFCtnrL">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Loaded
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInFCtnrE"
+                                        name="GTInFCtnrLE"
+                                        formControlName="GTInFCtnrLE"
+                                        [value]="'E'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInFCtnrE">
+                                        <i class="bi bi-train-front text-success me-1"></i> Empty
+                                        </label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTInFCtnrSz" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Size
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInFCtnrSz" name="GTInFCtnrSz" formControlName="GTInFCtnrSz" placeholder="Enter Size"  >
+                                </div>
+
+                                
+                                    
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTInFCtnrType" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Type
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInFCtnrType" name="GTInFCtnrType" formControlName="GTInFCtnrType" placeholder="Enter Type"  >
+                                </div>
+
+                               
+                                    
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 align-self-stretch">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> For
+                                </legend>
+                                
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-column gap-3">
+                                      
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInFCtnrfrAStfng"
+                                        name="GTInFCtnrFor"
+                                        formControlName="GTInFCtnrFor"
+                                        [value]="'AftrStfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInFCtnrfrAStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i> After Stuffing
+                                        </label>
+                                    </div>
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInFCtnrfrADStfng"
+                                        name="GTInFCtnrFor"
+                                        formControlName="GTInFCtnrFor"
+                                        [value]="'AftrDStfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInFCtnrfrADStfng">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i> After Destuffing
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInFCtnrfrADStfngStfng"
+                                        name="GTInFCtnrFor"
+                                        formControlName="GTInFCtnrFor"
+                                        [value]="'aftrstfngdstfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInFCtnrfrADStfngStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i> After Destuffing & Stuffing
+                                        </label>
+                                    </div>
+
+                                    
+
+                                    </div>
+                                </div>
+                              </fieldset>
+                        
+                        </div>
+
+                      </div>
+
+                       <div class="row g-2 mt-1">
+
+                        <div class="col-md-3">
+                                <label for="GTInFCtnrSFcd" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> S/F Code
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInFCtnrSFcd" name="GTInFCtnrSFcd" formControlName="GTInFCtnrSFcd" placeholder="Enter S/F code"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTInFCtnrDSIS" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> DSO/ISO
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInFCtnrDSIS" name="GTInFCtnrDSIS" formControlName="GTInFCtnrDSIS" placeholder="Enter DSO/ISO"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTInFCtnrWght" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Weight
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInFCtnrWght" name="GTInFCtnrWght" formControlName="GTInFCtnrWght" placeholder="Enter Weight"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTInFCtnrSpngLn" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Shipping Line
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInFCtnrSpngLn" name="GTInFCtnrSpngLn" formControlName="GTInFCtnrSpngLn" placeholder="Enter Shipping Line"  >
+                                </div>
+
+                       </div>
+
+                     
+                      </fieldset>
+                    
+                  </div>
+
+                  <div class="col-md-6">
+                    
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Second Container 
+                      </legend>
+                  
+                      
+                      
+                  
+                      <!-- Row 2: Address, City, State -->
+                      <div class="row g-2 ">
+                        <!-- Address -->
+                        <div class="col-md-6">
+                            <div class="row g-2 ">
+
+                                <div class="col-md-12">
+                                <label for="GTInSCtnrno" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Container no:
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSCtnrno" name="GTInSCtnrno" formControlName="GTInSCtnrno" placeholder="Enter Container no."  >
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-row gap-4">
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInSCtnrL"
+                                        name="GTInSCtnrLE"
+                                        formControlName="GTInSCtnrLE"
+                                        [value]="'L'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInSCtnrL">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Loaded
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInSCtnrE"
+                                        name="GTInSCtnrLE"
+                                        formControlName="GTInSCtnrLE"
+                                        [value]="'E'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInSCtnrE">
+                                        <i class="bi bi-train-front text-success me-1"></i> Empty
+                                        </label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTInSCtnrSz" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Size
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSCtnrSz" name="GTInSCtnrSz" formControlName="GTInSCtnrSz" placeholder="Enter Size"  >
+                                </div>
+                                    
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTInSCtnrType" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Type
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSCtnrType" name="GTInSCtnrType" formControlName="GTInSCtnrType" placeholder="Enter Type"  >
+                                </div>
+                                    
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 align-self-stretch">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> For
+                                </legend>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-column gap-3">
+                                      
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInSCtnrfrAStfng"
+                                        name="GTInSCtnrFor"
+                                        formControlName="GTInSCtnrFor"
+                                        [value]="'AftrStfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInSCtnrfrAStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i> After Stuffing
+                                        </label>
+                                    </div>
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInSCtnrfrADStfng"
+                                        name="GTInSCtnrFor"
+                                        formControlName="GTInSCtnrFor"
+                                        [value]="'AftrDStfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInSCtnrfrADStfng">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i> After Destuffing
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTInSCtnrfrADStfngStfng"
+                                        name="GTInSCtnrFor"
+                                        formControlName="GTInSCtnrFor"
+                                        [value]="'aftrstfngdstfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTInSCtnrfrADStfngStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i> After Destuffing & Stuffing
+                                        </label>
+                                    </div>
+
+                                    
+                                    </div>
+                                </div>
+                              </fieldset>
+                        
+                        </div>
+
+                      </div>
+
+                      <div class="row g-2 mt-1">
+
+                        
+
+                                <div class="col-md-3">
+                                <label for="GTInSCtnrSFcd" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> S/F Code
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSCtnrSFcd" name="GTInSCtnrSFcd" formControlName="GTInSCtnrSFcd" placeholder="Enter S/F code"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTInSCtnrDSIS" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> DSO/ISO
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSCtnrDSIS" name="GTInSCtnrDSIS" formControlName="GTInSCtnrDSIS" placeholder="Enter DSO/ISO"  >
+                                </div>
+
+                                
+
+                                <div class="col-md-3">
+                                <label for="GTInSCtnrWght" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Weight
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSCtnrWght" name="GTInSCtnrWght" formControlName="GTInSCtnrWght" placeholder="Enter Weight"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTInSCtnrSpngLn" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Shipping Line
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTInSCtnrSpngLn" name="GTInSCtnrSpngLn" formControlName="GTInSCtnrSpngLn" placeholder="Enter Shipping Line"  >
+                                </div>
+
+                      </div>
+
+
+                      </fieldset>
+                    
+                  </div>
+                  
+                  
+                  
+            
+                
+                
+                
+
+                </div>
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2"></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                   
+                </div>
+                
+              </div>
+            
+            </div>
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>

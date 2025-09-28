@@ -1,0 +1,623 @@
+<form  [formGroup]="form"  (ngSubmit)="onSubmit()">
+  <!--First grid -->
+
+  <div id="form1" >
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif ;">Gate Out Pass</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3">
+          
+         <div class="row g-3 align-items-stretch p-1">
+
+  <!-- Left side: two stacked groups in one col-md-8 container -->
+  <div class="col-md-8">
+    <!-- First Row -->
+    <div class="row g-3">
+      <!-- Station From -->
+      <div class="col-md-6">
+        <label for="GTOutSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Station<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSttnFrm" name="GTOutSttnFrm" formControlName="GTOutSttnFrm" placeholder="Enter station">
+      </div>
+
+      <!-- Current Date -->
+      <div class="col-md-6">
+        <label for="GTOutCurrDate" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Date
+        </label>
+        <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutCurrDate" name="GTOutCurrDate" formControlName="GTOutCurrDate" >
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row g-2 mt-1">
+      <!-- Gate Pass number -->
+      <div class="col-md-3">
+        <label for="GTOutPassNumb" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Gate Pass number<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutPassNumb" name="GTOutPassNumb" formControlName="GTOutPassNumb" placeholder="Enter Gate-pass Number">
+      </div>
+
+      <!-- Vehicle number -->
+      <div class="col-md-3">
+        <label for="GTOutVhclNo" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Vehicle number<span class="text-danger"> *</span>
+        </label>
+        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutVhclNo" name="GTOutVhclNo" formControlName="GTOutVhclNo" placeholder="Enter Vehicle number">
+      </div>
+
+      <!-- Issue time -->
+      <div class="col-md-3">
+        <label for="GTOutIssueTm" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Issue time
+        </label>
+        <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutIssueTm" name="GTOutIssueTm" formControlName="GTOutIssueTm" >
+      </div>
+
+      <!-- Valid upto -->
+      <div class="col-md-3">
+        <label for="GTOutVldUpTo" class="form-label text-primary-emphasis fw-semibold">
+          <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Valid upto
+        </label>
+        <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutVldUpTo" name="GTOutVldUpTo" formControlName="GTOutVldUpTo" >
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side: Transported by -->
+                <div class="col-md-4 d-flex">
+  <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-1 pb-1 w-100 align-self-stretch">
+    <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+      <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Transported by<span class="text-danger"> *</span>
+    </legend>
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="d-flex flex-row gap-5">
+        <!-- Truck -->
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input me-2"
+            type="radio"
+            id="GTOutTpbyCncr"
+            name="GTOutTrpdby"
+            [value]="'Concor'"
+            formControlName="GTOutTrpdby"
+          />
+          <label class="form-check-label text-dark fw-semibold" for="allotRebooking">
+            <i class="bi bi-arrow-repeat text-primary me-1"></i> Concor
+          </label>
+        </div>
+
+        <!-- Trailer -->
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input me-2"
+            type="radio"
+            id="GTOutTpbyCust"
+            name="GTOutTrpdby"
+            [value]="'Customer'"
+            formControlName="GTOutTrpdby"
+          />
+          <label class="form-check-label text-dark fw-semibold" for="AllotRake">
+            <i class="bi bi-train-front text-success me-1"></i> Customer
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+                
+        </div>
+
+
+
+        <div class="row g-3 align-items-end  p-1">
+
+            <!-- Toggle Section -->
+            <div class="col-md-2">
+              <label for="GTOutDrvrName" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Driver Name<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTOutDrvrName"
+                         name="GTOutDrvrName"
+                         formControlName="GTOutDrvrName"
+                         placeholder="Enter Driver Name">
+                
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTOutHlprName" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Helper Name<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTOutHlprName"
+                         name="GTOutHlprName"
+                         formControlName="GTOutHlprName"
+                         placeholder="Enter Helper Name">
+            </div>
+          
+            <!-- Input Fields Section -->
+            <div class="col-md-2">
+              <label for="GTOutAddrs" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Address<span class="text-danger"> *</span>
+                  </label>
+                  <input type="datetime"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTOutAddrs"
+                         name="GTOutAddrs"
+                         formControlName="GTOutAddrs"
+                         placeholder="Enter Address">
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTOutDtTime" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> GateOut Date/Time
+                  </label>
+                  <input type="datetime-local"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTOutDtTime"
+                         name="GTOutDtTime"
+                         formControlName="GTOutDtTime"
+                         >
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTOutJbOrdrN" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Job Order number<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTOutJbOrdrN"
+                         name="GTOutJbOrdrN"
+                         formControlName="GTOutJbOrdrN"
+                         placeholder="Enter Job-order Number">
+            </div>
+
+            <div class="col-md-2">
+              <label for="GTOutRmrks" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Remarks<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="GTOutRmrks"
+                         name="GTOutRmrks"
+                         formControlName="GTOutRmrks"
+                         placeholder="Enter Remarks">
+            </div>
+          </div>
+
+          
+            <div class="row p-1">
+              
+              <!-- Middle column: content -->
+              <div class="col-md-12">
+
+                <!-- Consigner Section (displayed when showConsigner is true) -->
+                <div class="row" >
+
+                  <div class="col-md-6">
+                    
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> First Container <span class="text-danger"> *</span>
+                      </legend>
+                  
+                      
+                      
+                  
+                      <!-- Row 2: Address, City, State -->
+                      <div class="row g-2 ">
+                        <!-- Address -->
+                        <div class="col-md-6">
+                            <div class="row g-2 ">
+
+                                <div class="col-md-12">
+                                <label for="GTOutFCtnrno" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Container no:
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutFCtnrno" name="GTOutFCtnrno" formControlName="GTOutFCtnrno" placeholder="Enter Ctnr no."  >
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-row gap-4">
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutFCtnrL"
+                                        name="GTOutFCtnrLE"
+                                        formControlName="GTOutFCtnrLE"
+                                        [value]="'L'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutFCtnrL">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Loaded
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutFCtnrE"
+                                        name="GTOutFCtnrLE"
+                                        formControlName="GTOutFCtnrLE"
+                                        [value]="'E'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutFCtnrE">
+                                        <i class="bi bi-train-front text-success me-1"></i> Empty
+                                        </label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTOutFCtnrSz" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Size
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutFCtnrSz" name="GTOutFCtnrSz" formControlName="GTOutFCtnrSz" placeholder="Enter Size"  >
+                                </div>
+                                    
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTOutFCtnrType" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Type
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutFCtnrType" name="GTOutFCtnrType" formControlName="GTOutFCtnrType" placeholder="Enter Type"  >
+                                </div>
+                                    
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 align-self-stretch">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> For
+                                </legend>
+                                
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-column gap-3">
+                                      
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutFCtnrfrStfng"
+                                        name="GTOutFCtnrFor"
+                                        formControlName="GTOutFCtnrFor"
+                                        [value]="'Stfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutFCtnrfrStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i>Stuffing
+                                        </label>
+                                    </div>
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutFCtnrfrDStfng"
+                                        name="GTOutFCtnrFor"
+                                        formControlName="GTOutFCtnrFor"
+                                        [value]="'DStfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutFCtnrfrDStfng">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i>Destuffing
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutFCtnrfrDStfngStfng"
+                                        name="GTOutFCtnrFor"
+                                        formControlName="GTOutFCtnrFor"
+                                        [value]="'Dstfngstfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutFCtnrfrDStfngStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i>Destuffing & Stuffing
+                                        </label>
+                                    </div>
+
+
+                                    </div>
+                                </div>
+                              </fieldset>
+                        
+                        </div>
+
+                      </div>
+
+                      <div class="row g-2 mt-1">
+
+                        <div class="col-md-3">
+                                <label for="GTOutFCtnrSFcd" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> S/F Code
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutFCtnrSFcd" name="GTOutFCtnrSFcd" formControlName="GTOutFCtnrSFcd" placeholder="Enter S/F code"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTOutFCtnrDSIS" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> DSO/ISO
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutFCtnrDSIS" name="GTOutFCtnrDSIS" formControlName="GTOutFCtnrDSIS" placeholder="Enter DSO/ISO"  >
+                                </div>
+
+                                
+
+                                <div class="col-md-3">
+                                <label for="GTOutFCtnrWght" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Weight
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutFCtnrWght" name="GTOutFCtnrWght" formControlName="GTOutFCtnrWght" placeholder="Enter Weight"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTOutFCtnrSpngLn" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Shipping Line
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutFCtnrSpngLn" name="GTOutFCtnrSpngLn" formControlName="GTOutFCtnrSpngLn" placeholder="Enter Shipping Line"  >
+                                </div>
+
+                      </div>
+
+                      
+                      </fieldset>
+                    
+                  </div>
+
+                  <div class="col-md-6">
+                    
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Second Container 
+                      </legend>
+                  
+                      
+                      
+                  
+                      <!-- Row 2: Address, City, State -->
+                      <div class="row g-2 ">
+                        <!-- Address -->
+                        <div class="col-md-6">
+                            <div class="row g-2 ">
+
+                                <div class="col-md-12">
+                                <label for="GTOutSCtnrno" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Container no:
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSCtnrno" name="GTOutSCtnrno" formControlName="GTOutSCtnrno" placeholder="Enter Ctnr no."  >
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-row gap-4">
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutSCtnrL"
+                                        name="GTOutSCtnrLE"
+                                        formControlName="GTOutSCtnrLE"
+                                        [value]="'L'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutSCtnrL">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Loaded
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutSCtnrE"
+                                        name="GTOutSCtnrLE"
+                                        formControlName="GTOutSCtnrLE"
+                                        [value]="'E'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutSCtnrE">
+                                        <i class="bi bi-train-front text-success me-1"></i> Empty
+                                        </label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTOutSCtnrSz" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Size
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSCtnrSz" name="GTOutSCtnrSz" formControlName="GTOutSCtnrSz" placeholder="Enter Size"  >
+                                </div>
+                                    
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                <div class="col-md-12">
+                                <label for="GTOutSCtnrType" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Type
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSCtnrType" name="GTOutSCtnrType" formControlName="GTOutSCtnrType" placeholder="Enter Type"  >
+                                </div>
+                                    
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-2 w-100 align-self-stretch">
+                                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                                    <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> For
+                                </legend>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="d-flex flex-column gap-3">
+                                      
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutSCtnrfrStfng"
+                                        name="GTOutSCtnrFor"
+                                        formControlName="GTOutSCtnrFor"
+                                        [value]="'AftrStfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutSCtnrfrStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i>Stuffing
+                                        </label>
+                                    </div>
+                                    <!-- Truck -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutSCtnrfrDStfng"
+                                        name="GTOutSCtnrFor"
+                                        formControlName="GTOutSCtnrFor"
+                                        [value]="'DStfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutSCtnrfrDStfng">
+                                        <i class="bi bi-arrow-repeat text-primary me-1"></i>Destuffing
+                                        </label>
+                                    </div>
+
+                                    <!-- Trailer -->
+                                    <div class="form-check d-flex align-items-center">
+                                        <input
+                                        class="form-check-input me-2"
+                                        type="radio"
+                                        id="GTOutSCtnrfrDStfngStfng"
+                                        name="GTOutSCtnrFor"
+                                        formControlName="GTOutSCtnrFor"
+                                        [value]="'Dstfngstfng'"
+                                        />
+                                        <label class="form-check-label text-dark fw-semibold" for="GTOutSCtnrfrDStfngStfng">
+                                        <i class="bi bi-train-front text-success me-1"></i>Destuffing & Stuffing
+                                        </label>
+                                    </div>
+
+
+                                    
+
+                                    </div>
+                                </div>
+                              </fieldset>
+                        
+                        </div>
+
+                      </div>
+
+                      <div class="row g-2 mt-1">
+
+                        
+
+                                <div class="col-md-3">
+                                <label for="GTOutSCtnrSFcd" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> S/F Code
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSCtnrSFcd" name="GTOutSCtnrSFcd" formControlName="GTOutSCtnrSFcd" placeholder="Enter S/F code"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTOutSCtnrDSIS" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> DSO/ISO
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSCtnrDSIS" name="GTOutSCtnrDSIS" formControlName="GTOutSCtnrDSIS" placeholder="Enter DSO/ISO"  >
+                                </div>
+
+                                
+
+                                <div class="col-md-3">
+                                <label for="GTOutSCtnrWght" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Weight
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSCtnrWght" name="GTOutSCtnrWght" formControlName="GTOutSCtnrWght" placeholder="Enter Weight"  >
+                                </div>
+
+                                <div class="col-md-3">
+                                <label for="GTOutSCtnrSpngLn" class="form-label text-primary-emphasis fw-semibold">
+                                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Shipping Line
+                                </label>
+                                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="GTOutSCtnrSpngLn" name="GTOutSCtnrSpngLn" formControlName="GTOutSCtnrSpngLn" placeholder="Enter Shipping Line"  >
+                                </div>
+
+                      </div>
+
+                      
+                      
+                      </fieldset>
+                    
+                  </div>
+                  
+                  
+                  
+            
+                
+                
+                
+
+                </div>
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2"></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                   
+                </div>
+                
+              </div>
+            
+            </div>
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>

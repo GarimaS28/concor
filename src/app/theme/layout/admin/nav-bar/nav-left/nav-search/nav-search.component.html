@@ -1,0 +1,32 @@
+<a href="javascript:" (click)="searchOn = true" class="pop-search" title="Search">
+  <i class="feather icon-search"></i>
+</a>
+
+<div *ngIf="searchOn" class="search-bar">
+  <input 
+    type="text" 
+    [(ngModel)]="searchQuery" 
+    (input)="filterComponents()" 
+    (keydown.enter)="handleEnterKey()" 
+    class="form-control border-0 shadow-none" 
+    placeholder="Search here" />
+
+    <ul 
+  *ngIf="filteredComponents.length > 0" 
+  class="list-group position-absolute w-100 z-1 scrollable-list border-gradient border-gradient-search">
+  <li 
+    *ngFor="let comp of filteredComponents" 
+    (click)="navigateToComponent(comp.route)" 
+    class="list-group-item list-group-item-action cursor-pointer">
+    {{ comp.name }}
+  </li>
+</ul>
+
+
+ 
+
+  <button (click)="searchOn = false" type="button" class="btn-close close" aria-label="Close"></button>
+</div>
+
+
+

@@ -1,0 +1,119 @@
+/* input[type="text"],
+input[type="number"],
+input[type="date"] {
+  padding: 4px;
+  width: 150px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+} */
+
+.card {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.flex-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea {
+  padding: 6px 10px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.radio-box {
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.ribbon-header {
+  background-color: #e0f0ff;
+  color: #003366;
+  padding: 12px 20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 1px solid #b3d9ff;
+  margin-bottom: 20px;
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 2px solid red;
+}

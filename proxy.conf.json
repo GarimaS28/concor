@@ -1,0 +1,11 @@
+{
+  "/baseUrl": {
+    "target": "http://172.16.4.69:9101",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
+
+
+  

@@ -1,0 +1,668 @@
+<form [formGroup]="form"  (ngSubmit)="onSubmit()">
+  <!--First grid -->
+
+  <div id="form1" > 
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif ;">Job Order for Trailer Loading on Party Trailer</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3">
+          
+         
+          
+          <div class="row g-3 align-items-end p-1">
+
+            <!-- Station From -->
+            <div class="col-md-2">
+              <label for="JBODSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Station From<span class="text-danger"> *</span>
+              </label>
+              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODSttnFrm" id="JBODSttnFrm" name="JBODSttnFrm" placeholder="Enter station">
+            </div>
+
+            <!-- Current Date -->
+            <div class="col-md-2">
+              <label for="JBODCurrDate" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Date
+              </label>
+              <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODCurrDate" id="JBODCurrDate"  name="JBODCurrDate">
+            </div>
+          
+            <!-- Consignment ID -->
+            <div class="col-md-3">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Trailer owner<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <!-- <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="JBODOwnrcncr"
+                        name="JBODTrlrOwnr"
+                        formControlName="JBODTrlrOwnr"
+                        [value]="'P'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="allotRebooking">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> ConCor
+                      </label>
+                    </div> -->
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="JBODTrlrOwnrcust"
+                        name="JBODTrlrOwnr"
+                        formControlName="JBODTrlrOwnr"
+                        [value]="'C'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="AllotRake">
+                        <i class="bi bi-train-front text-success me-1"></i> Customer
+                      </label>
+                    </div>
+            
+
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          
+            
+          
+            <!-- Service Mode -->
+            <div class="col-md-2">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Container Owner <span class="text-danger"> *</span>
+                </legend>
+          
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+          
+                    <!-- Rebooking -->
+                    <div class="form-check form-switch d-flex align-items-center">
+                      <input class="form-check-input me-2" type="checkbox" id="JBODCtnrOwnr" formControlName="JBODCtnrOwnr" name="JBODCtnrOwnr">
+                      <label class="form-check-label text-dark fw-semibold" for="JBODCtnrOwnr">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> customer Owned
+                      </label>
+                    </div>
+          
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          
+            <!-- Required Date -->
+            <div class="col-md-3">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Customer Type<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="JBODcutpTransporter"
+                        name="JBODCustType"
+                        formControlName="JBODCustType"
+                        [value]="'T'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="allotRebooking">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Transporter 
+                      </label>
+                    </div>
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="JBODcutpBA"
+                        name="JBODCustType"
+                        formControlName="JBODCustType"
+                        [value]="'B'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="AllotRake">
+                        <i class="bi bi-train-front text-success me-1"></i> BA
+                      </label>
+                    </div>
+            
+
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            
+          
+          </div>
+          
+          
+          <div class="row g-3 align-items-end  p-1">
+
+            <!-- Toggle Section -->
+            <div class="col-md">
+              <label for="JBODwkOdrno" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Work Order no<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODwkOdrno"
+                         name="JBODwkOdrno"
+                         formControlName="JBODwkOdrno"
+                         placeholder="Work Order no">
+                
+            </div>
+
+            <div class="col-md">
+              <label for="JBODjbOdrno" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Job Order no<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODjbOdrno"
+                         name="JBODjbOdrno"
+                         formControlName="JBODjbOdrno"
+                         placeholder="Job order no">
+            </div>
+          
+            <!-- Input Fields Section -->
+            <div class="col-md">
+              <label for="JBODissueDT" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Issuing Date/Time
+                  </label>
+                  <input type="datetime-local"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODissueDT"
+                         name="JBODissueDT"
+                         formControlName="JBODissueDT"
+                         placeholder="Enter station">
+            </div>
+
+            <div class="col-md">
+              <label for="JBODhndlctnrcd" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> HNDL Contractor Code<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODhndlctnrcd"
+                         name="JBODhndlctnrcd"
+                         formControlName="JBODhndlctnrcd"
+                         placeholder="Enter NDL Contractor Code">
+            </div>
+
+            <div class="col-md">
+              <label for="JBODtnptctnrcd" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> TNPT Contractor Code<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODtnptctnrcd"
+                         name="JBODtnptctnrcd"
+                         formControlName="JBODtnptctnrcd"
+                         placeholder="Enter TNPT Contractor Code">
+            </div>
+
+            
+          </div>
+
+          <div class="row g-3 align-items-end  p-1">
+
+            <!-- Toggle Section -->
+            <div class="col-md">
+              <label for="JBODcnIdPrno" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Consignment Id/ Permit no<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODcnIdPrno"
+                         name="JBODcnIdPrno"
+                         formControlName="JBODcnIdPrno"
+                         placeholder="Enter Consignment Id/ Permit no">
+                
+            </div>
+
+            <div class="col-md">
+              <label for="JBODbnGtCucode" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Bank Gurantee customer Code<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODbnGtCucode"
+                         name="JBODbnGtCucode"
+                         formControlName="JBODbnGtCucode"
+                         placeholder="Enter Bank Gurantee customer Code">
+            </div>
+          
+            <!-- Input Fields Section -->
+            <div class="col-md">
+              <label for="JBODeffDT" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Effective Date/Time
+                  </label>
+                  <input type="datetime-local"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODeffDT"
+                         name="JBODeffDT"
+                         formControlName="JBODeffDT"
+                         >
+            </div>
+
+            
+              <div class="col-md">
+              <label for="JBODtrlrno" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Trailer number<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODtrlrno"
+                         name="JBODtrlrno"
+                         formControlName="JBODtrlrno"
+                         placeholder="Enter Trailer number">
+            </div>
+           
+
+            <div class="col-md">
+              <label for="JBODbaCode" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> BA Code<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="JBODbaCode"
+                         name="JBODbaCode"
+                         formControlName="JBODbaCode"
+                         placeholder="Enter BA Code">
+            </div>
+
+            
+          </div>
+          
+            <div class="row p-1">
+              
+              <!-- Middle column: content -->
+              <div class="col-md-12">
+
+                <!-- Consigner Section (displayed when showConsigner is true) -->
+                <div class="row d-flex align-items-stretch" >
+
+                <div class="col-md-3">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-5  h-100">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Loading / Unloading<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+                    
+                    <!-- UnLoading -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="JBODselUnLdng"
+                        name="JBODLdngUN"
+                        formControlName="JBODLdngUN"
+                        [value]="'U'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="JBODselUnLdng">
+                        <i class="bi bi-train-front text-success me-1"></i> Unloading
+                      </label>
+                    </div>
+
+                    <!-- Loading -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="JBODselLdng"
+                        name="JBODLdngUN"
+                        formControlName="JBODLdngUN"
+                        [value]="'L'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="JBODselLdng">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Loading
+                      </label>
+                    </div>
+            
+                    
+            
+
+            
+                  </div>
+                </div>
+              </fieldset>
+                </div>
+
+                  
+
+                  <div class="col-md-5">
+                    
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100" [disabled]="!isUnloadingSelected">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Trailer Unloading 
+                      </legend>
+                  
+                      <!-- Row 1:  -->
+                      <div class="row g-2 mt-1">
+                        <!-- Address -->
+                        <div class="col-md-4">
+                          <label for="JBODtrUfstCtnr" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 1st Container
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODtrUfstCtnr" id="JBODtrUfstCtnr" name="JBODtrUfstCtnr" placeholder="Enter Container no" [value]="" >
+                        </div>
+                      
+                        <!-- City -->
+                        <div class="col-md-4">
+                          <label for="JBODtrUstklocn1" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Stack Location
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODtrUstklocn1" id="JBODtrUstklocn1" name="JBODtrUstklocn1" placeholder="Stack Location" [value]="" >
+                        </div>
+                      
+                        <!-- State -->
+                        <div class="col-md-4">
+                          <label for="JBODtrUeqpid1" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id1
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUeqpid1" formControlName="JBODtrUeqpid1" name="JBODtrUeqpid1" placeholder="Eqpt ID" [value]="" >
+                        </div>
+                      </div>
+
+                      <!-- Row 2:  -->
+                      <div class="row g-2 mt-1">
+                        <!-- Address -->
+                        <div class="col-md-4">
+                          <label for="JBODtrUsndCtnr" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 2nd Container
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUsndCtnr" formControlName="JBODtrUsndCtnr" name="JBODtrUsndCtnr" placeholder="Enter Container no" [value]="" >
+                        </div>
+                      
+                        <!-- City -->
+                        <div class="col-md-4">
+                          <label for="JBODtrUstklocn2" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Stack Locn
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUstklocn2" formControlName="JBODtrUstklocn2" name="JBODtrUstklocn2" placeholder="Stack Location" [value]="" >
+                        </div>
+                      
+                        <!-- State -->
+                        <div class="col-md-4">
+                          <label for="JBODtrUeqpid2" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id2
+                          </label>
+                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUeqpid2" formControlName="JBODtrUeqpid2" name="JBODtrUeqpid2" placeholder="Eqpt ID" [value]="" >
+                        </div>
+                      </div>
+                      
+                  
+                      </fieldset>
+                    
+                  </div>
+
+                  
+                  
+                <!-- Consignee Section (displayed when showConsignee is false) -->
+                    <div class="col-md-4">
+                        
+                        <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100" [disabled]="!isLoadingSelected">
+                          <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+                            <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Trailer Loading 
+                          </legend>
+                      
+                          <!-- Row 1:  -->
+                          <div class="row g-2 mt-1">
+                            <!-- Address -->
+                            <div class="col-md-6">
+                              <label for="JBODtrLfstCtnr" class="form-label text-primary-emphasis fw-semibold">
+                              <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 1st Container
+                              </label>
+                              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrLfstCtnr" formControlName="JBODtrLfstCtnr" name="JBODtrLfstCtnr" placeholder="Enter Container no" [value]="" >
+                            </div>
+                          
+                            <!-- State -->
+                            <div class="col-md-6">
+                              <label for="JBODtrLeqpid1" class="form-label text-primary-emphasis fw-semibold">
+                              <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id
+                              </label>
+                              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrLeqpid1" formControlName="JBODtrLeqpid1" name="JBODtrLeqpid1" placeholder="Eqpt ID" [value]="" >
+                            </div>
+                          </div>
+
+                          <!-- Row 2:  -->
+                          <div class="row g-2 mt-1">
+                            <!-- Address -->
+                            <div class="col-md-6">
+                              <label for="JBODtrLsndCtnr" class="form-label text-primary-emphasis fw-semibold">
+                              <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 2nd Container
+                              </label>
+                              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrLsndCtnr" formControlName="JBODtrLsndCtnr" name="JBODtrLsndCtnr" placeholder="Enter Container no" [value]="" >
+                            </div>
+                          
+                            <!-- State -->
+                            <div class="col-md-6">
+                              <label for="JBODtrLeqpid2" class="form-label text-primary-emphasis fw-semibold">
+                              <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id
+                              </label>
+                              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrLeqpid2" formControlName="JBODtrLeqpid2" name="JBODtrLeqpid2" placeholder="Eqpt ID" [value]="" >
+                            </div>
+                          </div>
+                          
+                      
+                          </fieldset>
+                        
+                      </div>
+                
+                
+
+                </div>
+
+                <!--table grid -->
+
+                <div class="row mt-2">
+              
+               <div class="col-md-5">
+  <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+    <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+      <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Purpose for Delay<span class="text-danger"> *</span>
+    </legend>
+
+    <div class="d-flex justify-content-start align-items-start">
+      <div class="d-flex flex-column gap-2">
+
+        <!-- Gate In -->
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input me-2"
+            type="radio"
+            id="JBODRsnRtoC"
+            name="JBODselRsndly"
+            formControlName="JBODselRsndly"
+            [value]="'P'"
+          />
+          <label class="form-check-label text-dark fw-semibold" for="JBODRsnRtoC">
+            <i class="bi bi-arrow-repeat text-primary me-1"></i> RTO/Customer
+          </label>
+        </div>
+
+        <!-- Gate Out -->
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input me-2"
+            type="radio"
+            id="JBODRsnTo"
+            name="JBODselRsndly"
+            formControlName="JBODselRsndly"
+            [value]="'T'"
+          />
+          <label class="form-check-label text-dark fw-semibold" for="JBODRsnTo">
+            <i class="bi bi-train-front text-success me-1"></i> Terminal Operator
+          </label>
+        </div>
+
+        <!-- Reason Code Input -->
+        <div class="d-flex flex-column">
+          <label for="JBODRsndlyCd" class="form-label text-dark fw-semibold">
+            <i class="bi bi-info-circle text-warning me-1"></i> Reason
+          </label>
+          <input
+            type="text"
+            id="JBODRsndlyCd"
+            name="JBODRsndlyCd"
+            formControlName="JBODRsndlyCd"
+            class="form-control bg-white border-0 shadow-sm rounded-3 px-3 py-2"
+            placeholder="Enter reason"
+          />
+        </div>
+
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+
+                  
+                  
+                <!--table grid end-->
+                <div class="col-md-7">
+                  <div class="">
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Payment Details <span class="text-danger"> *</span>
+                      </legend>
+                
+                    <div class="row g-3">
+                    
+                      <!-- Paid By Section -->
+                      <div class="col-md-4">
+                        
+                          <label class="float-none w-auto px-3 text-primary-emphasis fw-bold">
+                            <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Paid By <span class="text-danger"> *</span>
+                          </label>
+                          <div class="d-flex align-items-center gap-3 p-2">
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" formControlName="JBODpmtDtlspdby" name="JBODpmtDtlspdby" id="JBODpmtDtlsCnsr" value="P" autocomplete="off" checked>
+                              <label class="form-check-label fw-semibold small" for="JBODpmtDtlsCnsr">CNSR</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" formControlName="JBODpmtDtlspdby" name="JBODpmtDtlspdby" id="JBODpmtDtlsCnse" value="C" autocomplete="off">
+                              <label class="form-check-label fw-semibold small" for="JBODpmtDtlsCnse">CNSE</label>
+                            </div>
+                          </div>
+                        
+                      </div>
+                      
+                
+                      <!-- Allot Type Section -->
+                      <div class="col-md-4">
+                          <label class="float-none w-auto px-3 text-primary-emphasis fw-bold">
+                              <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Payment Type <span class="text-danger"> *</span>
+                            </label>
+                          <div class="d-flex gap-3 p-2">
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" formControlName="JBODallotType" name="JBODallotType" id="JBODallotTypeCA" value="N" autocomplete="off" checked>
+                              <label class="form-check-label fw-semibold " for="JBODallotTypeCA">CA</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" formControlName="JBODallotType" name="JBODallotType" id="JBODallotTypePDA" value="P" autocomplete="off">
+                              <label class="form-check-label fw-semibold small" for="JBODallotTypePDA">PDA</label>
+                            </div>
+                          </div>
+                        
+                      </div>
+                      
+                      
+                
+                      <!-- Amount & Receipt Section -->
+                      <div class="col-md-4">
+                        <label for="JBODamt" class="form-label text-primary-emphasis fw-semibold"><i class="bi bi-calendar-range-fill  me-1"></i>Money Receipt  </label>
+                        
+                        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODamt" formControlName="JBODamt" name="JBODamt" placeholder="0.00" readonly>
+
+                      </div>
+                
+                    </div>
+
+                    <div class="row g-3">
+                    
+                      <!-- Paid By Section -->
+                      <div class="col-md-4">
+                        <label for="JBODcrgs" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Charges
+                        </label>
+                        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODcrgs" formControlName="JBODcrgs" name="JBODcrgs" placeholder="Enter Charges">
+                      </div>
+                      
+                
+                      <!-- Allot Type Section -->
+                      <div class="col-md-4">
+                        <label for="JBODsrvcTx" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>GST
+                        </label>
+                        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODsrvcTx" formControlName="JBODsrvcTx" name="JBODsrvcTx" placeholder="Enter GST">
+                      </div>
+                      
+                      
+                
+                      <!-- Amount & Receipt Section -->
+                      <div class="col-md-4">
+                        <label for="JBODtotAmt" class="form-label text-primary-emphasis fw-semibold">
+                          <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Total Amount Incl GST
+                        </label>
+                        <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtotAmt" formControlName="JBODtotAmt" name="JBODtotAmt" placeholder="Total Amount">
+                      </div>
+                
+                    </div>
+                    </fieldset>
+                  </div>
+                </div>
+                
+                
+                </div>
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2" ></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                    
+                    
+                    
+
+                </div>
+                
+              </div>
+            
+            </div>
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>

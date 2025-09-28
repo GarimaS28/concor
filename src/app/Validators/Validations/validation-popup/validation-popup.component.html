@@ -1,0 +1,23 @@
+<div *ngIf="visibleFields?.length" class="validation-popup animate__animated animate__fadeIn">
+  <h6 class="popup-title text-primary fw-semibold mb-2 sticky-top bg-white pt-2 pb-1 px-2 z-1">
+    <i class="bi bi-exclamation-circle me-1"></i> Empty Fields and Validation
+    
+  </h6>
+
+  
+
+  <div class="popup-scrollable">
+    <div *ngFor="let field of visibleFields" class="popup-field d-flex align-items-center justify-content-start gap-2 py-1 px-2 rounded-3"
+         [ngClass]="{
+           'bg-light border-start border-4 border-danger text-danger': !filled[field],
+           'bg-light border-start border-4 border-success text-success': filled[field]
+         }">
+      <i [ngClass]="{
+           'bi-x-circle-fill': !filled[field],
+           'bi-check-circle-fill': filled[field]
+         }" class="bi fs-5"></i>
+
+      <span class="small fw-medium">{{ formatFieldName(field) }}</span>
+    </div>
+  </div>
+</div>

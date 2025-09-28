@@ -1,0 +1,125 @@
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.img-fluid {
+    animation: zoomIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.img-fluidd {
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.formcard {
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+
+
+
+.auth-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.blur-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/assets/images/rishu.jpg') no-repeat center center;
+  background-size: cover;
+  filter: blur(12px);
+  z-index: 0;
+}
+
+.corner-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+.corner-logo img {
+  height: 90px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.auth-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 400px;
+}
+
+.formcard {
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.login-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 1.5rem;
+}
+
+.login-title::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  margin: 6px auto 0 auto;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.login-title:hover::after {
+  width: 80%;
+}
+
+
+
+

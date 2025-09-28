@@ -1,0 +1,149 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row" style="padding: 0% 5% 0% 5%;">
+    <div class="ribbon-pop p-3 text-center fs-5" style="font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 600;font-size:21px;">Task Allocation</div>
+
+    <div class="col-md-12">
+      <div class="card p-3">
+        <!-- Message -->
+        <div *ngIf="message.text" [class]="'text-' + message.type">{{ message.text }}</div>
+
+        <!-- SubID row -->
+        <div class="row g-3 align-items-end mb-3">
+          <div class="col-md-6">
+            <label for="DBTLocnSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Subordinate<span class="text-danger"> *</span>
+              </label>
+            <select formControlName="subId" (change)="onSubIdChange()" class="form-select custom-select border border-light rounded-3 shadow-sm input-xs">
+              <option value="" class="select-placeholder" disabled>Select SubID</option>
+              <option *ngFor="let id of subIds" [value]="id">{{ id }}</option>
+            </select>
+          </div>
+          <div class="col-md-6 d-flex align-items-end">
+            <button type="button" class="btn btn-secondary"
+              (click)="toggleActivation(form.value.subId)"
+              [disabled]="!form.value.subId">
+              {{ isSubIdActive[form.value.subId] ? 'Deactivate' : 'Activate' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Main body -->
+        <div *ngIf="isSubIdActive[form.value.subId]">
+          <!-- Show table if data exists -->
+          <div *ngIf="submittedData.length > 0 && !showForm">
+            <fieldset class="border rounded-4 bg-light p-2">
+              <legend class="w-auto px-3 fs-6">Allotted Tasks</legend>
+              <div class="table-responsive" style="max-height:250px; overflow-y:auto;">
+                <table class="table table-sm table-bordered mb-0 text-center">
+                  <thead class="table-light">
+                    <tr>
+                      <th>SubID</th>
+                      <th>Terminal</th>
+                      <th>Customer</th>
+                      <th>Tasks</th>
+                      <th>Description</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of submittedData; let i=index">
+                      <td>{{ row.subId }}</td>
+                      <td>{{ row.terminalCode }}</td>
+                      <td>{{ row.customerCode }}</td>
+                      <td>{{ row.tasks.join(', ') }}</td>
+                      <td>{{ row.description }}</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-primary" (click)="openTaskPopup(i)">Edit</button>
+                        <button type="button" class="btn btn-sm btn-danger" (click)="deleteRow(i)">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </fieldset>
+
+            <div class="text-center mt-2">
+              <button type="button" class="btn btn-success" (click)="showFormView()">+ Add Task</button>
+            </div>
+          </div>
+
+          <!-- Show form -->
+          <div *ngIf="submittedData.length === 0 || showForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="DBTLocnSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Terminal Code<span class="text-danger"> *</span>
+              </label>
+                <select formControlName="terminalCode" class="form-select custom-select border border-light rounded-3 shadow-sm input-xs">
+                  <option value="" class="select-placeholder" disabled>Select Terminal</option>
+                  <option *ngFor="let code of terminalCodes" [value]="code">{{ code }}</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="DBTLocnSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Customer Code<span class="text-danger"> *</span>
+              </label>
+                <select formControlName="customerCode" class="form-select custom-select border border-light rounded-3 shadow-sm input-xs">
+                  <option value="" class="select-placeholder" disabled>Select Customer</option>
+                  <option *ngFor="let cust of customerCodes" [value]="cust">{{ cust }}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="DBTLocnSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Task Allocation<span class="text-danger"> *</span>
+              </label>
+                <button type="button" class="btn btn-outline-primary w-100" (click)="openTaskPopup()">Select Task</button>
+              </div>
+              <div class="col-md-8">
+                <label for="DBTLocnSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Description<span class="text-danger"> *</span>
+              </label>
+                <input type="text" formControlName="description" readonly class="form-control border border-light rounded-3 shadow-sm bg-light"/>
+              </div>
+            </div>
+
+            <div class="text-center mt-3">
+              <button type="button" class="btn btn-success" (click)="addRow()">Add</button>
+            </div>
+          </div>
+        </div>
+      
+
+       <div class="row mt-3">
+            <div class="button-wrapper">
+              <button class="btn-modern submit-btn" type="submit">
+                <i class="bi bi-check-circle-fill me-2"></i> Submit
+              </button>
+              <button class="btn-modern reset-btn" type="button" >
+                <i class="bi bi-x-circle-fill me-2"></i> Cancel
+              </button>
+            </div>
+          </div>
+          </div>
+    
+    </div>
+  
+
+  <!-- Final Submit -->
+ 
+
+
+<!-- Task popup -->
+<div class="modal-backdrop fade show" *ngIf="showTaskPopup"></div>
+<div class="modal d-block" *ngIf="showTaskPopup">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h5>Select Tasks</h5>
+      <div *ngFor="let task of taskOptions">
+        <input type="checkbox" [checked]="isTaskSelected(task.short)" 
+          (change)="toggleTaskSelection(task.short)" /> {{ task.full }}
+      </div>
+      <div class="text-center mt-3">
+        <button type="button" class="btn btn-primary" (click)="confirmTasks()">Confirm</button>
+        <button type="button" class="btn btn-secondary" (click)="showTaskPopup=false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</form>

@@ -1,0 +1,661 @@
+<form  [formGroup]="form"  (ngSubmit)="onSubmit()">
+  <!--First grid -->
+
+  <div id="form1" >
+  
+  <div class="row"  style="padding: 0% 5% 0% 5%;">
+      <div class="ribbon-pop p-3 text-center fs-5" style="font-family:sans-serif ;">Forwarding Note</div>
+    <div class="col-md-12">
+     
+      <div class="card p-3">
+
+        <div class="row g-3 align-items-stretch p-1">
+
+          <!-- Left side: two stacked groups in one col-md-8 container -->
+        
+            <div class="col-md-2">
+                <label for="FwdNtSttn" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Station<span class="text-danger"> *</span>
+                </label>
+                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="FwdNtSttn" formControlName="FwdNtSttn" name="FwdNtSttn" placeholder="Enter station">
+              </div>
+
+              <!-- Current Date -->
+              <div class="col-md-2">
+                <label for="FwdNtDate" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Date
+                </label>
+                <input type="date" class="form-control border border-light rounded-3 shadow-sm bg-light" id="FwdNtDate" formControlName="FwdNtDate" name="FwdNtDate">
+              </div>
+
+              <div class="col-md-2">
+                <label for="FwdNtCtnrno" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Container no.<span class="text-danger"> *</span>
+                </label>
+                <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="FwdNtCtnrno" formControlName="FwdNtCtnrno" name="FwdNtCtnrno" placeholder="Enter Container no">
+              </div>
+
+              <!-- Current Date -->
+              <div class="col-md-2">
+                <label for="FwdNtSelngTime" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Sealing Time
+                </label>
+                <input type="datetime-local" class="form-control border border-light rounded-3 shadow-sm bg-light" id="FwdNtSelngTime" formControlName="FwdNtSelngTime" name="FwdNtSelngTime">
+              </div>
+
+              <div class="col-md-2">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i>Stuff By<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="FwdNtstfConcr"
+                        name="FwdNtStfby"
+                        formControlName="FwdNtStfby"
+                        [value]="'P'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="allotRebooking">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> ConCor
+                      </label>
+                    </div>
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="FwdNtstfCstmr"
+                        name="FwdNtStfby"
+                        formControlName="FwdNtStfby"
+                        [value]="'C'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="AllotRake">
+                        <i class="bi bi-train-front text-success me-1"></i> Customer
+                      </label>
+                    </div>
+            
+
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+              <div class="col-md-2">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> By Rail/Road<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="FwdNtbyRoad"
+                        name="FwdNtRlRd"
+                        formControlName="FwdNtRlRd"
+                        [value]="'P'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="allotRebooking">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> Rail
+                      </label>
+                    </div>
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="FwdNtbyRail"
+                        name="FwdNtRlRd"
+                        formControlName="FwdNtRlRd"
+                        [value]="'C'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="AllotRake">
+                        <i class="bi bi-train-front text-success me-1"></i> Road
+                      </label>
+                    </div>
+            
+
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+
+        </div>
+
+      <div class="row g-3 align-items-stretch p-1">
+
+        <!-- Left Column (col-md-7) -->
+        <!-- Left Column (col-md-7) -->
+        <div class="col-md-10 h-100">
+          <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100">
+            <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+              <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Registration Details<span class="text-danger"> *</span>
+            </legend>
+            <div class="row g-3">
+              <!-- Each col-md-6 ensures equal spacing (2 per row) -->
+              <div class="col-md-2">
+                <label for="FwdNtCnsId" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map me-1"></i> Consignment Id
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtCnsId" formControlName="FwdNtCnsID" name="FwdNtCnsID" placeholder="Enter Consignment Id" readonly/>
+              </div>
+              <div class="col-md-2">
+                <label for="FwdNtCnsDate" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar me-1"></i> Consignment Date
+                </label>
+                <input type="date" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtCnsDate" formControlName="FwdNtCnsDate" name="FwdNtCnsDate"  readonly />
+              </div>
+              <div class="col-md-2">
+                <label for="FwdNtAlotDate" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar2 me-1"></i> Allotment Date
+                </label>
+                <input type="date" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtAlotDate" formControlName="FwdNtAlotDate" name="FwdNtAlotDate" readonly/>
+              </div>
+              <div class="col-md-2">
+                <label for="FwdNtSttnFrm" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-truck-front me-1"></i> Station From
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtSttnFrm" formControlName="FwdNtSttnFrm" name="FwdNtSttnFrm" placeholder="Enter Station From" readonly/>
+              </div>
+              <div class="col-md-4">
+                <label for="FwdNtCnsrname" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-truck-front-fill me-1"></i> Consigner Name
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtCnsrname" formControlName="FwdNtCnsrname" name="FwdNtCnsrname" placeholder="Enter Consigner" readonly/>
+              </div>
+              
+            </div>
+
+            <div class="row g-3">
+              <!-- Each col-md-6 ensures equal spacing (2 per row) -->
+              <div class="col-md-2">
+                <label for="FwdNtSrvcMode" name="" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map me-1"></i> Service Mode
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtSrvcMode" formControlName="FwdNtSrvcMode" name="FwdNtSrvcMode" placeholder="Enter Service Mode" readonly/>
+              </div>
+              <div class="col-md-2">
+                <label for="FwdNtPmnttype" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar me-1"></i> Payment Type
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtPmnttype" formControlName="FwdNtPmnttype" name="FwdNtPmnttype" placeholder="Enter Payment Type" readonly/>
+              </div>
+              <div class="col-md-2">
+                <label for="FwdNtstfngCtnrs" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar2 me-1"></i> Stuffing Containers
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtstfngCtnrs" formControlName="FwdNtstfngCtnrs" name="FwdNtstfngCtnrs" placeholder="Enter Stuffing Ctnrs" readonly/>
+              </div>
+              <div class="col-md-2">
+                <label for="FwdNtsttnTo" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-truck-front me-1"></i> Station To
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtsttnTo" formControlName="FwdNtsttnTo" name="FwdNtsttnTo" placeholder="Enter Station To" readonly/>
+              </div>
+              <div class="col-md-4">
+                <label for="FwdNtCsneName" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-truck-front-fill me-1"></i>Consignee Name
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtCsneName" formControlName="FwdNtCsneName" name="FwdNtCsneName" placeholder="Enter Consignee" readonly/>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+
+      <!-- Right Column (col-md-5) -->
+        <div class="col-md-2">
+              <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">
+                <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                  <i class="bi bi-sliders2 text-primary-emphasis me-1"></i>Transported By<span class="text-danger"> *</span>
+                </legend>
+            
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            
+                    <!-- Rebooking -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="FwdNtDTBConcr"
+                        name="FwdNtDTB"
+                        formControlName="FwdNtDTB"
+                        [value]="'P'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="allotRebooking">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i> ConCor
+                      </label>
+                    </div>
+            
+                    <!-- Rake -->
+                    <div class="form-check d-flex align-items-center">
+                      <input
+                        class="form-check-input me-2"
+                        type="radio"
+                        id="FwdNtDTBCstmr"
+                        name="FwdNtDTB"
+                        formControlName="FwdNtDTB"
+                        [value]="'C'"
+                      />
+                      <label class="form-check-label text-dark fw-semibold" for="AllotRake">
+                        <i class="bi bi-train-front text-success me-1"></i> Customer
+                      </label>
+                    </div>
+            
+
+            
+                  </div>
+                </div>
+              </fieldset>
+            </div> 
+
+      </div>
+
+      <div class="row g-3 align-items-stretch p-1">
+
+        <!-- Left Column (col-md-7) -->
+        <!-- Left Column (col-md-7) -->
+        <div class="col-md-7 h-100">
+          <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100">
+            <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">
+              <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Stuffing Details<span class="text-danger"> *</span>
+            </legend>
+            <div class="row g-3">
+              <!-- Each col-md-6 ensures equal spacing (2 per row) -->
+              <div class="col-md-3">
+                <label for="FwdNtCmdtcode" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map me-1"></i> Commodity Code
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtCmdtcode" formControlName="FwdNtCmdtcode" name="FwdNtCmdtcode" placeholder="Enter Cmdt code" />
+              </div>
+              <div class="col-md-3">
+                <label for="FwdNtCmdtType" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar me-1"></i> Commodity Type
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtCmdtType" formControlName="FwdNtCmdtType" name="FwdNtCmdtType" placeholder="Enter Cmdt type"/>
+              </div>
+              <div class="col-md-3">
+                <label for="FwdNtWght" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar2 me-1"></i> Weight( In Tons)
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtWght" formControlName="FwdNtWght" name="FwdNtWght" placeholder="Enter weight"/>
+              </div>
+              <div class="col-md-3">
+                <label for="FwdNtGWght" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-truck-front me-1"></i> Gross Weight (In Tons)
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtGWght" formControlName="FwdNtGWght" name="FwdNtGWght" placeholder="Enter Gross Wght" />
+              </div>
+              
+              
+            </div>
+
+            <div class="row g-3">
+              <!-- Each col-md-6 ensures equal spacing (2 per row) -->
+              <div class="col-md-3">
+                <label for="FwdNtHsnN" name="" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-pin-map me-1"></i> HSN number
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtHsnN" formControlName="FwdNtHsnN" name="FwdNtHsnN" placeholder="Enter HSN numb" />
+              </div>
+              <div class="col-md-3">
+                <label for="FwdNtCmdtG" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar me-1"></i> Commodity Group
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtCmdtG" formControlName="FwdNtCmdtG" name="FwdNtCmdtG" placeholder="Enter Cmdt group"/>
+              </div>
+              <div class="col-md-3">
+                <label for="FwdNtHzdF" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-calendar2 me-1"></i> HZDs flag
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtHzdF" formControlName="FwdNtHzdF" name="FwdNtHzdF" placeholder="Enter HZDs Flag"/>
+              </div>
+              <div class="col-md-3">
+                <label for="FwdNtTare" class="form-label text-primary-emphasis fw-semibold">
+                  <i class="bi bi-truck-front me-1"></i> Tare
+                </label>
+                <input type="text" class="form-control border-light rounded-3 shadow-sm bg-light" id="FwdNtTare" formControlName="FwdNtTare" name="FwdNtTare" placeholder="Enter Tare" />
+              </div>
+              
+              
+            </div>
+          </fieldset>
+        </div>
+
+
+      <!-- Right Column (col-md-5) -->
+        <div class="col-md-5 h-100 d-flex flex-column">
+          
+          
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Stuffing Commodity<span class="text-danger"> *</span>
+                      </legend>
+                      
+                      <!-- Table with scrollable content -->
+                      <div #scrollContainerr class="table-responsive" style="max-height: 120px; overflow-y: auto;">
+                        <table class="table table-sm table-hover align-middle table-bordered mb-0">
+                          <thead class="table-light text-center">
+                            <tr>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;" rowspan="2">S.no</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;" colspan="2">Commodity</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;">No of</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;" rowspan="2">Weight (In Tons)</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;">HSN</th>
+                              
+
+                              <th scope="col" class="text-center" style="width: 100px; font-weight: bold;font-size:x-small;" rowspan="2">Action</th>
+                            </tr>
+
+                            <tr>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;" >Code</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;" >Description</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;" >packages</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;">Code</th>
+                              
+
+                             
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let cmd of cmdttab; let i = index">
+                              <th scope="row" class="text-center text-muted">{{ i + 1 }}</th>
+                              
+                              <!-- Type -->
+                              <td>
+                                <input
+                                style="font-weight: bold;font-size:x-small;"
+                                  type="text"
+                                  class="form-control form-control-sm"
+                                  [(ngModel)]="cmd.CmdtCode"
+                                  id="FwdNtSDcmdtC"
+                                  name="FwdNtSDcmdtC"
+                                  formControlName="FwdNtSDcmdtC"
+                                  placeholder="Code"
+                                />
+                              </td>
+                              
+                              <!-- Size -->
+                              <td>
+                                <input
+                                style="font-weight: bold;font-size:x-small;"
+                                  type="text"
+                                  class="form-control form-control-sm"
+                                  [(ngModel)]="cmd.CmdtDesc"
+                                  id="FwdNtSDcmdtD"
+                                  name="FwdNtSDcmdtD"
+                                  formControlName="FwdNtSDcmdtD"
+                                  placeholder="Desc"
+                                />
+                              </td>
+                              
+                              <!-- No. -->
+                              <td>
+                                <input
+                                style="font-weight: bold;font-size:x-small;"
+                                  type="text"
+                                  class="form-control form-control-sm"
+                                  [(ngModel)]="cmd.CmdtPkgs"
+                                  id="FwdNtSDPkgs"
+                                  name="FwdNtSDPkgs"
+                                  formControlName="FwdNtSDPkgs"
+                                  placeholder="No."
+                                />
+                              </td>
+
+                              <!-- No. -->
+                              <td>
+                                <input
+                                style="font-weight: bold;font-size:x-small;"
+                                  type="text"
+                                  class="form-control form-control-sm"
+                                  [(ngModel)]="cmd.CmdtWght"
+                                  id="FwdNtSDcmdtW"
+                                  name="FwdNtSDcmdtW"
+                                  formControlName="FwdNtSDcmdtW"
+                                  placeholder="Wght"
+                                />
+                              </td>
+
+                              <!-- No. -->
+                              <td>
+                                <input
+                                style="font-weight: bold;font-size:x-small;"
+                                  type="text"
+                                  class="form-control form-control-sm"
+                                  [(ngModel)]="cmd.CmdtHsnCode"
+                                  id="FwdNtSDcmdtHC"
+                                  name="FwdNtSDcmdtHC"
+                                  formControlName="FwdNtSDcmdtHC"
+                                  placeholder="Code"
+                                />
+                              </td>
+
+                              
+                              
+
+                              <!-- Actions -->
+                              <td class="text-center">
+                                <div class="d-flex  gap-2">
+                                  
+                                  <button
+                                    class="btn btn-outline-danger btn-sm"
+                                    (click)="removeRowC(i)"
+                                    [disabled]="cmdttab.length === 1"
+                                    title="Delete Row"
+                                  >
+                                    <i class="bi bi-trash3">-</i>
+                                  </button>
+                                  <button
+                                    *ngIf="i === cmdttab.length - 1"
+                                    class="btn btn-outline-success btn-sm"
+                                    (click)="addRowC()"
+                                    title="Add Row"
+                                  >
+                                    <i class="bi bi-plus-circle">+</i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </fieldset>
+                  </div>
+
+        
+
+      </div>
+
+
+          <div class="row g-3 align-items-end  p-1">
+
+            <!-- Toggle Section -->
+            
+              <div class="col-md-4 h-100 d-flex flex-column">
+          <div class="h-100 d-flex flex-column justify-content-between gap-2">
+
+            <!-- Transported By -->
+            <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-1 pb-3 w-100">
+              <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                <i class="bi bi-truck text-primary-emphasis me-1"></i> Transported by<span class="text-danger"> *</span>
+              </legend>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex flex-row gap-4">
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input me-2" type="radio" id="FwdNtLoose" name="FwdNtTrpBy" formControlName="FwdNtTrpBy" value="C" />
+                    <label class="form-check-label text-dark fw-semibold" for="FwdNtLoose">
+                      <i class="bi bi-arrow-repeat text-primary me-1"></i> Loose
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input me-2" type="radio" id="FwdNtRnoPkgs" name="FwdNtTrpBy" formControlName="FwdNtTrpBy" value="P" />
+                    <label class="form-check-label text-dark fw-semibold" for="FwdNtRnoPkgs">
+                      <i class="bi bi-train-front text-success me-1"></i> No of Packages
+                    </label>
+                  </div>
+
+                   <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="FwdNtnoPkgs"
+                         name="FwdNtnoPkgs"
+                         formControlName="FwdNtnoPkgs"
+                         placeholder="Packages no">
+                </div>
+                
+              </div>
+            </fieldset>
+            </div>
+                
+            </div>
+
+            <div class="col-md-2">
+              <label for="FwdNtCorpCode" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Corporate Code<span class="text-danger"> *</span>
+                  </label>
+                  <input type="text"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="FwdNtCorpCode"
+                         name="FwdNtCorpCode"
+                         formControlName="FwdNtCorpCode"
+                         placeholder="Enter Corp. Code">
+            </div>
+          
+            <!-- Input Fields Section -->
+            <div class="col-md-2">
+              <label for="FwdNtCorpName" class="form-label text-primary-emphasis fw-semibold">
+                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Corporate Name<span class="text-danger"> *</span>
+                  </label>
+                  <input type="datetime"
+                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"
+                         id="FwdNtCorpName"
+                         name="FwdNtCorpName"
+                         formControlName="FwdNtCorpName"
+                         placeholder="Enter Corp. name">
+            </div>
+
+            <div class="col-md-4">
+              
+                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2">
+                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">
+                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Seal no. <span class="text-danger"> *</span>
+                      </legend>
+                      
+                      <!-- Table with scrollable content -->
+                      <div #scrollContainer class="table-responsive" style="max-height: 80px; overflow-y: auto;">
+                        <table class="table table-sm table-hover align-middle table-bordered mb-0">
+                          <thead class="table-light text-center">
+                            <tr>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;">S.no</th>
+                              <th scope="col" style="font-weight: bold;font-size:x-small;">Seal no.</th>
+                              
+                              
+
+                              <th scope="col" class="text-center" style="width: 100px; font-weight: bold;font-size:x-small;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let srl of srltab; let i = index">
+                              <th scope="row" class="text-center text-muted">{{ i + 1 }}</th>
+                              
+                              <!-- Type -->
+                              <td>
+                                <input
+                                style="font-weight: bold;font-size:x-small;"
+                                  type="text"
+                                  class="form-control form-control-sm"
+                                  [(ngModel)]="srl.Srlno"
+                                  id="FwdNtSrlno"
+                                  name="FwdNtSrlno"
+                                  formControlName="FwdNtSrlno"
+                                  placeholder="Serial no"
+                                />
+                              </td>
+                              
+                              <!-- Actions -->
+                              <td class="text-center">
+                                <div class="d-flex  gap-2">
+                                  
+                                  <button
+                                    class="btn btn-outline-danger btn-sm"
+                                    (click)="removeRow(i)"
+                                    [disabled]="srltab.length === 1"
+                                    title="Delete Row"
+                                  >
+                                    <i class="bi bi-trash3">-</i>
+                                  </button>
+                                  <button
+                                    *ngIf="i === srltab.length - 1"
+                                    class="btn btn-outline-success btn-sm"
+                                    (click)="addRow()"
+                                    title="Add Row"
+                                  >
+                                    <i class="bi bi-plus-circle">+</i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </fieldset>
+                  
+            </div>
+
+           
+          </div>
+
+          
+            <div class="row p-1">
+              
+              <!-- Middle column: content -->
+              <div class="col-md-12">
+
+                <!-- Consigner Section (displayed when showConsigner is true) -->
+                
+
+                <div class="row mt-3">
+                  <div class="button-wrapper">
+                      <button class="btn-modern submit-btn" type="submit">
+                        <i class="bi bi-check-circle-fill me-2"></i> Submit
+                      </button>
+                      <button class="btn-modern reset-btn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset
+                      </button>
+                    </div>
+                   
+                </div>
+                
+              </div>
+            
+            </div>
+            <!-- </fieldset> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- submit grid end -->
+
+  </form>

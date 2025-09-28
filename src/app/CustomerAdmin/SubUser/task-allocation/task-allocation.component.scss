@@ -1,0 +1,94 @@
+/* --- Task Selection Popup Styles --- */
+
+/* Styling for the semi-transparent overlay that covers the entire screen */
+.otp-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  backdrop-filter: blur(5px); /* Adds a blur effect to the background content */
+  z-index: 1040;
+}
+
+/* Styling for the modal pop-up box itself */
+.otp-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the modal on the screen */
+  z-index: 1050; /* Ensures the modal is on top of the backdrop */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.85); /* Frosted glass effect */
+  max-width: 90%;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Base styles for elements within the popup */
+.selected-tasks-display {
+  background-color: #f0f0f0;
+}
+
+.task-options.otp-inputs {
+  width: 100%;
+}
+
+.otp-popup-buttons {
+  width: 100%;
+}
+
+/* --- Modern Table Styling --- */
+
+/* This section improves the visual appearance of the table. */
+.modern-table {
+  width: 100%;
+  border-collapse: separate; /* Use 'separate' to allow border-spacing */
+  border-spacing: 0 8px; /* Adds space between rows */
+  font-family: Arial, sans-serif;
+}
+
+.modern-table th {
+  background-color: #e2e8f0;
+  color: #334155;
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.modern-table td {
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.modern-table tbody tr {
+  transition: all 0.2s ease-in-out;
+}
+
+.modern-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.modern-table tbody tr.inactive {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  opacity: 0.7;
+}
+
+.modern-table td button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
