@@ -26,7 +26,7 @@ import { GatepassstoreserviceService } from 'src/app/services/gatepassstoreservi
 export class JobOrderOutwardComponent implements OnInit {
 
   form: any = {
-    
+
   };
 
 
@@ -35,21 +35,21 @@ export class JobOrderOutwardComponent implements OnInit {
     filteredCmdtList: any[] = [];
     selectedCmdtCode: string = '';
     selectedCmdtDesc: string = '';
-  
+
     consignerHelpData: any[] = [];
     filteredConsignerList: any[] = [];
-  
-    
+
+
     consigneeHelpData: any[] = [];
     filteredConsigneeList: any[] = [];
-  
-    
+
+
     selectedCnsrCode: string = '';
     selectedCnsrName: string = '';
-  
+
     selectedCgneCode: string = '';
     selectedCgneName: string = '';
-  
+
     customerIdHelpData: any[] = [];
     filteredCustomerIdList: any[] = [];
     selectedCustomerId: string = '';
@@ -61,16 +61,16 @@ export class JobOrderOutwardComponent implements OnInit {
    isLoadingSelected = false;
   isUnloadingSelected = false;
 
-  
 
-  
-  
-    
-  
-    
-    
+
+
+
+
+
+
+
   Object: any;
-  
+
     constructor(private helpService: HelpService,private fb: FormBuilder, private router: Router,private gateservice:GateserviceService,private gatepasstore: GatepassstoreserviceService) {
         this.form = this.fb.group({
         JBODSttnFrm: [''],
@@ -103,18 +103,21 @@ export class JobOrderOutwardComponent implements OnInit {
         JBODtrLeqpid2: [''],
         JBODselRsndly: [''],
         JBODRsndlyCd: [''],
-        
+        JBODPurposeStuffing: [''],
+        JBODPurposeDstuffing: [''],
+        JBODvhclSize: [''],
+
         JBODpmtDtlspdby: [''],
         JBODallotType: [''],
         JBODamt: [''],
         JBODcrgs: [''],
         JBODsrvcTx: [''],
         JBODtotAmt: [''],
-        
+
       });
-        
+
       }
-  
+
     ngOnInit(): void {
       this.helpService.helpData$.subscribe(data => {
         if (data?.result) {
@@ -123,7 +126,7 @@ export class JobOrderOutwardComponent implements OnInit {
           console.log('Help Data received:', this.helpData);
         }
       });
-  
+
       this.helpService.cnsrcustomerData$.subscribe(data => {
         if (data?.result) {
           this.consignerHelpData = data.result;
@@ -131,7 +134,7 @@ export class JobOrderOutwardComponent implements OnInit {
           console.log('Consigner Code Help Data:', this.consignerHelpData);
         }
       });
-  
+
       this.helpService.cnsecustomerData$.subscribe(data => {
         if (data?.result) {
           this.consigneeHelpData = data.result;
@@ -139,7 +142,7 @@ export class JobOrderOutwardComponent implements OnInit {
           console.log('Consignee Code Help Data:', this.consigneeHelpData);
         }
       });
-  
+
       this.helpService.custIdData$.subscribe(data => {
         if (data?.result) {
           this.customerIdHelpData = data.result;
@@ -228,7 +231,7 @@ this.form.get('JBODtrUsndCtnr')?.valueChanges.subscribe((val: any) => {
   this.form.get('JBODCurrDate')?.setValue(todayFormatted);
 
   this.currentDateTime = this.formatDateTimeLocal(today);
-  
+
 
   const now = new Date();
 const formattedNow = this.formatDateTimeLocal(now);
@@ -236,9 +239,9 @@ this.form.get('JBODissueDT')?.setValue(formattedNow);
 this.form.get('JBODeffDT')?.setValue(formattedNow);
 this.form.get('JBODcmplDT')?.setValue(formattedNow);
 
-   
-  
-      
+
+
+
     }
 
 
@@ -248,17 +251,17 @@ this.form.get('JBODcmplDT')?.setValue(formattedNow);
   { apiKey: 'LDNG_UNLDFLAG', formControlName: 'JBODLdngUN' },
   { apiKey: 'PAID_BYCNCRFLAG', formControlName: 'JBODpmtDtlspdby' },
   { apiKey: 'PDA_MR_CAFLAG', formControlName: 'JBODallotType' },
-  
+
   { apiKey: 'RENEW_FLAG', formControlName: '' },
   { apiKey: 'TRLR_OWNR', formControlName: 'JBODTrlrOwnr' },
   { apiKey: 'CHK_FLAG', formControlName: '' },
   { apiKey: 'ACTY_CODE', formControlName: '' },
-  
+
   { apiKey: 'CNCL_TIME', formControlName: '' },
   { apiKey: 'CNSG_ID', formControlName: 'JBODcnIdPrno' },
   { apiKey: 'CNTR_STTNFROM', formControlName: '' },
   { apiKey: 'CNTR_STTNTO', formControlName: '' },
-  
+
   { apiKey: 'DELAY_BY', formControlName: '' },
   { apiKey: 'DELAY_RESNCODE', formControlName: 'JBODRsndlyCd' },
   { apiKey: 'DELY_RESN', formControlName: '' },
@@ -268,12 +271,12 @@ this.form.get('JBODcmplDT')?.setValue(formattedNow);
   { apiKey: 'ISSUE_TIME', formControlName: 'JBODissueDT' },
   { apiKey: 'JOB_ORDRNUMB', formControlName: 'JBODjbOdrno' },
   { apiKey: 'LDNG_FRSTCNTR', formControlName: 'JBODtrLfstCtnr' },
-  
+
   { apiKey: 'LDNG_SCNDCNTR', formControlName: 'JBODtrLsndCtnr' },
   { apiKey: 'STTN', formControlName: 'JBODSttnFrm' },
   { apiKey: 'TRLR_NUMB', formControlName: 'JBODtrlrno' },
   { apiKey: 'UNLD_FRSTCNTR', formControlName: 'JBODtrUfstCtnr' },
-  
+
   { apiKey: 'UNLD_SCNDCNTR', formControlName: 'JBODtrUsndCtnr' },
   { apiKey: 'USER_ID', formControlName: '' },
 
@@ -322,7 +325,7 @@ alert("submitted");
   VS_STCKLOCN: formValues.JBODtrUstklocn1 || "",
   RENEW_FLAG: "N",
   STTN: formValues.JBODSttnFrm,
-  TRLR_NUMB: formValues.JBODtrlrno, 
+  TRLR_NUMB: formValues.JBODtrlrno,
   TRLR_OWNR: formValues.JBODTrlrOwnr,                                     // Trailer ownership
   UNLD_FRSTCNTR: formValues.JBODtrUfstCtnr,
   UNLD_SCNDCNTR: formValues.JBODtrUsndCtnr,
@@ -336,7 +339,7 @@ alert("submitted");
   TRMN_LOGIN: formValues.JBODSttnFrm,
   USER_LOGIN: "CRIS",
   STCK_NEW: ["", ""],
-    EBOOK_FLAG: 'Y' 
+    EBOOK_FLAG: 'Y'
 };
 
   console.log('📦 Gate Order:', finalPayload);
@@ -368,7 +371,7 @@ formatToDDMMYY(dateStr: string): string {
   const [yyyy, mm, dd] = dateStr.split('-');
   return `${dd}-${mm}-${yyyy.slice(2)}`;
 }
-  
+
 
 
 
