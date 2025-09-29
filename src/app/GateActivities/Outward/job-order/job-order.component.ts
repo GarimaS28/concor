@@ -58,16 +58,59 @@ export class JobOrderOutwardComponent implements OnInit {
     endOfDay: string = '';
     currentDate: string = '';
 
+    // Flags for initial screen/popup
+    isFormVisible: boolean = false;
+    isPopupOpen: boolean = false;
+    isSubmitEnabled: boolean = false;
+
+   // Selection flags
    isLoadingSelected = false;
   isUnloadingSelected = false;
 
+  // Dummy data for initial selection
+  dummyData = {
+    JBODSttnFrm: 'JNPT',
+    JBODCurrDate: '2025-09-29',
+    JBODtrlrno: 'MH12AB1234',
+    JBODtrLfstCtnr: 'CONT1234567',
+    JBODtrLsndCtnr: 'CONT7654321'
+  };
 
+  // Initial grid submit click
+  showDetailedForm() {
+    this.isFormVisible = true;
+  }
 
+  // Optional popup controls (kept minimal)
+  openCalculatePopup() {
+    this.isPopupOpen = true;
+    this.isSubmitEnabled = true;
+  }
 
+  closePopup() {
+    this.isPopupOpen = false;
+  }
 
-
-
-
+  // Tick box selection on initial grid
+  selectEntry(event: any) {
+    if (event?.target?.checked) {
+      this.form.patchValue({
+        JBODSttnFrm: this.dummyData.JBODSttnFrm,
+        JBODCurrDate: this.dummyData.JBODCurrDate,
+        JBODtrlrno: this.dummyData.JBODtrlrno,
+        JBODtrLfstCtnr: this.dummyData.JBODtrLfstCtnr,
+        JBODtrLsndCtnr: this.dummyData.JBODtrLsndCtnr
+      });
+    } else {
+      this.form.patchValue({
+        JBODSttnFrm: '',
+        JBODCurrDate: '',
+        JBODtrlrno: '',
+        JBODtrLfstCtnr: '',
+        JBODtrLsndCtnr: ''
+      });
+    }
+  }
 
   Object: any;
 
