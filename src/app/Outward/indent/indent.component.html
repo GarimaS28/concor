@@ -280,13 +280,13 @@
                     <i class="bi bi-pin-map-fill text-primsttnary me-1"></i>Rate Type <span class="text-danger">*</span>
                   </label>
 
-                  <select 
-                    class="form-select custom-select border border-light rounded-3 input-xs shadow-sm" 
-                    formControlName="ALOTrateType" 
-                    id="ALOTrateType" 
+                  <select
+                    class="form-select custom-select border border-light rounded-3 input-xs shadow-sm"
+                    formControlName="ALOTrateType"
+                    id="ALOTrateType"
                     name="ALOTrateType"
                     [ngClass]="formValidator.getValidationClass(form, 'ALOTrateType')">
-                    
+
                     <option value="N">Normal</option>
                     <option value="S">Special</option>
                     <option value="I">ISO</option>
@@ -505,29 +505,29 @@
     placeholder="ID"
     readonly
     [(ngModel)]="selectedConsignerId"
-    (input)="filterConsignerIdFromEvent($event)" 
+    (input)="filterConsignerIdFromEvent($event)"
     (focus)="showConsignerIDDropdown = true"
     (blur)="hideConsignerIDDropdownWithDelay()"
     (focusin)="clearConsignerIDDropdownTimeout()"
     [ngClass]="formValidator.getValidationClass(form, 'ALOTcnsrId')"
   />
-  
+
   <ul *ngIf="showConsignerIDDropdown && filteredConsignerIdList.length"
       class="dropdown-menu show shadow-sm border mt-1 rounded-3 w-100"
       style="position: absolute; z-index: 1000; max-height: 220px; overflow-y: auto;">
-    
-    
+
+
     <li class="dropdown-header px-3 py-2 bg-success text-black d-flex justify-content-between rainbow-label  small rounded-top">
       <span> Cust ID</span>
     </li>
 
-    
+
       <li
           *ngFor="let item of filteredConsignerIdList"
           class="dropdown-item small px-3 py-2"
           style="cursor: pointer;"
           (mousedown)="selectConsignerID(item)"
-          
+
         >
           <div class="d-flex justify-content-between" style="font-size: 0.75rem;">
             <span class="w-50 text-start">{{ item.p_CustID }}</span>
@@ -541,7 +541,7 @@
                     <div class="row g-2 mt-1">
                       <!-- Address -->
                       <!-- <div class="col-md-6">
-                          
+
                           <label for="ALOTcnsrAdrs" class="form-label rainbow-label " style="color: #383a3a;"><i class="bi bi-pin-map-fill text-primary me-1"></i>Address </label>
                           <input type="text" class="form-control border border-light input-xs  rounded-3 shadow-sm " readonly formControlName="ALOTcnsrAdrs" id="ALOTcnsrAdrs" name="ALOTcnsrAdrs" placeholder="Address" [value]="selectedCnsrAddress" (blur)="onInputChange('ALOTcnsrAdrs')"  [ngClass]="formValidator.getValidationClass(form, 'ALOTcnsrAdrs')"  >
                         </div> -->
@@ -885,18 +885,18 @@
                           (focusin)="clearConsigneeIDDropdownTimeout()"
                           [ngClass]="formValidator.getValidationClass(form, 'ALOTcnseId')"
                         />
-                       
+
                         <ul *ngIf="showConsigneeIDDropdown && filteredConsigneeIdList.length"
                             class="dropdown-menu show shadow-sm border mt-1 rounded-3 w-100"
                             style="position: absolute; z-index: 1000; max-height: 220px; overflow-y: auto;">
-                          
-                          
+
+
                           <li class="dropdown-header px-3 py-2 bg-success text-black d-flex justify-content-between rainbow-label  small rounded-top">
                             <span> Cust ID</span>
                           </li>
 
-                          
-                         
+
+
 
                           <li *ngFor="let item of filteredConsigneeIdList"
                             class="dropdown-item small px-3 py-2"
@@ -914,7 +914,7 @@
                     <div class="row g-2 mt-1">
                       <!-- Address -->
                       <!-- <div class="col-md-6">
-                          
+
                           <label for="ALOTcnseAdrs" class="form-label rainbow-label " style="color: #383a3a;"><i class="bi bi-pin-map-fill text-primary me-1"></i>Address </label>
                           <input type="text" class="form-control border border-light input-xs  rounded-3 shadow-sm "  formControlName="ALOTcnseAdrs" id="ALOTcnseAdrs" name="ALOTcnseAdrs" placeholder="Address" [value]="selectedCgneAddress" (blur)="onInputChange('ALOTcnseAdrs')"  [ngClass]="formValidator.getValidationClass(form, 'ALOTcnseAdrs')" readonly>
                         </div> -->
@@ -947,18 +947,18 @@
                           (focusin)="clearConsigneeIDDropdownTimeout()"
                           [ngClass]="formValidator.getValidationClass(form, 'ALOTcnseId')"
                         />
-                       
+
                         <ul *ngIf="showConsigneeIDDropdown && filteredConsigneeIdList.length"
                             class="dropdown-menu show shadow-sm border mt-1 rounded-3 w-100"
                             style="position: absolute; z-index: 1000; max-height: 220px; overflow-y: auto;">
-                          
-                          
+
+
                           <li class="dropdown-header px-3 py-2 bg-success text-black d-flex justify-content-between rainbow-label  small rounded-top">
                             <span> Cust ID</span>
                           </li>
 
-                          
-                         
+
+
 
                           <li *ngFor="let item of filteredConsigneeIdList"
                             class="dropdown-item small px-3 py-2"

@@ -17,7 +17,7 @@ background: linear-gradient(90deg, #4682b4, #7b9acc);
   border-right: 20px solid #fff;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
- 
+
 }
 .ribbon-pop:before {
   height: 0;
@@ -77,7 +77,7 @@ background: linear-gradient(90deg, #4682b4, #7b9acc);
   gap: 1rem;
   flex-wrap: wrap; /* Optional for responsiveness */
 }
- 
+
 
 .form-label-lg {
   font-size: 0.9rem; /* or 1.1rem, 1.25rem, etc. */
@@ -94,7 +94,8 @@ background: linear-gradient(90deg, #4682b4, #7b9acc);
 .modern-round-checkbox {
   position: relative;
   padding-left: 2rem;
-  font-size: 0.85rem;
+  /* Match Bootstrap form-label for consistent sizing with other labels */
+  font-size: 0.875rem;
   font-weight: 600;
   color: #343a40;
   cursor: pointer;
@@ -361,5 +362,5 @@ select.form-select-sm:focus {
 
 
 
-  
+
 
