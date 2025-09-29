@@ -1,5 +1,4 @@
 <form [formGroup]="form"  (ngSubmit)="onSubmit()">
-  <!--First grid -->
 
   <div id="form1" >
 
@@ -13,7 +12,6 @@
 
           <div class="row g-3 align-items-end p-1">
 
-            <!-- Station From -->
             <div class="col-md-2">
               <label for="JBODSttnFrm" class="form-label text-primary-emphasis fw-semibold">
                 <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Terminal<span class="text-danger"> *</span>
@@ -21,7 +19,6 @@
               <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODSttnFrm" id="JBODSttnFrm" name="JBODSttnFrm" placeholder="Enter station">
             </div>
 
-            <!-- Current Date -->
             <div class="col-md-2">
               <label for="JBODCurrDate" class="form-label text-primary-emphasis fw-semibold">
                 <i class="bi bi-calendar-event text-primary-emphasis me-1"></i>Date
@@ -30,9 +27,7 @@
             </div>
 
 
-<!--          <div class="row g-3 align-items-end p-1">-->
 
-            <!-- Station From -->
             <div class="col-md-2">
               <label for="JBODSttnFrm" class="form-label text-primary-emphasis fw-semibold">
                 <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Vehicle Number<span class="text-danger"> *</span>
@@ -40,7 +35,6 @@
               <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODSttnFrm" id="JBODSttnFrm" name="JBODSttnFrm" placeholder="Enter station">
             </div>
 
-            <!-- Current Date -->
             <div class="col-md-2">
               <label for="JBODSttnFrm" class="form-label text-primary-emphasis fw-semibold">
                 <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Vehicle Size<span class="text-danger"> *</span>
@@ -48,160 +42,33 @@
               <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODSttnFrm" id="JBODSttnFrm" name="JBODSttnFrm" placeholder="Enter station">
             </div>
 
-<!--          </div>-->
           </div>
 
 
           <div class="row g-3 align-items-end  p-1">
 
-            <!-- Toggle Section -->
-            <!--            <div class="col-md">-->
-            <!--              <label for="JBODcnIdPrno" class="form-label text-primary-emphasis fw-semibold">-->
-            <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Consignment Id/ Permit no<span class="text-danger"> *</span>-->
-            <!--                  </label>-->
-            <!--                  <input type="text"-->
-            <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-            <!--                         id="JBODcnIdPrno"-->
-            <!--                         name="JBODcnIdPrno"-->
-            <!--                         formControlName="JBODcnIdPrno"-->
-            <!--                         placeholder="Enter Consignment Id/ Permit no">-->
-
-            <!--            </div>-->
-
-            <!--            <div class="col-md">-->
-            <!--              <label for="JBODbnGtCucode" class="form-label text-primary-emphasis fw-semibold">-->
-            <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Bank Gurantee customer Code<span class="text-danger"> *</span>-->
-            <!--                  </label>-->
-            <!--                  <input type="text"-->
-            <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-            <!--                         id="JBODbnGtCucode"-->
-            <!--                         name="JBODbnGtCucode"-->
-            <!--                         formControlName="JBODbnGtCucode"-->
-            <!--                         placeholder="Enter Bank Gurantee customer Code">-->
-            <!--            </div>-->
-
-            <!-- Input Fields Section -->
-            <!--            <div class="col-md">-->
-            <!--              <label for="JBODeffDT" class="form-label text-primary-emphasis fw-semibold">-->
-            <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Effective Date/Time-->
-            <!--                  </label>-->
-            <!--                  <input type="datetime-local"-->
-            <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-            <!--                         id="JBODeffDT"-->
-            <!--                         name="JBODeffDT"-->
-            <!--                         formControlName="JBODeffDT"-->
-            <!--                         >-->
-            <!--            </div>-->
 
 
-<!--            <div class="col-md">-->
-<!--              <label for="JBODtrlrno" class="form-label text-primary-emphasis fw-semibold">-->
-<!--                <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Vehicle number<span class="text-danger"> *</span>-->
-<!--              </label>-->
-<!--              <input type="text"-->
-<!--                     class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-<!--                     id="JBODtrlrno"-->
-<!--                     name="JBODtrlrno"-->
-<!--                     formControlName="JBODtrlrno"-->
-<!--                     placeholder="Enter Vehicle number">-->
-<!--            </div>-->
 
 
-            <!--            <div class="col-md">-->
-            <!--              <label for="JBODbaCode" class="form-label text-primary-emphasis fw-semibold">-->
-            <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> BA Code<span class="text-danger"> *</span>-->
-            <!--                  </label>-->
-            <!--                  <input type="text"-->
-            <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-            <!--                         id="JBODbaCode"-->
-            <!--                         name="JBODbaCode"-->
-            <!--                         formControlName="JBODbaCode"-->
-            <!--                         placeholder="Enter BA Code">-->
-            <!--            </div>-->
+
+
 
 
           </div>
 
           <div class="row p-1">
 
-            <!-- Middle column: content -->
             <div class="col-md-12">
 
-              <!-- Consigner Section (displayed when showConsigner is true) -->
               <div class="row d-flex align-items-stretch" >
 
 
 
 
-                <!--                  <div class="col-md-5">-->
-
-                <!--                    <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100" [disabled]="!isUnloadingSelected">-->
-                <!--                      <legend class="float-none w-auto px-3 text-primary-emphasis fs-5 fw-bold">-->
-                <!--                        <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Trailer Unloading-->
-                <!--                      </legend>-->
-
-                <!--                      &lt;!&ndash; Row 1:  &ndash;&gt;-->
-                <!--                      <div class="row g-2 mt-1">-->
-                <!--                        &lt;!&ndash; Address &ndash;&gt;-->
-                <!--                        <div class="col-md-4">-->
-                <!--                          <label for="JBODtrUfstCtnr" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 1st Container-->
-                <!--                          </label>-->
-                <!--                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODtrUfstCtnr" id="JBODtrUfstCtnr" name="JBODtrUfstCtnr" placeholder="Enter Container no" [value]="" >-->
-                <!--                        </div>-->
-
-                <!--                        &lt;!&ndash; City &ndash;&gt;-->
-                <!--                        <div class="col-md-4">-->
-                <!--                          <label for="JBODtrUstklocn1" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Stack Location-->
-                <!--                          </label>-->
-                <!--                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" formControlName="JBODtrUstklocn1" id="JBODtrUstklocn1" name="JBODtrUstklocn1" placeholder="Stack Location" [value]="" >-->
-                <!--                        </div>-->
-
-                <!--                        &lt;!&ndash; State &ndash;&gt;-->
-                <!--                        <div class="col-md-4">-->
-                <!--                          <label for="JBODtrUeqpid1" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id1-->
-                <!--                          </label>-->
-                <!--                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUeqpid1" formControlName="JBODtrUeqpid1" name="JBODtrUeqpid1" placeholder="Eqpt ID" [value]="" >-->
-                <!--                        </div>-->
-                <!--                      </div>-->
-
-                <!--                      &lt;!&ndash; Row 2:  &ndash;&gt;-->
-                <!--                      <div class="row g-2 mt-1">-->
-                <!--                        &lt;!&ndash; Address &ndash;&gt;-->
-                <!--                        <div class="col-md-4">-->
-                <!--                          <label for="JBODtrUsndCtnr" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 2nd Container-->
-                <!--                          </label>-->
-                <!--                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUsndCtnr" formControlName="JBODtrUsndCtnr" name="JBODtrUsndCtnr" placeholder="Enter Container no" [value]="" >-->
-                <!--                        </div>-->
-
-                <!--                        &lt;!&ndash; City &ndash;&gt;-->
-                <!--                        <div class="col-md-4">-->
-                <!--                          <label for="JBODtrUstklocn2" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Stack Locn-->
-                <!--                          </label>-->
-                <!--                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUstklocn2" formControlName="JBODtrUstklocn2" name="JBODtrUstklocn2" placeholder="Stack Location" [value]="" >-->
-                <!--                        </div>-->
-
-                <!--                        &lt;!&ndash; State &ndash;&gt;-->
-                <!--                        <div class="col-md-4">-->
-                <!--                          <label for="JBODtrUeqpid2" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                          <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id2-->
-                <!--                          </label>-->
-                <!--                          <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrUeqpid2" formControlName="JBODtrUeqpid2" name="JBODtrUeqpid2" placeholder="Eqpt ID" [value]="" >-->
-                <!--                        </div>-->
-                <!--                      </div>-->
-
-
-                <!--                      </fieldset>-->
-
-                <!--                  </div>-->
 
 
 
-                <!-- Consignee Section (displayed when showConsignee is false) -->
                 <div class="col-md-4">
 
                   <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100" [disabled]="!isLoadingSelected">
@@ -209,9 +76,7 @@
                       <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Trailer Loading
                     </legend>
 
-                    <!-- Row: 1st and 2nd Container side by side -->
                     <div class="row g-2 mt-1">
-                      <!-- 1st Container -->
                       <div class="col-md-6">
                         <label for="JBODtrLfstCtnr" class="form-label text-primary-emphasis fw-semibold">
                           <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 1st Container
@@ -219,7 +84,6 @@
                         <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrLfstCtnr" formControlName="JBODtrLfstCtnr" name="JBODtrLfstCtnr" placeholder="Enter Container no">
                       </div>
 
-                      <!-- 2nd Container -->
                       <div class="col-md-6">
                         <label for="JBODtrLsndCtnr" class="form-label text-primary-emphasis fw-semibold">
                           <i class="bi bi-pin-map text-primary-emphasis me-1"></i> 2nd Container
@@ -233,7 +97,6 @@
 
                 </div>
 
-                <!-- Consignee Section (displayed when showConsignee is false) -->
                 <div class="col-md-4">
 
                   <fieldset class="border rounded-4 shadow-sm bg-light px-3 py-2 h-100" [disabled]="!isLoadingSelected">
@@ -241,9 +104,7 @@
                       <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Purpose
                     </legend>
 
-                    <!-- Row 1:  -->
                     <div class="row g-2 mt-1">
-                      <!-- Address -->
                       <div class="col-md-6">
                         <label class="modern-round-checkbox text-primary-emphasis fw-semibold">
                           <input type="checkbox" id="JBODPurposeStuffing" formControlName="JBODPurposeStuffing" name="JBODPurposeStuffing" />
@@ -252,18 +113,9 @@
                         </label>
                       </div>
 
-                      <!-- State -->
-                      <!--                            <div class="col-md-6">-->
-                      <!--                              <label for="JBODtrLeqpid1" class="form-label text-primary-emphasis fw-semibold">-->
-                      <!--                              <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id-->
-                      <!--                              </label>-->
-                      <!--                              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrLeqpid1" formControlName="JBODtrLeqpid1" name="JBODtrLeqpid1" placeholder="Eqpt ID" [value]="" >-->
-                      <!--                            </div>-->
                     </div>
 
-                    <!-- Row 2:  -->
                     <div class="row g-2 mt-1">
-                      <!-- Address -->
                       <div class="col-md-6">
                         <label class="modern-round-checkbox text-primary-emphasis fw-semibold">
                           <input type="checkbox" id="JBODPurposeDstuffing" formControlName="JBODPurposeDstuffing" name="JBODPurposeDstuffing" />
@@ -272,13 +124,6 @@
                         </label>
                       </div>
 
-                      <!--                            &lt;!&ndash; State &ndash;&gt;-->
-                      <!--                            <div class="col-md-6">-->
-                      <!--                              <label for="JBODtrLeqpid2" class="form-label text-primary-emphasis fw-semibold">-->
-                      <!--                              <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Eqpt Id-->
-                      <!--                              </label>-->
-                      <!--                              <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODtrLeqpid2" formControlName="JBODtrLeqpid2" name="JBODtrLeqpid2" placeholder="Eqpt ID" [value]="" >-->
-                      <!--                            </div>-->
                     </div>
 
 
@@ -287,85 +132,15 @@
 
 
                 </div>
-<!--                <div class="col-md-4">-->
-<!--                  <label for="JBODvhclSize" class="form-label text-primary-emphasis fw-semibold">-->
-<!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Vehicle size<span class="text-danger"> *</span>-->
-<!--                  </label>-->
-<!--                  <input type="text"-->
-<!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-<!--                         id="JBODvhclSize"-->
-<!--                         name="JBODvhclSize"-->
-<!--                         formControlName="JBODvhclSize"-->
-<!--                         placeholder="Enter Vehicle size">-->
-<!--                </div>-->
 
 
 
 
               </div>
 
-              <!--table grid -->
 
               <div class="row mt-2">
 
-<!--                <div class="col-md-5">-->
-<!--                  <fieldset class="border rounded-4 shadow-sm bg-light px-3 pt-2 pb-3">-->
-<!--                    <legend class="float-none w-auto px-3 text-primary-emphasis fs-6 fw-bold">-->
-<!--                      <i class="bi bi-sliders2 text-primary-emphasis me-1"></i> Purpose for Delay<span class="text-danger"> *</span>-->
-<!--                    </legend>-->
-
-<!--                    <div class="d-flex justify-content-start align-items-start">-->
-<!--                      <div class="d-flex flex-column gap-2">-->
-
-<!--                        &lt;!&ndash; Gate In &ndash;&gt;-->
-<!--                        <div class="form-check d-flex align-items-center">-->
-<!--                          <input-->
-<!--                            class="form-check-input me-2"-->
-<!--                            type="radio"-->
-<!--                            id="JBODRsnRtoC"-->
-<!--                            name="JBODselRsndly"-->
-<!--                            formControlName="JBODselRsndly"-->
-<!--                            [value]="'P'"-->
-<!--                          />-->
-<!--                          <label class="form-check-label text-dark fw-semibold" for="JBODRsnRtoC">-->
-<!--                            <i class="bi bi-arrow-repeat text-primary me-1"></i> RTO/Customer-->
-<!--                          </label>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Gate Out &ndash;&gt;-->
-<!--                        <div class="form-check d-flex align-items-center">-->
-<!--                          <input-->
-<!--                            class="form-check-input me-2"-->
-<!--                            type="radio"-->
-<!--                            id="JBODRsnTo"-->
-<!--                            name="JBODselRsndly"-->
-<!--                            formControlName="JBODselRsndly"-->
-<!--                            [value]="'T'"-->
-<!--                          />-->
-<!--                          <label class="form-check-label text-dark fw-semibold" for="JBODRsnTo">-->
-<!--                            <i class="bi bi-train-front text-success me-1"></i> Terminal Operator-->
-<!--                          </label>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Reason Code Input &ndash;&gt;-->
-<!--                        <div class="d-flex flex-column">-->
-<!--                          <label for="JBODRsndlyCd" class="form-label text-dark fw-semibold">-->
-<!--                            <i class="bi bi-info-circle text-warning me-1"></i> Reason-->
-<!--                          </label>-->
-<!--                          <input-->
-<!--                            type="text"-->
-<!--                            id="JBODRsndlyCd"-->
-<!--                            name="JBODRsndlyCd"-->
-<!--                            formControlName="JBODRsndlyCd"-->
-<!--                            class="form-control bg-white border-0 shadow-sm rounded-3 px-3 py-2"-->
-<!--                            placeholder="Enter reason"-->
-<!--                          />-->
-<!--                        </div>-->
-
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </fieldset>-->
-<!--                </div>-->
 
 
 
@@ -378,63 +153,16 @@
               </div>
               <div class="row g-3 align-items-end  p-1">
 
-                <!-- Toggle Section -->
-                <!--            <div class="col-md">-->
-                <!--              <label for="JBODwkOdrno" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Work Order no<span class="text-danger"> *</span>-->
-                <!--                  </label>-->
-                <!--                  <input type="text"-->
-                <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-                <!--                         id="JBODwkOdrno"-->
-                <!--                         name="JBODwkOdrno"-->
-                <!--                         formControlName="JBODwkOdrno"-->
-                <!--                         placeholder="Work Order no">-->
-
-                <!--            </div>-->
 
                 <div class="col-md-2">
                   <label for="JBODJobOrderNo" class="form-label text-primary-emphasis fw-semibold">
                     <i class="bi bi-pin-map-fill text-primary-emphasis me-1"></i>Job Order no.
                   </label>
-                  <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODJobOrderNo" name="JBODJobOrderNo" value="Enter station" disabled readonly tabindex="-1">
+                  <input type="text" class="form-control border border-light rounded-3 shadow-sm bg-light" id="JBODJobOrderNo" name="JBODJobOrderNo" value="" disabled readonly tabindex="-1">
                 </div>
 
-                <!--            &lt;!&ndash; Input Fields Section &ndash;&gt;-->
-                <!--            <div class="col-md">-->
-                <!--              <label for="JBODissueDT" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> Issuing Date/Time-->
-                <!--                  </label>-->
-                <!--                  <input type="datetime-local"-->
-                <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-                <!--                         id="JBODissueDT"-->
-                <!--                         name="JBODissueDT"-->
-                <!--                         formControlName="JBODissueDT"-->
-                <!--                         placeholder="Enter station">-->
-                <!--            </div>-->
 
-                <!--            <div class="col-md">-->
-                <!--              <label for="JBODhndlctnrcd" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> HNDL Contractor Code<span class="text-danger"> *</span>-->
-                <!--                  </label>-->
-                <!--                  <input type="text"-->
-                <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-                <!--                         id="JBODhndlctnrcd"-->
-                <!--                         name="JBODhndlctnrcd"-->
-                <!--                         formControlName="JBODhndlctnrcd"-->
-                <!--                         placeholder="Enter NDL Contractor Code">-->
-                <!--            </div>-->
 
-                <!--            <div class="col-md">-->
-                <!--              <label for="JBODtnptctnrcd" class="form-label text-primary-emphasis fw-semibold">-->
-                <!--                    <i class="bi bi-pin-map text-primary-emphasis me-1"></i> TNPT Contractor Code<span class="text-danger"> *</span>-->
-                <!--                  </label>-->
-                <!--                  <input type="text"-->
-                <!--                         class="form-control bg-light border-0 shadow-sm rounded-3 px-3 py-2"-->
-                <!--                         id="JBODtnptctnrcd"-->
-                <!--                         name="JBODtnptctnrcd"-->
-                <!--                         formControlName="JBODtnptctnrcd"-->
-                <!--                         placeholder="Enter TNPT Contractor Code">-->
-                <!--            </div>-->
 
 
               </div>
@@ -457,7 +185,6 @@
             </div>
 
           </div>
-          <!-- </fieldset> -->
 
         </div>
       </div>
@@ -466,6 +193,5 @@
   </div>
 
 
-  <!-- submit grid end -->
 
 </form>
